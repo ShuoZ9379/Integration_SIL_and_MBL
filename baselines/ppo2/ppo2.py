@@ -1,4 +1,4 @@
-import os
+import os,sys
 import time
 import numpy as np
 import os.path as osp
@@ -121,7 +121,7 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
 
     if init_fn is not None:
         init_fn()
-
+    obs=runner.run()[0]
     # Start total timer
     tfirststart = time.perf_counter()
 
@@ -130,6 +130,12 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
         assert nbatch % nminibatches == 0
         # Start timer
         tstart = time.perf_counter()
+        if hasattr(model.train_model, "ret_rms"):
+            model.train_model.ret_rms.update(returns)
+            model.act_model.ret_rms.update(returns)
+        if hasattr(model.train_model, "rms"):
+            model.train_model.rms.update(obs)
+            model.act_model.rms.update(obs)
         frac = 1.0 - (update - 1.0) / nupdates
         # Calculate the learning rate
         lrnow = lr(frac)
@@ -140,6 +146,7 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
 
         # Get minibatch
         obs, returns, masks, actions, values, neglogpacs, states, epinfos = runner.run() #pylint: disable=E0632
+
         if eval_env is not None:
             eval_obs, eval_returns, eval_masks, eval_actions, eval_values, eval_neglogpacs, eval_states, eval_epinfos = eval_runner.run() #pylint: disable=E0632
 
@@ -165,6 +172,7 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
                     slices = (arr[mbinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
                     mblossvals.append(model.train(lrnow, cliprangenow, *slices))
         else: # recurrent version
+            print("caole")
             assert nenvs % nminibatches == 0
             envsperbatch = nenvs // nminibatches
             envinds = np.arange(nenvs)

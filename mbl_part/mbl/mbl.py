@@ -66,6 +66,8 @@ class MBL(object):
         for h in range(horizon):
             # Sample actions
             all_action, all_value = pi(all_state, t=h)
+            #print(all_state)
+            #sys.exit()
             
             # Forward simulation
             all_state_next = self.forward_dynamic.predict(ob=all_state, ac=all_action) # N x state_dim

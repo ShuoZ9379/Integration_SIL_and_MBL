@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import os.path as osp
 import json
-import os
+import os,sys
 import numpy as np
 import pandas
 from collections import defaultdict, namedtuple
@@ -227,6 +227,30 @@ COLORS = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black', 'purple'
 def default_xy_fn(r):
     x = np.cumsum(r.monitor.l)
     y = smooth(r.monitor.r, radius=10)
+    print(type(x))
+    print(type(y))
+    #sys.exit() 
+    return x,y
+
+def progress_default_xy_fn(r):
+    #x=pandas.DataFrame(r.progress.index)[0]
+    x=r.progress['misc/total_timesteps']
+    y=np.array(r.progress['AverageReturn'])
+    return x,y
+def progress_iter_xy_fn(r):
+    #x=pandas.DataFrame(r.progress.index)[0]
+    x=r.progress.index
+    y=np.array(r.progress['AverageReturn'])
+    return x,y
+def progress_itermbl_xy_fn(r):
+    #x=pandas.DataFrame(r.progress.index)[0]
+    x=r.progress.index
+    y=np.array(r.progress['MeanRew'])
+    return x,y
+def progress_ppo_default_xy_fn(r):
+    #x=pandas.DataFrame(r.progress.index)[0][1:]
+    x=r.progress['misc/total_timesteps'][1:]
+    y=np.array(r.progress['AverageReturn'])[1:]
     return x,y
 
 def default_split_fn(r):
@@ -294,7 +318,6 @@ def plot_results(
                                               See docstrings for decay_steps in symmetric_ema or one_sided_ema functions.
 
     '''
-
     if split_fn is None: split_fn = lambda _ : ''
     if group_fn is None: group_fn = lambda _ : ''
     sk2r = defaultdict(list) # splitkey2results
@@ -373,6 +396,11 @@ def plot_results(
                     ys = [xy[1][:minxlen] for xy in xys]
                 ymean = np.mean(ys, axis=0)
                 ystd = np.std(ys, axis=0)
+                '''print(np.mean(ymean[-50:]))
+                for i in range (len(ys)):
+                    if i==0: last_iter_ls=[]
+                    last_iter_ls.append(np.mean(ys[i][-50:]))
+                    if i==len(ys)-1: print(np.std(last_iter_ls))'''
                 ystderr = ystd / np.sqrt(len(ys))
                 l, = axarr[idx_row][idx_col].plot(usex, ymean, color=color)
                 g2l[group] = l
@@ -388,7 +416,8 @@ def plot_results(
             ax.legend(
                 g2l.values(),
                 ['%s (%i)'%(g, g2c[g]) for g in g2l] if average_group else g2l.keys(),
-                loc=2 if legend_outside else None,
+                #loc=2 if legend_outside else None,
+                loc=2 if legend_outside else 'upper left',
                 bbox_to_anchor=(1,1) if legend_outside else None)
         ax.set_title(sk)
         # add xlabels, but only to the bottom row

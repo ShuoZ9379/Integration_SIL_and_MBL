@@ -26,5 +26,18 @@ def mujoco():
         lam=0.98,
         vf_iters=5,
         vf_stepsize=1e-3,
+        normalize_observations=True
+    )
+def classic_control():
+    return dict(
+        #network = mlp(num_hidden=32, num_layers=2),
+        #timesteps_per_batch=1024,
+        #max_kl=0.01,
+        #cg_iters=10,
+        #cg_damping=0.1,
+        #gamma=0.99,
+        #lam=0.98,
+        #vf_iters=5,
+        #vf_stepsize=1e-3,
         normalize_observations=True,
     )

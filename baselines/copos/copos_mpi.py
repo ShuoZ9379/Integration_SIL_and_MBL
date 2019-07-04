@@ -1,8 +1,9 @@
+#Problem line: (112,) 297(gvp, fvp), 340(eta omega optimize)
 from baselines.common import explained_variance, zipsame, dataset
 from baselines import logger
 import baselines.common.tf_util as U
 import tensorflow as tf, numpy as np
-import time
+import time, sys
 from baselines.common import colorize
 from mpi4py import MPI
 from collections import deque
@@ -15,14 +16,21 @@ from baselines.copos.eta_omega_dual_discrete import EtaOmegaOptimizerDiscrete
 import gym
 import scipy.optimize
 
+def dim_reduce(ob):
+    if len(ob.shape)==2:
+        return ob.flatten()
+    else:
+        return ob
+
 def traj_segment_generator(pi, env, horizon, stochastic):
     # Initialize state variables
     t = 0
     ac = env.action_space.sample()
     new = True
     rew = 0.0
-    ob = env.reset()
-
+    ob = dim_reduce(env.reset())
+    obb=ob
+    
     cur_ep_ret = 0
     cur_ep_len = 0
     ep_rets = []
@@ -57,10 +65,11 @@ def traj_segment_generator(pi, env, horizon, stochastic):
         news[i] = new
         acs[i] = ac
         prevacs[i] = prevac
-
+        
         ob, rew, new, _ = env.step(ac)
+        ob = dim_reduce(ob)
         rews[i] = rew
-
+        
         cur_ep_ret += rew
         cur_ep_len += 1
         if new:
@@ -68,7 +77,7 @@ def traj_segment_generator(pi, env, horizon, stochastic):
             ep_lens.append(cur_ep_len)
             cur_ep_ret = 0
             cur_ep_len = 0
-            ob = env.reset()
+            ob = dim_reduce(env.reset())
         t += 1
 
 def add_vtarg_and_adv(seg, gamma, lam):
@@ -100,6 +109,7 @@ def eta_search(w_theta, w_beta, eta, omega, allmean, compute_losses, get_flat, s
     prev_param_beta = np.copy(param_beta)
     final_gain = -1e20
     final_constraint_val = float('nan')
+    
     gain_before, kl, *_ = allmean(np.array(compute_losses(*args)))
 
     min_ratio = 0.1
@@ -121,6 +131,7 @@ def eta_search(w_theta, w_beta, eta, omega, allmean, compute_losses, get_flat, s
             if np.min(np.real(np.linalg.eigvals(pi.get_prec_matrix()))) < 0:
                 print("Negative definite covariance!")
 
+            #min?????????????????
             if np.min(np.imag(np.linalg.eigvals(pi.get_prec_matrix()))) != 0:
                 print("Covariance has imaginary eigenvalues")
 
@@ -157,70 +168,6 @@ def eta_search(w_theta, w_beta, eta, omega, allmean, compute_losses, get_flat, s
 
     return eta
 
-# def eta_search(w_theta, w_beta, eta, omega, allmean, compute_losses, get_flat, set_from_flat, pi, epsilon, args):
-#     """
-#     Binary search for eta for finding both valid log-linear "theta" and non-linear "beta" parameter values
-#     :return: new eta
-#     """
-#
-#     w_theta = w_theta.reshape(-1,)
-#     w_beta = w_beta.reshape(-1,)
-#     all_params = get_flat()
-#     best_params = all_params
-#     param_theta, param_beta = pi.all_to_theta_beta(all_params)
-#     prev_param_theta = np.copy(param_theta)
-#     prev_param_beta = np.copy(param_beta)
-#     final_gain = -1e20
-#     final_constraint_val = float('nan')
-#     gain_before, kl, *_ = allmean(np.array(compute_losses(*args)))
-#
-#     backtrack_ratio = 0.8
-#     max_backtracks = 20
-#
-#     gain = gain_before
-#     for n_iter, ratio in enumerate(np.concatenate([9.32 * (backtrack_ratio ** np.arange(1, max_backtracks))])):
-#         cur_eta = ratio * eta
-#         cur_param_theta = (cur_eta * prev_param_theta + w_theta) / (cur_eta + omega)
-#         cur_param_beta = prev_param_beta + w_beta / cur_eta
-#
-#         thnew = pi.theta_beta_to_all(cur_param_theta, cur_param_beta)
-#         set_from_flat(thnew)
-#
-#         # TEST
-#         if np.min(np.real(np.linalg.eigvals(pi.get_prec_matrix()))) < 0:
-#             print("Negative definite covariance!")
-#
-#         if np.min(np.imag(np.linalg.eigvals(pi.get_prec_matrix()))) != 0:
-#             print("Covariance has imaginary eigenvalues")
-#
-#         gain, kl, *_ = allmean(np.array(compute_losses(*args)))
-#
-#         # TEST
-#         print(ratio, gain, kl)
-#
-#         if all((gain > final_gain, kl <= epsilon, not np.isnan(kl), not np.isnan(gain))):
-#             eta = cur_eta
-#             final_gain = gain
-#             final_constraint_val = kl
-#             best_params = thnew
-#
-#     if any((np.isnan(final_gain), np.isnan(final_constraint_val), final_constraint_val >= epsilon)):
-#         logger.log("eta_search: Line search condition violated. Rejecting the step!")
-#         if np.isnan(final_gain):
-#             logger.log("eta_search: Violated because gain is NaN")
-#         if np.isnan(final_constraint_val):
-#             logger.log("eta_search: Violated because KL is NaN")
-#         if final_gain < gain_before:
-#             logger.log("eta_search: Violated because gain not improving")
-#         if final_constraint_val >= epsilon:
-#             logger.log("eta_search: Violated because KL constraint violated")
-#         set_from_flat(all_params)
-#     else:
-#         set_from_flat(best_params)
-#
-#     logger.log("eta optimization finished, final gain: " + str(final_gain))
-#     return eta
-
 def beta_ratio_line_search(w_theta, w_beta, eta, omega, allmean, compute_losses, get_flat, set_from_flat, pi, epsilon, beta, args):
     """
     do line search similar to TRPO, since our update rule is only an approximation (reverse Taylor approx.)
@@ -240,9 +187,7 @@ def beta_ratio_line_search(w_theta, w_beta, eta, omega, allmean, compute_losses,
     final_ent_error = 1e20
     gain_before, kl, *_, entropy_before = allmean(np.array(compute_losses(*args)))
 
-    #min_ratio = 0.001
     max_ratio = 10
-    #min_ratio = 0.1
     ratio = max_ratio
     final_ratio = ratio
 
@@ -252,21 +197,6 @@ def beta_ratio_line_search(w_theta, w_beta, eta, omega, allmean, compute_losses,
         set_from_flat(thnew)
 
         gain, kl, *_, entropy = allmean(np.array(compute_losses(*args)))
-        #ent_diff = entropy_before - entropy
-        #ent_error = abs(ent_diff - beta)
-        #print(ent_diff, ent_error)
-        #print((ent_error <= final_ent_error) and (ent_error >= 0))
-        #print(ent_error <= 1e-4, kl <= epsilon)
-
-        # TEST
-        #print(ratio, gain, kl)
-        
-        # if (ent_error <= final_ent_error) and (ent_diff >= 0) and (ent_diff <= beta):
-        #     final_ent_error = ent_error
-            #final_ratio = ratio
-        #if (ent_error <= 1e-4):
-        #    final_ent_error = ent_error
-        #    final_ratio = ratio
 
         if all((not np.isnan(kl), kl <= epsilon)):
             if all((not np.isnan(gain), gain > final_gain)):
@@ -321,8 +251,7 @@ def learn(env, policy_fn, *,
     ac_space = env.action_space
     discrete_ac_space = isinstance(ac_space, gym.spaces.Discrete)
     print("ob_space: "+str(ob_space))
-    print("ac_space: "+str(ac_space))    
-    #print("discrete_ac_space = "+str(discrete_ac_space))
+    print("ac_space: "+str(ac_space))
     pi = policy_fn("pi", ob_space, ac_space)
     oldpi = policy_fn("oldpi", ob_space, ac_space)
     atarg = tf.placeholder(dtype=tf.float32, shape=[None]) # Target advantage function (if applicable)
@@ -366,6 +295,7 @@ def learn(env, policy_fn, *,
         sz = U.intprod(shape)
         tangents.append(tf.reshape(flat_tangent[start:start+sz], shape))
         start += sz
+    #????gvp and fvp???
     gvp = tf.add_n([tf.reduce_sum(g*tangent) for (g, tangent) in zipsame(klgrads, tangents)]) #pylint: disable=E1111
     fvp = U.flatgrad(gvp, var_list)
 
@@ -408,6 +338,7 @@ def learn(env, policy_fn, *,
     else:
         init_eta = 0.5
         init_omega = 2.0
+        #????eta_omega_optimizer details?????
         eta_omega_optimizer = EtaOmegaOptimizer(beta, epsilon, init_eta, init_omega)
 
     # Prepare for rollouts
@@ -437,7 +368,6 @@ def learn(env, policy_fn, *,
             seg = seg_gen.__next__()
         add_vtarg_and_adv(seg, gamma, lam)
 
-        # ob, ac, atarg, ret, td1ret = map(np.concatenate, (obs, acs, atargs, rets, td1rets))
         ob, ac, atarg, tdlamret = seg["ob"], seg["ac"], seg["adv"], seg["tdlamret"]
         vpredbefore = seg["vpred"] # predicted value function before udpate
         atarg = (atarg - atarg.mean()) / atarg.std() # standardized advantage function estimate
@@ -445,7 +375,9 @@ def learn(env, policy_fn, *,
         #print(ac[:20])
 
         if hasattr(pi, "ret_rms"): pi.ret_rms.update(tdlamret)
-        if hasattr(pi, "ob_rms"): pi.ob_rms.update(ob) # update running mean/std for policy
+        if hasattr(pi, "ob_rms"):
+            print(pi.ob_rms.mean)
+            pi.ob_rms.update(ob) # update running mean/std for policy
 
         args = seg["ob"], seg["ac"], atarg
         fvpargs = [arr[::5] for arr in args]
@@ -493,14 +425,17 @@ def learn(env, policy_fn, *,
                         logger.log("Stepsize OK!")
                         break
                     stepsize *= .5
-                else:
+                '''else:
                     logger.log("couldn't compute a good step")
-                    set_from_flat(thbefore)
+                    set_from_flat(thbefore)'''
+                if nworkers > 1 and iters_so_far % 20 == 0:
+                    paramsums = MPI.COMM_WORLD.allgather((thnew.sum(), vfadam.getflat().sum())) # list of tuples
+                    assert all(np.allclose(ps, paramsums[0]) for ps in paramsums[1:])
+
             else:
                 #
                 # COPOS specific implementation.
                 #
-
                 copos_update_dir = stepdir
 
                 # Split direction into log-linear 'w_theta' and non-linear 'w_beta' parts
@@ -515,13 +450,9 @@ def learn(env, policy_fn, *,
                     eta, omega = eta_omega_optimizer.optimize(pi.compute_F_w(ob, copos_update_dir), 
                                                               pi.get_log_action_prob(ob), timesteps_per_batch, entropy)
                 else:
-                    # q_beta(s,a) = \grad_beta \log \pi(a|s) * w_beta
-                    #             = features_beta(s) * K^T * Prec * a
-                    # q_beta = self.target.get_q_beta(features_beta, actions)
-
                     Waa, Wsa = pi.w2W(w_theta)
                     wa = pi.get_wa(ob, w_beta)
-
+                    
                     varphis = pi.get_varphis(ob)
 
                     #old_ent = old_entropy.eval({oldpi.ob: tmp_ob})[0]
@@ -552,43 +483,6 @@ def learn(env, policy_fn, *,
                     #print("ratio from line search: " + str(ratio))
                     cur_theta = (eta * prev_theta + w_theta.reshape(-1, )) / (eta + omega)
                     cur_beta = prev_beta + ratio * w_beta.reshape(-1, ) / eta
-
-                    ### Accurate beta update ###
-
-                    # it = tf.range(timesteps_per_batch)
-                    # ac_const = tf.convert_to_tensor(ac, dtype=tf.int32)
-                    # idx = tf.transpose(tf.stack([it, ac_const], axis=0))
-                    # psi_beta_theta = tf.gather_nd(pi.psi_beta_theta, idx)
-
-                    # f_psi_beta_theta = U.function([pi.ob], [psi_beta_theta])
-                    # G1 = f_psi_beta_theta(ob)[0]
-
-                    # F_w = pi.compute_F_w(ob, copos_update_dir)
-                    # F_w_selected = F_w[np.linspace(0, timesteps_per_batch-1, timesteps_per_batch).astype(np.int),
-                    #                     ac].flatten()
-                    # G = (eta * G1 + F_w_selected) / \
-                    #     (eta + omega)
-
-                    # loss = tf.reduce_sum(tf.square(G - psi_beta_theta))
-                    # f_loss = U.function([pi.ob], [loss])
-
-                    # cur_loss = f_loss(ob)
-                    # def f_loss_wrapper(flat_params_beta):
-                    #     set_from_flat(pi.theta_beta_to_all(prev_theta, flat_params_beta))
-                    #     #print(f_loss(ob)[0])
-                    #     return f_loss(ob)[0]
-
-                    # res = scipy.optimize.minimize(f_loss_wrapper, prev_beta, method='L-BFGS-B', 
-                    #                                 options={'maxiter': 10, 'maxfun': 10})
-
-                    # new_loss = f_loss(ob)
-                    # new_theta_beta = get_flat()
-                    # new_theta, new_beta = pi.all_to_theta_beta(new_theta_beta)
-                    # w_beta_new = ((new_beta - prev_beta) * eta)
-
-                    # print(cur_loss, new_loss)
-                    # cur_beta = prev_beta + w_beta_new.reshape(-1, ) / eta
-                    ############################
                 else:
                     for i in range(2):
                         # Do a line search for both theta and beta parameters by adjusting only eta
@@ -608,19 +502,19 @@ def learn(env, policy_fn, *,
                     cur_theta = (eta * prev_theta + w_theta.reshape(-1, )) / (eta + omega)
                     cur_beta = prev_beta + w_beta.reshape(-1, ) / eta
 
-                set_from_flat(pi.theta_beta_to_all(cur_theta, cur_beta))
-
+                paramnew=allmean(pi.theta_beta_to_all(cur_theta, cur_beta))
+                set_from_flat(paramnew)
                 meanlosses = surr, kl, *_ = allmean(np.array(compute_losses(*args)))
-
-            if nworkers > 1 and iters_so_far % 20 == 0:
-                paramsums = MPI.COMM_WORLD.allgather((thnew.sum(), vfadam.getflat().sum())) # list of tuples
-                assert all(np.allclose(ps, paramsums[0]) for ps in paramsums[1:])
+                if nworkers > 1 and iters_so_far % 20 == 0:
+                    paramsums = MPI.COMM_WORLD.allgather((paramnew.sum(), vfadam.getflat().sum())) # list of tuples
+                    assert all(np.allclose(ps, paramsums[0]) for ps in paramsums[1:])
+                ##copos specific over
+#cg over
 
         for (lossname, lossval) in zip(loss_names, meanlosses):
             logger.record_tabular(lossname, lossval)
-
+#policy update over
         with timed("vf"):
-
             for _ in range(vf_iters):
                 for (mbob, mbret) in dataset.iterbatches((seg["ob"], seg["tdlamret"]),
                 include_final_partial_batch=False, batch_size=64):

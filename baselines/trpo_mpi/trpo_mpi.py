@@ -2,7 +2,7 @@ from baselines.common import explained_variance, zipsame, dataset
 from baselines import logger
 import baselines.common.tf_util as U
 import tensorflow as tf, numpy as np
-import time
+import time,sys
 from baselines.common import colorize
 from collections import deque
 from baselines.common import set_global_seeds
@@ -16,15 +16,22 @@ try:
     from mpi4py import MPI
 except ImportError:
     MPI = None
-
+def dim_reduce(ob):
+    if len(ob.shape)==2:
+        return ob.flatten()
+    else:
+        return ob
 def traj_segment_generator(pi, env, horizon, stochastic):
     # Initialize state variables
     t = 0
     ac = env.action_space.sample()
     new = True
     rew = 0.0
+    #ob = env.reset()
     ob = env.reset()
     #print(ob)
+    #sys.exit()
+   
     cur_ep_ret = 0
     cur_ep_len = 0
     ep_rets = []
@@ -54,14 +61,17 @@ def traj_segment_generator(pi, env, horizon, stochastic):
             ep_rets = []
             ep_lens = []
         i = t % horizon
-        if len(obs.shape)==2: obs[i] = ob.flatten()
-        else: obs[i]=ob
+        #if len(obs.shape)==2: obs[i] = ob.flatten()
+        #else: obs[i]=ob
+        obs[i] = ob
         vpreds[i] = vpred
         news[i] = new
         acs[i] = ac
         prevacs[i] = prevac
 
         ob, rew, new, _ = env.step(ac)
+        #print(ob)
+        #sys.exit()
         rews[i] = rew
 
         cur_ep_ret += rew
@@ -106,6 +116,7 @@ def learn(*,
         load_path=None,
         **network_kwargs
         ):
+    #last_perfm=[]
     '''
     learn a policy function with TRPO algorithm
 
@@ -257,11 +268,9 @@ def learn(*,
     U.initialize()
     if load_path is not None:
         pi.load(load_path)
-
     th_init = get_flat()
     if MPI is not None:
         MPI.COMM_WORLD.Bcast(th_init, root=0)
-
     set_from_flat(th_init)
     vfadam.sync()
     print("Init param sum", th_init.sum(), flush=True)
@@ -269,7 +278,7 @@ def learn(*,
     # Prepare for rollouts
     # ----------------------------------------
     seg_gen = traj_segment_generator(pi, env, timesteps_per_batch, stochastic=True)
-
+    
     episodes_so_far = 0
     timesteps_so_far = 0
     iters_so_far = 0
@@ -304,8 +313,8 @@ def learn(*,
         atarg = (atarg - atarg.mean()) / atarg.std() # standardized advantage function estimate
 
         if hasattr(pi, "ret_rms"): pi.ret_rms.update(tdlamret)
-        if hasattr(pi, "ob_rms"): pi.ob_rms.update(ob) # update running mean/std for policy
-
+        if hasattr(pi, "rms"): pi.rms.update(ob) # update running mean/std for policy
+        
         args = seg["ob"], seg["ac"], atarg
         fvpargs = [arr[::5] for arr in args]
         def fisher_vector_product(p):
@@ -384,13 +393,24 @@ def learn(*,
         timesteps_so_far += sum(lens)
         iters_so_far += 1
 
+        #if ((total_timesteps % timesteps_per_batch==0) and (total_timesteps//timesteps_per_batch-iters_so_far<50)) or ((total_timesteps % timesteps_per_batch!=0) and (total_timesteps // timesteps_per_batch +1 - iters_so_far < 50)):
+#            last_perfm.append(np.mean(rewbuffer))
+  
         logger.record_tabular("EpisodesSoFar", episodes_so_far)
         logger.record_tabular("TimestepsSoFar", timesteps_so_far)
         logger.record_tabular("TimeElapsed", time.time() - tstart)
 
         if rank==0:
             logger.dump_tabular()
-
+    '''logger.record_tabular("EpLenMean", np.mean(lenbuffer))
+    logger.record_tabular("EpRewMean", np.mean(rewbuffer))
+    logger.record_tabular("AverageReturn", np.mean(np.mean(last_perfm)))
+    logger.record_tabular("EpThisIter", len(lens))
+    logger.record_tabular("EpisodesSoFar", episodes_so_far)
+    logger.record_tabular("TimestepsSoFar", timesteps_so_far)
+    logger.record_tabular("TimeElapsed", time.time() - tstart)
+    if rank==0:
+        logger.dump_tabular()'''
     return pi
 
 def flatten_lists(listoflists):

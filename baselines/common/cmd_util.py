@@ -78,6 +78,9 @@ def make_env(env_id, env_type, mpi_rank=0, subrank=0, seed=None, reward_scale=1.
         import retro
         gamestate = gamestate or retro.State.DEFAULT
         env = retro_wrappers.make_retro(game=env_id, max_episode_steps=10000, use_restricted_actions=retro.Actions.DISCRETE, state=gamestate)
+    elif env_type == 'robotics':
+        env = gym.make(env_id)
+        env = FlattenDictWrapper(env, ['observation', 'achieved_goal', 'desired_goal'])    
     else:
         if env_id == 'LunarLanderContinuousPOMDP-v0':
             new_lunar_lander_pomdp_env(hist_len=hist_len, block_high=block_high, not_guided=not_guided, give_state=give_state) 
@@ -161,9 +164,9 @@ def common_arg_parser():
     Create an argparse.ArgumentParser for run_mujoco.py.
     """
     parser = arg_parser()
-    parser.add_argument('--env', help='environment ID', type=str, default='Reacher-v2')
+    parser.add_argument('--env', help='environment ID', type=str, default='Pendulum-v0')
     parser.add_argument('--env_type', help='type of environment, used when the environment type cannot be automatically determined', type=str)
-    parser.add_argument('--seed', help='RNG seed', type=int, default=None)
+    parser.add_argument('--seed', help='RNG seed', type=int, default=0)
     parser.add_argument('--alg', help='Algorithm', type=str, default='ppo2')
     parser.add_argument('--num_timesteps', type=float, default=1e6),
     parser.add_argument('--network', help='network type (mlp, cnn, lstm, cnn_lstm, conv_only)', default=None)
@@ -175,6 +178,17 @@ def common_arg_parser():
     parser.add_argument('--save_video_length', help='Length of recorded video. Default: 200', default=200, type=int)
     parser.add_argument('--log_path', help='Directory to save learning curve data.', default=None, type=str)
     parser.add_argument('--play', default=False, action='store_true')
+    parser.add_argument('--store_ckpt', default=False, action='store_true')
+    parser.add_argument('--normalize_env_obs', default=False, action='store_true')
+    parser.add_argument('--normalize_env_ret', default=False, action='store_true')
+    parser.add_argument('--lr', type=float, default=3e-4, help="Learning rate PPO")
+    parser.add_argument('--sil_update', type=float, default=10, help="Number of SIL updates per iteration")
+    parser.add_argument('--sil_value', type=float, default=0.01, help="Weight for SIL value update")
+    parser.add_argument('--sil_alpha', type=float, default=0.6, help="Alpha for prioritized replay")
+    parser.add_argument('--sil_beta', type=float, default=0.1, help="Beta for prioritized replay")
+    parser.add_argument('--sil_loss', type=float, default=0.1, help="Weight for SIL total loss")
+
+
     return parser
 
 def robotics_arg_parser():

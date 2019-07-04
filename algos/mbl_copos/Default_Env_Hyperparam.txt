@@ -1,0 +1,4 @@
+Swimmer: N = 1500, E = 10, H = 10 
+Reacher: N = 1500, E = 10, H = 5
+HalfCheetah-v2: N = 1500, E=10, H=10
+Ant-v2: N = 1500, E = 10, H = 5
