@@ -10,24 +10,25 @@ def main():
     parser.add_argument('--env', help='environment ID', type=str, default='HalfCheetah-v2')
     parser.add_argument('--seeds', help='number of seeds', type=int, default=1)
     parser.add_argument('--num_timesteps', type=str, default="3e4")
-    parser.add_argument('--filename', type=str, default='_Offline Evaluation.png')
+    parser.add_argument('--filename', type=str, default='_Offline_Evaluation_nosil.png')
     args = parser.parse_args()
     if args.env=="Swimmer-v2" or args.env=="HalfCheetah-v2":
         mbl_args='--num_samples=1500 --num_elites=10 --horizon=10'
     elif args.env=="Reacher-v2" or args.env=="Ant-v2":
         mbl_args='--num_samples=1500 --num_elites=10 --horizon=5'
+    
 #    algo_names=["ppo2_sil_online","copos_sil_online","ppo2_online","copos_online"]
 #    legend_names=["ppo2+sil","copos+sil","ppo2","copos"]
 #    argus=["","","",""]
 
-    algo_names=["mbl_ppo2_sil","mbl_ppo2","ppo2_sil_offline","ppo2_offline",
-                "mbl_copos_sil","mbl_copos","copos_sil_offline","copos_offline",
-                "mbl_trpo_sil","mbl_trpo","trpo_sil_offline","trpo_offline"]
+    algo_names=["mbl_ppo2","ppo2_offline",
+                "mbl_copos","copos_offline",
+                "mbl_trpo","trpo_offline"]
 #    algo_names=["mbl_ppo2","ppo2_offline",
 #                "mbl_copos","copos_offline"]
-    legend_names=["mbl+ppo2+sil","mbl+ppo2","ppo2+sil","ppo2",
-                  "mbl+copos+sil","mbl+copos","copos+sil","copos",
-                  "mbl+trpo+sil", "mbl+trpo", "trpo+sil","trpo"]
+    legend_names=["mbl+ppo2","ppo2",
+                  "mbl+copos","copos",
+                   "mbl+trpo", "trpo"]
 #    legend_names=["mbl+ppo2","ppo2",
 #                  "mbl+copos","copos"]
     #argus=['--num_samples=1 --num_elites=1 --horizon=2' for _ in range(len(algo_names))]
@@ -36,10 +37,10 @@ def main():
     for i in range(args.seeds):
         for j in range(len(algo_names)):
             os.system("python ../algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timestep="
-                      +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP2/"
+                      +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP2_nosil/"
                       +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
 
-    results = pu.load_results('~/Desktop/logs/EXP2/'+args.env)
+    results = pu.load_results('~/Desktop/logs/EXP2_nosil/'+args.env)
 
     pu.plot_results(results,xy_fn=pu.progress_itermbl_xy_fn,average_group=True,split_fn=lambda _: '')
     #plt.title(args.env+" Online Evaluation")
