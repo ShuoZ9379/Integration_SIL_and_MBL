@@ -9,5 +9,5 @@ License: UNKNOWN
 Description: UNKNOWN
 Platform: UNKNOWN
 Provides-Extra: test
-Provides-Extra: mpi
 Provides-Extra: all
+Provides-Extra: mpi

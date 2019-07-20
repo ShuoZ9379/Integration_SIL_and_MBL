@@ -224,7 +224,7 @@ COLORS = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black', 'purple'
         'darkgreen', 'tan', 'salmon', 'gold',  'darkred', 'darkblue']
 
 
-def default_xy_fn(r):
+def default_xy_fn(r,quant=1):
     x = np.cumsum(r.monitor.l)
     y = smooth(r.monitor.r, radius=10)
     print(type(x))
@@ -232,22 +232,64 @@ def default_xy_fn(r):
     #sys.exit() 
     return x,y
 
-def progress_default_xy_fn(r):
+def progress_default_xy_fn(r,quant=1):
     #x=pandas.DataFrame(r.progress.index)[0]
-    x=r.progress['misc/total_timesteps']
+    if 'TimestepsSoFar' not in r.progress.columns:
+        x=r.progress['misc/total_timesteps']/1e6
+    else:
+        x=r.progress['TimestepsSoFar']/1e6
     y=np.array(r.progress['AverageReturn'])
     return x,y
-def progress_iter_xy_fn(r):
+def progress_iter_xy_fn(r,quant=1):
     #x=pandas.DataFrame(r.progress.index)[0]
     x=r.progress.index
     y=np.array(r.progress['AverageReturn'])
     return x,y
-def progress_itermbl_xy_fn(r):
+def progress_itermbl_xy_fn(r,quant=1):
     #x=pandas.DataFrame(r.progress.index)[0]
     x=r.progress.index
     y=np.array(r.progress['MeanRew'])
     return x,y
-def progress_ppo_default_xy_fn(r):
+
+def progress_mbl_v0_xy_fn(r,quant=1):
+    #x=pandas.DataFrame(r.progress.index)[0]
+    if 'TimestepsSoFar' not in r.progress.columns:
+        x=r.progress['misc/total_timesteps']/1e6
+    else:
+        x=r.progress['TimestepsSoFar']/1e6
+    y=np.array(r.progress['MeanRew'])
+    return x,y
+
+def progress_mbl_vbest_xy_fn(r,quant=1):
+    #x=pandas.DataFrame(r.progress.index)[0]
+    if 'TimestepsSoFar' not in r.progress.columns:
+        x=r.progress['misc/total_timesteps']/1e6
+    else:
+        x=r.progress['TimestepsSoFar']/1e6
+    #y=np.array(r.progress['MeanRew'])
+    df=r.progress.copy(deep=True)
+    df.insert(0,"Best",0.0)
+    max_reward_so_far = -INF
+    for idx, row in df.iterrows():            
+        max_reward_so_far = max(row['MeanRew'], max_reward_so_far)
+        df.at[idx, 'Best']=max_reward_so_far
+    return x,df['Best']
+def progress_mbl_vbest_final_xy_fn(r,quant):
+    #x=pandas.DataFrame(r.progress.index)[0]
+    if 'TimestepsSoFar' not in r.progress.columns:
+        x=r.progress['misc/total_timesteps']/1e6
+    else:
+        x=r.progress['TimestepsSoFar']/1e6
+    #y=np.array(r.progress['MeanRew'])
+    df=r.progress.copy(deep=True)
+    df.insert(0,"Best",0.0)
+    max_reward_so_far = -INF
+    for idx, row in df.iterrows():            
+        max_reward_so_far = max(row['MeanRew'], max_reward_so_far)
+        df.at[idx, 'Best']=max_reward_so_far
+    return x[x.index % quant ==0],df['Best'][x.index % quant ==0]
+
+def progress_ppo_default_xy_fn(r,quant=1):
     #x=pandas.DataFrame(r.progress.index)[0][1:]
     x=r.progress['misc/total_timesteps'][1:]
     y=np.array(r.progress['AverageReturn'])[1:]
@@ -275,7 +317,8 @@ def plot_results(
     smooth_step=1.0,
     tiling='vertical',
     xlabel=None,
-    ylabel=None
+    ylabel=None,
+    quant=1
 ):
     '''
     Plot multiple Results objects
@@ -362,7 +405,7 @@ def plot_results(
         for result in sresults:
             group = group_fn(result)
             g2c[group] += 1
-            x, y = xy_fn(result)
+            x, y = xy_fn(result,quant=quant)
             if x is None: x = np.arange(len(y))
             x, y = map(np.asarray, (x, y))
             if average_group:

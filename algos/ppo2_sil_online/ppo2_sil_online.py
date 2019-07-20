@@ -182,7 +182,7 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
                     slices = (arr[mbinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
                     mblossvals.append(model.train(lrnow, cliprangenow, *slices))
                     
-            sil_loss, sil_adv, sil_samples, sil_nlogp = model.sil_train(lrnow)
+            l_loss, sil_adv, sil_samples, sil_nlogp = model.sil_train(lrnow)
             
         else: # recurrent version
             print("caole")

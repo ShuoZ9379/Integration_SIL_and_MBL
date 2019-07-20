@@ -57,7 +57,7 @@ def learn(*, network,
         mbl_lamb=(1.0,),
         mbl_gamma=0.99,
         #mbl_sh=1, # Number of step for stochastic sampling
-        mbl_sh=max((5,)),
+        mbl_sh=10000,
         #vf_lookahead=-1,
         #use_max_vf=False,
         reset_per_step=(0,),
@@ -257,6 +257,7 @@ def learn(*, network,
         if use_ent_adjust:
             return _mf_ent_pi(ob)
         else:
+            #return _mf_pi(ob)
             if t < mbl_sh: return _mf_pi(ob)        
             else: return _mf_det_pi(ob)
 
@@ -274,9 +275,9 @@ def learn(*, network,
         for h in horizon:
             for l in mbl_lamb:
                 for e in num_elites:                     
-                    if 'mbmf' in eval_targs: all_eval_descs.append(('MeanRew', 'MBL_PPO', make_mbmf_pi(n, h, e, l)))
+                    if 'mbmf' in eval_targs: all_eval_descs.append(('MeanRew', 'MBL_PPO_SIL', make_mbmf_pi(n, h, e, l)))
                     #if 'mbmf' in eval_targs: all_eval_descs.append(('MeanRew-n-{}-h-{}-e-{}-l-{}-sh-{}-me-{}'.format(n, h, e, l, mbl_sh, use_mean_elites), 'MBL_TRPO-n-{}-h-{}-e-{}-l-{}-sh-{}-me-{}'.format(n, h, e, l, mbl_sh, use_mean_elites), make_mbmf_pi(n, h, e, l)))                   
-    if 'mf' in eval_targs: all_eval_descs.append(('MeanRew', 'PPO', Policy(step=_mf_pi, reset=None)))
+    if 'mf' in eval_targs: all_eval_descs.append(('MeanRew', 'PPO_SIL', Policy(step=_mf_pi, reset=None)))
    
     logger.log('List of evaluation targets')
     for it in all_eval_descs:
@@ -362,7 +363,7 @@ def learn(*, network,
                     mbinds = inds[start:end]
                     slices = (arr[mbinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
                     mblossvals.append(model.train(lrnow, cliprangenow, *slices))
-            sil_loss, sil_adv, sil_samples, sil_nlogp = model.sil_train(lrnow)
+            l_loss, sil_adv, sil_samples, sil_nlogp = model.sil_train(lrnow)
             
         else: # recurrent version
             print("caole")
@@ -411,7 +412,7 @@ def learn(*, network,
             if rank==0:
                 # MBL evaluation
                 if not collect_val_data:
-                    set_global_seeds(seed)
+                    #set_global_seeds(seed)
                     default_sess = tf.get_default_session()
                     def multithread_eval_policy(env_, pi_, num_episodes_, vis_eval_,seed):
                         with default_sess.as_default():

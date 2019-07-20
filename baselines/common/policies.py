@@ -345,6 +345,8 @@ def build_policy(env, policy_network, value_network=None, normalize_observations
     def policy_fn(nbatch=None, nsteps=None, sess=None, observ_placeholder=None):
         ob_space = env.observation_space
         ac_space = env.action_space
+        print(observ_placeholder)
+        #sys.exit()
         
         X = observ_placeholder if observ_placeholder is not None else observation_placeholder(ob_space, batch_size=nbatch)
 

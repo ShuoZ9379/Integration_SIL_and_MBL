@@ -128,27 +128,27 @@ def learn(*,
 
         # MBL
         # For train mbl
-        mbl_train_freq=10,
+        mbl_train_freq=5,
 
         # For eval
         num_eval_episodes=5,
         eval_freq=5,
         vis_eval=False,
-        #eval_targs=('mbmf','mf'),
+#        eval_targs=('mbmf',),
         eval_targs=('mf',),
         quant=2,
 
         # For mbl.step
         #num_samples=(1500,),
         num_samples=(1,),
-        #horizon=(5,),
         horizon=(2,),
+        #horizon=(2,1),
         #num_elites=(10,),
         num_elites=(1,),
         mbl_lamb=(1.0,),
         mbl_gamma=0.99,
         #mbl_sh=1, # Number of step for stochastic sampling
-        mbl_sh=max((5,)),
+        mbl_sh=10000,
         #vf_lookahead=-1,
         #use_max_vf=False,
         reset_per_step=(0,),
@@ -255,8 +255,9 @@ def learn(*,
             intra_op_parallelism_threads=cpus_per_worker
     ))
 
-    policy = build_policy(env, network, value_network='copy', **network_kwargs)
     set_global_seeds(seed)
+    
+    policy = build_policy(env, network, value_network='copy', **network_kwargs)
 
     np.set_printoptions(precision=3)
     # Setup losses and stuff
@@ -313,6 +314,7 @@ def learn(*,
         if use_ent_adjust:
             return _mf_ent_pi(ob)
         else:
+            #return _mf_pi(ob)
             if t < mbl_sh: return _mf_pi(ob)        
             else: return _mf_det_pi(ob)
 
@@ -330,8 +332,9 @@ def learn(*,
         for h in horizon:
             for l in mbl_lamb:
                 for e in num_elites:                     
-                    if 'mbmf' in eval_targs: all_eval_descs.append(('MeanRew', 'MBL_TRPO', make_mbmf_pi(n, h, e, l)))                   
-    if 'mf' in eval_targs: all_eval_descs.append(('MeanRew', 'MF', Policy(step=_mf_pi, reset=None)))
+                    if 'mbmf' in eval_targs: all_eval_descs.append(('MeanRew', 'MBL_TRPO', make_mbmf_pi(n, h, e, l)))
+                    #if 'mbmf' in eval_targs: all_eval_descs.append(('MeanRew-n-{}-h-{}-e-{}-l-{}-sh-{}-me-{}'.format(n, h, e, l, mbl_sh, use_mean_elites), 'MBL_TRPO-n-{}-h-{}-e-{}-l-{}-sh-{}-me-{}'.format(n, h, e, l, mbl_sh, use_mean_elites), make_mbmf_pi(n, h, e, l)))                   
+    if 'mf' in eval_targs: all_eval_descs.append(('MeanRew', 'TRPO', Policy(step=_mf_pi, reset=None)))
    
     logger.log('List of evaluation targets')
     for it in all_eval_descs:
@@ -468,10 +471,10 @@ def learn(*,
         # MBL update
         else:
             ob_mbl, ac_mbl = seg_mbl["ob"], seg_mbl["ac"]
-            
+     
             mbl.add_data_batch(ob_mbl[:-1, 0, ...], ac_mbl[:-1, ...], ob_mbl[1:, 0, ...])
-            #mbl.update_forward_dynamic(require_update=iters_so_far % mbl_train_freq == 0,
-                                       #ob_val=val_dataset['ob'], ac_val=val_dataset['ac'], ob_next_val=val_dataset['ob_next'])            
+            mbl.update_forward_dynamic(require_update=iters_so_far % mbl_train_freq == 0, 
+                    ob_val=val_dataset['ob'], ac_val=val_dataset['ac'], ob_next_val=val_dataset['ob_next'])            
         # -----------------------------
         
         if traj_collect == 'mf':
@@ -565,7 +568,7 @@ def learn(*,
         if rank==0:
             # MBL evaluation
             if not collect_val_data:
-                set_global_seeds(seed)
+                #set_global_seeds(seed)
                 default_sess = tf.get_default_session()
                 def multithread_eval_policy(env_, pi_, num_episodes_, vis_eval_,seed):
                     with default_sess.as_default():
@@ -579,10 +582,8 @@ def learn(*,
                             pass
                     return res
 
-                if mbl.forward_dynamic.memory.nb_entries >= mbl.num_warm_start and iters_so_far % eval_freq == 0:
-                #if mbl.is_warm_start_done() and iters_so_far % eval_freq == 0:
-                    #warm_start_done = mbl.is_warm_start_done()
-                    warm_start_done = True
+                if mbl.is_warm_start_done() and iters_so_far % eval_freq == 0:
+                    warm_start_done = mbl.is_warm_start_done()
                     if num_eval_episodes > 0 :
                         targs_names = {}
                         with timed('eval'):
@@ -621,6 +622,7 @@ def learn(*,
                     #if num_eval_episodes > 0:
 #                        win = plot(viz, win, logger.get_dir(), targs_names=targs_names, quant=quant, opt='best')                
             # -----------
+        #logger.dump_tabular()
         yield pi   
 
     if collect_val_data:

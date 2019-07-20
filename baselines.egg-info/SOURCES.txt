@@ -48,11 +48,14 @@ baselines/common/mpi_running_mean_std.py
 baselines/common/mpi_util.py
 baselines/common/plot_util.py
 baselines/common/policies.py
+baselines/common/policies_old.py
 baselines/common/retro_wrappers.py
 baselines/common/runners.py
 baselines/common/running_mean_std.py
 baselines/common/schedules.py
 baselines/common/segment_tree.py
+baselines/common/self_imitation.py
+baselines/common/self_imitation_noclip.py
 baselines/common/test_mpi_util.py
 baselines/common/tf_util.py
 baselines/common/tile_images.py

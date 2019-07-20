@@ -345,7 +345,7 @@ class SelfImitation(object):
         if max_grad_norm is not None:
             grads, grad_norm = tf.clip_by_global_norm(grads, max_grad_norm)
         grads = list(zip(grads, params))
-        self.abc=optim
+        #self.abc=optim
         self.train_op = optim.apply_gradients(grads)
 
     def _train(self, sess, lr):

@@ -33,7 +33,7 @@ def sparse_mujoco():
 def mujoco():
     return dict(
         network = mlp(num_hidden=32, num_layers=2),
-        timesteps_per_batch=1024,
+        timesteps_per_batch=2048,
         max_kl=0.01,
         cg_iters=10,
         cg_damping=0.1,

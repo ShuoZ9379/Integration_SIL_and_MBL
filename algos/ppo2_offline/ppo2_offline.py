@@ -56,7 +56,7 @@ def learn(*, network,
         mbl_lamb=(1.0,),
         mbl_gamma=0.99,
         #mbl_sh=1, # Number of step for stochastic sampling
-        mbl_sh=max((5,)),
+        mbl_sh=10000,
         #vf_lookahead=-1,
         #use_max_vf=False,
         reset_per_step=(0,),
@@ -248,6 +248,7 @@ def learn(*, network,
         if use_ent_adjust:
             return _mf_ent_pi(ob)
         else:
+            #return _mf_pi(ob)
             if t < mbl_sh: return _mf_pi(ob)        
             else: return _mf_det_pi(ob)
 
@@ -330,8 +331,8 @@ def learn(*, network,
             ob_mbl, ac_mbl = obs.copy(), actions.copy()
         
             mbl.add_data_batch(ob_mbl[:-1, ...], ac_mbl[:-1, ...], ob_mbl[1:, ...])
-            mbl.update_forward_dynamic(require_update=(update-1) % mbl_train_freq == 0, 
-                    ob_val=val_dataset['ob'], ac_val=val_dataset['ac'], ob_next_val=val_dataset['ob_next'])            
+            mbl.update_forward_dynamic(require_update=(update-1) % mbl_train_freq == 0,
+                                       ob_val=val_dataset['ob'], ac_val=val_dataset['ac'], ob_next_val=val_dataset['ob_next'])            
         # -----------------------------
         
         if update % log_interval == 0 and is_mpi_root: logger.info('Done.')
@@ -398,7 +399,7 @@ def learn(*, network,
             if rank==0:
                 # MBL evaluation
                 if not collect_val_data:
-                    set_global_seeds(seed)
+                    #set_global_seeds(seed)
                     default_sess = tf.get_default_session()
                     def multithread_eval_policy(env_, pi_, num_episodes_, vis_eval_,seed):
                         with default_sess.as_default():
@@ -411,7 +412,7 @@ def learn(*, network,
                             except:
                                 pass
                         return res
-
+                    #if mbl.forward_dynamic.memory.nb_entries >= mbl.num_warm_start and update % eval_freq == 0:
                     if mbl.is_warm_start_done() and update % eval_freq == 0:
                         warm_start_done = mbl.is_warm_start_done()
                         if num_eval_episodes > 0 :

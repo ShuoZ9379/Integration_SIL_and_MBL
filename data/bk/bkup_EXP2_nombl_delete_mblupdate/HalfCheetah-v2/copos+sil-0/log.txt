@@ -1,0 +1,1060 @@
+Logging to /Users/zsbjltwjj/Desktop/logs/EXP2/HalfCheetah-v2/copos+sil-0
+{'network_kwargs': {'normalize_observations': True, 'normalize_obs': True}, 'eval_val_err': False, 'traj_collect': 'mf', 'collect_val_data': False, 'validation_set_path': 'dataset/HalfCheetah-v2-val.pkl', 'update_with_validation': False, 'batch_size': 512, 'update_epochs': 5, 'init_epochs': 10, 'num_warm_start': 10000, 'use_layer_norm': False, 'num_fwd_hidden': 500, 'num_fc': 2, 'reset_per_step': (0,), 'mbl_sh': 5, 'mbl_lamb': (1.0,), 'quant': 2, 'eval_targs': ('mf',), 'eval_freq': 10, 'mbl_train_freq': 10, 'TRPO': False, 'cliprange': 0.2, 'noptepochs': 4, 'nminibatches': 4, 'log_interval': 1, 'comm': None, 'mpi_rank_weight': 1, 'init_fn': None, 'update_fn': None, 'model_fn': None, 'load_path': None, 'save_interval': 0, 'callback': None, 'max_iters': 0, 'max_episodes': 0, 'vf_iters': 5, 'vf_stepsize': 0.001, 'lr': 0.0003, 'lam': 0.98, 'gamma': 0.99, 'cg_iters': 10, 'max_kl': 0.01, 'num_elites': (10,), 'horizon': (10,), 'num_samples': (1500,), 'total_timesteps': 5000000, 'beta': array([0.00697553], dtype=float32), 'env_id': 'HalfCheetah-v2', 'eval_env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x1343db7b8>, 'network': <function mlp.<locals>.network_fn at 0x1301802f0>, 'vis_eval': False, 'vf_coef': 0.5, 'use_mean_elites': 1, 'use_ent_adjust': 0, 'timesteps_per_batch': 2048, 'sil_value': 0.01, 'sil_update': 10, 'sil_loss': 0.1, 'sil_beta': 0.1, 'sil_alpha': 0.6, 'seed': 0, 'num_eval_episodes': 5, 'measure_time': True, 'measure_rew': True, 'mbl_gamma': 0.99, 'max_grad_norm': 0.5, 'make_eval_env': <function train.<locals>.<lambda> at 0x135665400>, 'env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x133a61470>, 'ent_coef': 0.0, 'cg_damping': 0.1, 'adj_std_scale': 0.5}
+MBL_SH 5
+Traj_collect mf
+['mf']
+MBL args {'kwargs': {'normalize_observations': True, 'normalize_obs': True}, 'forward_dynamic': None, 'batch_size': 512, 'update_epochs': 5, 'init_epochs': 10, 'num_warm_start': 10000, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x135e5bbf8>, 'env_id': 'HalfCheetah-v2', 'env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x1343db7b8>, 'self': <mbl.mbl.MBL object at 0x136334e10>}
+Forward dynamic args {'kwargs': {'normalize_observations': True}, 'scope': 'new_forward_dynamic', 'memory_size': 100000, 'normalize_obs': True, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x135e5bbf8>, 'ac_space': Box(6,), 'ob_space': Box(18,), 'self': <mbl.dynamics.ForwardDynamic object at 0x122801048>}
+NN {'kwargs': {'normalize_observations': True}, 'optimizer': <class 'tensorflow.python.training.adam.AdamOptimizer'>, 'lr': 0.001, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x135e5bbf8>, 'num_output': 18, 'num_input': 24, 'self': <mbl.model.NN object at 0x1363deeb8>}
+Forward dynamic args {'kwargs': {'normalize_observations': True}, 'scope': 'old_forward_dynamic', 'memory_size': 100000, 'normalize_obs': True, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x135e5bbf8>, 'ac_space': Box(6,), 'ob_space': Box(18,), 'self': <mbl.dynamics.ForwardDynamic object at 0x1363211d0>}
+NN {'kwargs': {'normalize_observations': True}, 'optimizer': <class 'tensorflow.python.training.adam.AdamOptimizer'>, 'lr': 0.001, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x135e5bbf8>, 'num_output': 18, 'num_input': 24, 'self': <mbl.model.NN object at 0x1363def60>}
+List of evaluation targets
+MeanRew
+********** Iteration 0 ************
+Warm start progress 0.2047
+optimizing dual
+dual optimized, eta: 1.389433699862617, omega: 0.015224179294245166
+Initial eta: 1.389433699862617 and omega: 0.015224179294245166
+eta optimization finished, final gain: 0.034183126
+Updated eta, eta: 1.515525507760649 and omega: 0.015224179294245166
+optimizing dual
+dual optimized, eta: 1.5145255077606492, omega: 0.015041962350835833
+Updated omega, eta: 1.5145255077606492 and omega: 0.015041962350835833
+eta optimization finished, final gain: 0.035009045
+Updated eta, eta: 1.4796354490853922 and omega: 0.015041962350835833
+optimizing dual
+dual optimized, eta: 1.4786354490853924, omega: 0.015192589055337017
+Updated omega, eta: 1.4786354490853924 and omega: 0.015192589055337017
+Final eta: 1.4786354490853924 and omega: 0.015192589055337017
+********** Iteration 1 ************
+Warm start progress 0.4094
+optimizing dual
+dual optimized, eta: 1.7788486928515304, omega: 0.01973201785617269
+Initial eta: 1.7788486928515304 and omega: 0.01973201785617269
+eta optimization finished, final gain: 0.04128793
+Updated eta, eta: 1.9402801074493474 and omega: 0.01973201785617269
+optimizing dual
+dual optimized, eta: 1.9392801074493475, omega: 0.019293252039645815
+Updated omega, eta: 1.9392801074493475 and omega: 0.019293252039645815
+eta optimization finished, final gain: 0.042256713
+Updated eta, eta: 1.894604995415936 and omega: 0.019293252039645815
+optimizing dual
+dual optimized, eta: 1.8936049954159362, omega: 0.019345252954571946
+Updated omega, eta: 1.8936049954159362 and omega: 0.019345252954571946
+Final eta: 1.8936049954159362 and omega: 0.019345252954571946
+********** Iteration 2 ************
+Warm start progress 0.6141
+optimizing dual
+dual optimized, eta: 1.4314667199621902, omega: -0.006023303294127509
+Initial eta: 1.4314667199621902 and omega: -0.006023303294127509
+eta optimization finished, final gain: 0.037309434
+Updated eta, eta: 1.5613730455995671 and omega: -0.006023303294127509
+optimizing dual
+dual optimized, eta: 1.5603730455995672, omega: -0.006246303203420931
+Updated omega, eta: 1.5603730455995672 and omega: -0.006246303203420931
+eta optimization finished, final gain: 0.038222317
+Updated eta, eta: 1.5244267991763196 and omega: -0.006246303203420931
+optimizing dual
+dual optimized, eta: 1.5234267991763197, omega: -0.00613892974430902
+Updated omega, eta: 1.5234267991763197 and omega: -0.00613892974430902
+Final eta: 1.5234267991763197 and omega: -0.00613892974430902
+********** Iteration 3 ************
+Warm start progress 0.8188
+optimizing dual
+dual optimized, eta: 1.5106125608889838, omega: 0.0004597570011041717
+Initial eta: 1.5106125608889838 and omega: 0.0004597570011041717
+eta optimization finished, final gain: 0.043352302
+Updated eta, eta: 1.6477014114435669 and omega: 0.0004597570011041717
+optimizing dual
+dual optimized, eta: 1.646701411443567, omega: 0.0001583779724320225
+Updated omega, eta: 1.646701411443567 and omega: 0.0001583779724320225
+eta optimization finished, final gain: 0.044451967
+Updated eta, eta: 1.6087664221868696 and omega: 0.0001583779724320225
+optimizing dual
+dual optimized, eta: 1.6077664221868697, omega: 0.0002533754204983197
+Updated omega, eta: 1.6077664221868697 and omega: 0.0002533754204983197
+Final eta: 1.6077664221868697 and omega: 0.0002533754204983197
+********** Iteration 4 ************
+Warm start progress 1.0235
+Init train
+# batch per epoch 20
+Epoch 0 0.5864216
+# batch per epoch 20
+Epoch 1 0.1957334
+# batch per epoch 20
+Epoch 2 0.14862444
+# batch per epoch 20
+Epoch 3 0.13272414
+# batch per epoch 20
+Epoch 4 0.125285
+# batch per epoch 20
+Epoch 5 0.120520964
+# batch per epoch 20
+Epoch 6 0.116015375
+# batch per epoch 20
+Epoch 7 0.11283302
+# batch per epoch 20
+Epoch 8 0.11017261
+# batch per epoch 20
+Epoch 9 0.108090386
+Update without validation
+optimizing dual
+dual optimized, eta: 1.5500927400909867, omega: -0.018623338205021156
+Initial eta: 1.5500927400909867 and omega: -0.018623338205021156
+eta optimization finished, final gain: 0.04291869
+Updated eta, eta: 1.690764436788003 and omega: -0.018623338205021156
+optimizing dual
+dual optimized, eta: 1.6897644367880031, omega: -0.018931399828434683
+Updated omega, eta: 1.6897644367880031 and omega: -0.018931399828434683
+eta optimization finished, final gain: 0.04397173
+Updated eta, eta: 1.6508374064773235 and omega: -0.018931399828434683
+optimizing dual
+dual optimized, eta: 1.6498374064773236, omega: -0.018827804504428017
+Updated omega, eta: 1.6498374064773236 and omega: -0.018827804504428017
+Final eta: 1.6498374064773236 and omega: -0.018827804504428017
+********** Iteration 5 ************
+optimizing dual
+dual optimized, eta: 1.4754819516322086, omega: 0.006890831704929214
+Initial eta: 1.4754819516322086 and omega: 0.006890831704929214
+eta optimization finished, final gain: 0.045987807
+Updated eta, eta: 1.609382681707071 and omega: 0.006890831704929214
+optimizing dual
+dual optimized, eta: 1.6083826817070712, omega: 0.007132278999399134
+Updated omega, eta: 1.6083826817070712 and omega: 0.007132278999399134
+eta optimization finished, final gain: 0.047130518
+Updated eta, eta: 1.57133043937145 and omega: 0.007132278999399134
+optimizing dual
+dual optimized, eta: 1.5703304393714501, omega: 0.007247060204388581
+Updated omega, eta: 1.5703304393714501 and omega: 0.007247060204388581
+Final eta: 1.5703304393714501 and omega: 0.007247060204388581
+********** Iteration 6 ************
+optimizing dual
+dual optimized, eta: 1.5525981695558944, omega: -0.002430567557689011
+Initial eta: 1.5525981695558944 and omega: -0.002430567557689011
+eta optimization finished, final gain: 0.04297699
+Updated eta, eta: 1.6934972352384348 and omega: -0.002430567557689011
+optimizing dual
+dual optimized, eta: 1.6924972352384349, omega: -0.0027357744808828993
+Updated omega, eta: 1.6924972352384349 and omega: -0.0027357744808828993
+eta optimization finished, final gain: 0.043970294
+Updated eta, eta: 1.6535072495679448 and omega: -0.0027357744808828993
+optimizing dual
+dual optimized, eta: 1.652507249567945, omega: -0.002644327698901238
+Updated omega, eta: 1.652507249567945 and omega: -0.002644327698901238
+Final eta: 1.652507249567945 and omega: -0.002644327698901238
+********** Iteration 7 ************
+optimizing dual
+dual optimized, eta: 1.558928579517932, omega: -0.0048836582502351285
+Initial eta: 1.558928579517932 and omega: -0.0048836582502351285
+eta optimization finished, final gain: 0.045955367
+Updated eta, eta: 1.7004021330921422 and omega: -0.0048836582502351285
+optimizing dual
+dual optimized, eta: 1.6994021330921423, omega: -0.0051691674857201
+Updated omega, eta: 1.6994021330921423 and omega: -0.0051691674857201
+eta optimization finished, final gain: 0.04707478
+Updated eta, eta: 1.6602530795881771 and omega: -0.0051691674857201
+optimizing dual
+dual optimized, eta: 1.6592530795881772, omega: -0.005073199890109925
+Updated omega, eta: 1.6592530795881772 and omega: -0.005073199890109925
+Final eta: 1.6592530795881772 and omega: -0.005073199890109925
+********** Iteration 8 ************
+optimizing dual
+dual optimized, eta: 1.6294427722908882, omega: 0.01370240051544445
+Initial eta: 1.6294427722908882 and omega: 0.01370240051544445
+eta optimization finished, final gain: 0.04331117
+Updated eta, eta: 1.7773155243659637 and omega: 0.01370240051544445
+optimizing dual
+dual optimized, eta: 1.7763155243659638, omega: 0.013036264072077445
+Updated omega, eta: 1.7763155243659638 and omega: 0.013036264072077445
+eta optimization finished, final gain: 0.04432978
+Updated eta, eta: 1.7353946203908737 and omega: 0.013036264072077445
+optimizing dual
+dual optimized, eta: 1.7343946203908738, omega: 0.01305497768174425
+Updated omega, eta: 1.7343946203908738 and omega: 0.01305497768174425
+Final eta: 1.7343946203908738 and omega: 0.01305497768174425
+********** Iteration 9 ************
+optimizing dual
+dual optimized, eta: 1.4061527037732384, omega: -0.006835266870843474
+Initial eta: 1.4061527037732384 and omega: -0.006835266870843474
+eta optimization finished, final gain: 0.04306717
+Updated eta, eta: 1.5337617696948473 and omega: -0.006835266870843474
+optimizing dual
+dual optimized, eta: 1.5327617696948475, omega: -0.0070090136788033205
+Updated omega, eta: 1.5327617696948475 and omega: -0.0070090136788033205
+eta optimization finished, final gain: 0.04410776
+Updated eta, eta: 1.4974516030414537 and omega: -0.0070090136788033205
+optimizing dual
+dual optimized, eta: 1.4964516030414539, omega: -0.006853620839457761
+Updated omega, eta: 1.4964516030414539 and omega: -0.006853620839457761
+Final eta: 1.4964516030414539 and omega: -0.006853620839457761
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.43     |
+| EpisodesSoFar   | 20       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | -12.5    |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.279    |
+| meankl          | 0.009    |
+| MeanRew         | 30.3     |
+| optimgain       | 0.0441   |
+| SilSamples      | 417      |
+| SimRew-MeanRew  | -0.617   |
+| surrgain        | 0.0441   |
+| Time-MeanRew    | 0.000384 |
+| TimeElapsed     | 26.3     |
+| TimestepsSoFar  | 2e+04    |
+------------------------------
+********** Iteration 10 ************
+Update train
+# batch per epoch 44
+Epoch 0 0.10967671
+# batch per epoch 44
+Epoch 1 0.10297534
+# batch per epoch 44
+Epoch 2 0.096752785
+# batch per epoch 44
+Epoch 3 0.09149744
+# batch per epoch 44
+Epoch 4 0.08499582
+Update without validation
+optimizing dual
+dual optimized, eta: 1.4098867804802415, omega: 0.010049309035409015
+Initial eta: 1.4098867804802415 and omega: 0.010049309035409015
+eta optimization finished, final gain: 0.041688323
+Updated eta, eta: 1.5378347157432681 and omega: 0.010049309035409015
+optimizing dual
+dual optimized, eta: 1.5368347157432682, omega: 0.00977763876172092
+Updated omega, eta: 1.5368347157432682 and omega: 0.00977763876172092
+eta optimization finished, final gain: 0.042656124
+Updated eta, eta: 1.5014307208077609 and omega: 0.00977763876172092
+optimizing dual
+dual optimized, eta: 1.500430720807761, omega: 0.00998228581471295
+Updated omega, eta: 1.500430720807761 and omega: 0.00998228581471295
+Final eta: 1.500430720807761 and omega: 0.00998228581471295
+********** Iteration 11 ************
+optimizing dual
+dual optimized, eta: 1.4758599164189816, omega: 0.0051051127495461285
+Initial eta: 1.4758599164189816 and omega: 0.0051051127495461285
+eta optimization finished, final gain: 0.04503306
+Updated eta, eta: 1.6097949469885644 and omega: 0.0051051127495461285
+optimizing dual
+dual optimized, eta: 1.6087949469885645, omega: 0.004843315694053023
+Updated omega, eta: 1.6087949469885645 and omega: 0.004843315694053023
+eta optimization finished, final gain: 0.046154864
+Updated eta, eta: 1.5717332073154686 and omega: 0.004843315694053023
+optimizing dual
+dual optimized, eta: 1.5707332073154687, omega: 0.004945662485282834
+Updated omega, eta: 1.5707332073154687 and omega: 0.004945662485282834
+Final eta: 1.5707332073154687 and omega: 0.004945662485282834
+********** Iteration 12 ************
+optimizing dual
+dual optimized, eta: 1.5101339077148526, omega: -0.00978032503260895
+Initial eta: 1.5101339077148526 and omega: -0.00978032503260895
+eta optimization finished, final gain: 0.048574343
+Updated eta, eta: 1.6471793202528622 and omega: -0.00978032503260895
+optimizing dual
+dual optimized, eta: 1.6461793202528623, omega: -0.0100754581711436
+Updated omega, eta: 1.6461793202528623 and omega: -0.0100754581711436
+eta optimization finished, final gain: 0.049785547
+Updated eta, eta: 1.6082563583883638 and omega: -0.0100754581711436
+optimizing dual
+dual optimized, eta: 1.607256358388364, omega: -0.009984409972514766
+Updated omega, eta: 1.607256358388364 and omega: -0.009984409972514766
+Final eta: 1.607256358388364 and omega: -0.009984409972514766
+********** Iteration 13 ************
+optimizing dual
+dual optimized, eta: 1.367083023921127, omega: 0.005987207126648321
+Initial eta: 1.367083023921127 and omega: 0.005987207126648321
+eta optimization finished, final gain: 0.042853594
+Updated eta, eta: 1.4911464967230086 and omega: 0.005987207126648321
+optimizing dual
+dual optimized, eta: 1.4901464967230087, omega: 0.005797912688276036
+Updated omega, eta: 1.4901464967230087 and omega: 0.005797912688276036
+eta optimization finished, final gain: 0.0438627
+Updated eta, eta: 1.4558180562715382 and omega: 0.005797912688276036
+optimizing dual
+dual optimized, eta: 1.4548180562715383, omega: 0.005935818954295242
+Updated omega, eta: 1.4548180562715383 and omega: 0.005935818954295242
+Final eta: 1.4548180562715383 and omega: 0.005935818954295242
+********** Iteration 14 ************
+optimizing dual
+dual optimized, eta: 1.6330834530077118, omega: -0.010628878897374829
+Initial eta: 1.6330834530077118 and omega: -0.010628878897374829
+eta optimization finished, final gain: 0.051179904
+Updated eta, eta: 1.7812865986910673 and omega: -0.010628878897374829
+optimizing dual
+dual optimized, eta: 1.7802865986910674, omega: -0.01141851252295646
+Updated omega, eta: 1.7802865986910674 and omega: -0.01141851252295646
+eta optimization finished, final gain: 0.05234155
+Updated eta, eta: 1.7392742132483514 and omega: -0.01141851252295646
+optimizing dual
+dual optimized, eta: 1.7382742132483515, omega: -0.011231441084235412
+Updated omega, eta: 1.7382742132483515 and omega: -0.011231441084235412
+Final eta: 1.7382742132483515 and omega: -0.011231441084235412
+********** Iteration 15 ************
+optimizing dual
+dual optimized, eta: 1.7325213780676876, omega: -0.004687598349190021
+Initial eta: 1.7325213780676876 and omega: -0.004687598349190021
+eta optimization finished, final gain: 0.052490983
+Updated eta, eta: 1.8897485655212125 and omega: -0.004687598349190021
+optimizing dual
+dual optimized, eta: 1.8887485655212126, omega: -0.005032710429626782
+Updated omega, eta: 1.8887485655212126 and omega: -0.005032710429626782
+eta optimization finished, final gain: 0.053761348
+Updated eta, eta: 1.8452375464355852 and omega: -0.005032710429626782
+optimizing dual
+dual optimized, eta: 1.8442375464355854, omega: -0.004976378572433059
+Updated omega, eta: 1.8442375464355854 and omega: -0.004976378572433059
+Final eta: 1.8442375464355854 and omega: -0.004976378572433059
+********** Iteration 16 ************
+optimizing dual
+dual optimized, eta: 1.6758643132317732, omega: -0.0023716937795429573
+Initial eta: 1.6758643132317732 and omega: -0.0023716937795429573
+eta optimization finished, final gain: 0.051154062
+Updated eta, eta: 1.8279498435223385 and omega: -0.0023716937795429573
+optimizing dual
+dual optimized, eta: 1.8269498435223386, omega: -0.0026831042778867995
+Updated omega, eta: 1.8269498435223386 and omega: -0.0026831042778867995
+eta optimization finished, final gain: 0.05240962
+Updated eta, eta: 1.7848624789248984 and omega: -0.0026831042778867995
+optimizing dual
+dual optimized, eta: 1.7840570842730357, omega: -0.002860715213519736
+Updated omega, eta: 1.7840570842730357 and omega: -0.002860715213519736
+Final eta: 1.7840570842730357 and omega: -0.002860715213519736
+********** Iteration 17 ************
+optimizing dual
+dual optimized, eta: 1.4434886636050424, omega: 0.008070433183460344
+Initial eta: 1.4434886636050424 and omega: 0.008070433183460344
+eta optimization finished, final gain: 0.047196433
+Updated eta, eta: 1.574485986681538 and omega: 0.008070433183460344
+optimizing dual
+dual optimized, eta: 1.573485986681538, omega: 0.008596222471985732
+Updated omega, eta: 1.573485986681538 and omega: 0.008596222471985732
+eta optimization finished, final gain: 0.048275936
+Updated eta, eta: 1.5372376580012335 and omega: 0.008596222471985732
+optimizing dual
+dual optimized, eta: 1.5362376580012336, omega: 0.008709520828981573
+Updated omega, eta: 1.5362376580012336 and omega: 0.008709520828981573
+Final eta: 1.5362376580012336 and omega: 0.008709520828981573
+********** Iteration 18 ************
+optimizing dual
+dual optimized, eta: 1.6658622827886596, omega: -0.0033168567598623805
+Initial eta: 1.6658622827886596 and omega: -0.0033168567598623805
+eta optimization finished, final gain: 0.04710474
+Updated eta, eta: 1.8170401237800895 and omega: -0.0033168567598623805
+optimizing dual
+dual optimized, eta: 1.8160401237800896, omega: -0.0036181314523559783
+Updated omega, eta: 1.8160401237800896 and omega: -0.0036181314523559783
+eta optimization finished, final gain: 0.04821033
+Updated eta, eta: 1.774204085924911 and omega: -0.0036181314523559783
+optimizing dual
+dual optimized, eta: 1.7733350507613397, omega: -0.0038601986559477918
+Updated omega, eta: 1.7733350507613397 and omega: -0.0038601986559477918
+Final eta: 1.7733350507613397 and omega: -0.0038601986559477918
+********** Iteration 19 ************
+optimizing dual
+dual optimized, eta: 1.6640588325374046, omega: -0.00248047877594768
+Initial eta: 1.6640588325374046 and omega: -0.00248047877594768
+eta optimization finished, final gain: 0.05503805
+Updated eta, eta: 1.8150730095104237 and omega: -0.00248047877594768
+optimizing dual
+dual optimized, eta: 1.8140832428447904, omega: -0.0029051546644999057
+Updated omega, eta: 1.8140832428447904 and omega: -0.0029051546644999057
+eta optimization finished, final gain: 0.05640629
+Updated eta, eta: 1.7722922855711556 and omega: -0.0029051546644999057
+optimizing dual
+dual optimized, eta: 1.7714189905464988, omega: -0.003086635712508379
+Updated omega, eta: 1.7714189905464988 and omega: -0.003086635712508379
+Final eta: 1.7714189905464988 and omega: -0.003086635712508379
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.35     |
+| EpisodesSoFar   | 40       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 8.87     |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.151    |
+| meankl          | 0.00906  |
+| MeanRew         | 50.1     |
+| optimgain       | 0.0564   |
+| SilSamples      | 380      |
+| SimRew-MeanRew  | 2.16     |
+| surrgain        | 0.0564   |
+| Time-MeanRew    | 0.000384 |
+| TimeElapsed     | 53.5     |
+| TimestepsSoFar  | 4e+04    |
+------------------------------
+********** Iteration 20 ************
+Update train
+# batch per epoch 84
+Epoch 0 0.09008677
+# batch per epoch 84
+Epoch 1 0.07720346
+# batch per epoch 84
+Epoch 2 0.069514014
+# batch per epoch 84
+Epoch 3 0.06405262
+# batch per epoch 84
+Epoch 4 0.060530066
+Update without validation
+optimizing dual
+dual optimized, eta: 1.8769148564868319, omega: 0.0008947837510075809
+Initial eta: 1.8769148564868319 and omega: 0.0008947837510075809
+eta optimization finished, final gain: 0.0489353
+Updated eta, eta: 2.047245824814792 and omega: 0.0008947837510075809
+optimizing dual
+dual optimized, eta: 2.046245824814792, omega: 0.0005688093877464201
+Updated omega, eta: 2.046245824814792 and omega: 0.0005688093877464201
+eta optimization finished, final gain: 0.050090726
+Updated eta, eta: 1.9991065481727306 and omega: 0.0005688093877464201
+optimizing dual
+dual optimized, eta: 1.9981065481727307, omega: 0.0005474269801444465
+Updated omega, eta: 1.9981065481727307 and omega: 0.0005474269801444465
+Final eta: 1.9981065481727307 and omega: 0.0005474269801444465
+********** Iteration 21 ************
+optimizing dual
+dual optimized, eta: 1.6707828492475834, omega: -0.002189777390875762
+Initial eta: 1.6707828492475834 and omega: -0.002189777390875762
+eta optimization finished, final gain: 0.05246918
+Updated eta, eta: 1.822407234122863 and omega: -0.002189777390875762
+optimizing dual
+dual optimized, eta: 1.821407234122863, omega: -0.0025433922637896258
+Updated omega, eta: 1.821407234122863 and omega: -0.0025433922637896258
+eta optimization finished, final gain: 0.053687617
+Updated eta, eta: 1.779447554378646 and omega: -0.0025433922637896258
+optimizing dual
+dual optimized, eta: 1.7784475543786462, omega: -0.002454592073686733
+Updated omega, eta: 1.7784475543786462 and omega: -0.002454592073686733
+Final eta: 1.7784475543786462 and omega: -0.002454592073686733
+********** Iteration 22 ************
+optimizing dual
+dual optimized, eta: 1.7662733495826468, omega: -0.018464355962845697
+Initial eta: 1.7662733495826468 and omega: -0.018464355962845697
+eta optimization finished, final gain: 0.050650217
+Updated eta, eta: 1.9265635454466237 and omega: -0.018464355962845697
+optimizing dual
+dual optimized, eta: 1.9255635454466238, omega: -0.01892260190273685
+Updated omega, eta: 1.9255635454466238 and omega: -0.01892260190273685
+eta optimization finished, final gain: 0.05185502
+Updated eta, eta: 1.8812044212593364 and omega: -0.01892260190273685
+optimizing dual
+dual optimized, eta: 1.8802044212593365, omega: -0.018837154709045564
+Updated omega, eta: 1.8802044212593365 and omega: -0.018837154709045564
+Final eta: 1.8802044212593365 and omega: -0.018837154709045564
+********** Iteration 23 ************
+optimizing dual
+dual optimized, eta: 1.8530074208750251, omega: -0.023451385978304384
+Initial eta: 1.8530074208750251 and omega: -0.023451385978304384
+eta optimization finished, final gain: 0.056008063
+Updated eta, eta: 2.021168777382863 and omega: -0.023451385978304384
+optimizing dual
+dual optimized, eta: 2.020168777382863, omega: -0.023845235675329573
+Updated omega, eta: 2.020168777382863 and omega: -0.023845235675329573
+eta optimization finished, final gain: 0.057405718
+Updated eta, eta: 1.9736302365556264 and omega: -0.023845235675329573
+optimizing dual
+dual optimized, eta: 1.9726302365556265, omega: -0.023842459093348704
+Updated omega, eta: 1.9726302365556265 and omega: -0.023842459093348704
+Final eta: 1.9726302365556265 and omega: -0.023842459093348704
+********** Iteration 24 ************
+optimizing dual
+dual optimized, eta: 1.598261905305729, omega: -6.183249713127647e-05
+Initial eta: 1.598261905305729 and omega: -6.183249713127647e-05
+eta optimization finished, final gain: 0.05299214
+Updated eta, eta: 1.7433049780010863 and omega: -6.183249713127647e-05
+optimizing dual
+dual optimized, eta: 1.7423049780010864, omega: -0.00038691211087674214
+Updated omega, eta: 1.7423049780010864 and omega: -0.00038691211087674214
+eta optimization finished, final gain: 0.054292314
+Updated eta, eta: 1.7021675735129098 and omega: -0.00038691211087674214
+optimizing dual
+dual optimized, eta: 1.70116757351291, omega: -0.0002899501172068887
+Updated omega, eta: 1.70116757351291 and omega: -0.0002899501172068887
+Final eta: 1.70116757351291 and omega: -0.0002899501172068887
+********** Iteration 25 ************
+optimizing dual
+dual optimized, eta: 1.589279870447097, omega: -0.00556618194910728
+Initial eta: 1.589279870447097 and omega: -0.00556618194910728
+eta optimization finished, final gain: 0.051056854
+Updated eta, eta: 1.7335078189562192 and omega: -0.00556618194910728
+optimizing dual
+dual optimized, eta: 1.7325078189562193, omega: -0.00586633227232363
+Updated omega, eta: 1.7325078189562193 and omega: -0.00586633227232363
+eta optimization finished, final gain: 0.052323185
+Updated eta, eta: 1.6925961111975953 and omega: -0.00586633227232363
+optimizing dual
+dual optimized, eta: 1.6915961111975955, omega: -0.0057798129318624245
+Updated omega, eta: 1.6915961111975955 and omega: -0.0057798129318624245
+Final eta: 1.6915961111975955 and omega: -0.0057798129318624245
+********** Iteration 26 ************
+optimizing dual
+dual optimized, eta: 1.6823338547917144, omega: -0.014633692928671413
+Initial eta: 1.6823338547917144 and omega: -0.014633692928671413
+eta optimization finished, final gain: 0.05678439
+Updated eta, eta: 1.8350064992365174 and omega: -0.014633692928671413
+optimizing dual
+dual optimized, eta: 1.8340064992365175, omega: -0.014997596715321129
+Updated omega, eta: 1.8340064992365175 and omega: -0.014997596715321129
+eta optimization finished, final gain: 0.05818183
+Updated eta, eta: 1.7917565707663279 and omega: -0.014997596715321129
+optimizing dual
+dual optimized, eta: 1.7909524088216566, omega: -0.015311580600366569
+Updated omega, eta: 1.7909524088216566 and omega: -0.015311580600366569
+Final eta: 1.7909524088216566 and omega: -0.015311580600366569
+********** Iteration 27 ************
+optimizing dual
+dual optimized, eta: 1.752423320252352, omega: 0.01721633381786144
+Initial eta: 1.752423320252352 and omega: 0.01721633381786144
+eta optimization finished, final gain: 0.053220637
+Updated eta, eta: 1.91145661898056 and omega: 0.01721633381786144
+optimizing dual
+dual optimized, eta: 1.9108204112597826, omega: 0.016798784065192283
+Updated omega, eta: 1.9108204112597826 and omega: 0.016798784065192283
+eta optimization finished, final gain: 0.05436861
+Updated eta, eta: 1.8668009240176642 and omega: 0.016798784065192283
+optimizing dual
+dual optimized, eta: 1.8658009240176643, omega: 0.01696206030472908
+Updated omega, eta: 1.8658009240176643 and omega: 0.01696206030472908
+Final eta: 1.8658009240176643 and omega: 0.01696206030472908
+********** Iteration 28 ************
+optimizing dual
+dual optimized, eta: 1.750917881830934, omega: -0.011230474306110379
+Initial eta: 1.750917881830934 and omega: -0.011230474306110379
+eta optimization finished, final gain: 0.05384718
+Updated eta, eta: 1.9098145612643502 and omega: -0.011230474306110379
+optimizing dual
+dual optimized, eta: 1.9088145612643503, omega: -0.011645594313130303
+Updated omega, eta: 1.9088145612643503 and omega: -0.011645594313130303
+eta optimization finished, final gain: 0.055101797
+Updated eta, eta: 1.8648412827018985 and omega: -0.011645594313130303
+optimizing dual
+dual optimized, eta: 1.8641857845485226, omega: -0.011610370577528078
+Updated omega, eta: 1.8641857845485226 and omega: -0.011610370577528078
+Final eta: 1.8641857845485226 and omega: -0.011610370577528078
+********** Iteration 29 ************
+optimizing dual
+dual optimized, eta: 1.754299270729833, omega: -0.003451917333098334
+Initial eta: 1.754299270729833 and omega: -0.003451917333098334
+eta optimization finished, final gain: 0.059653193
+Updated eta, eta: 1.913502812908489 and omega: -0.003451917333098334
+optimizing dual
+dual optimized, eta: 1.9125028129084891, omega: -0.003825072417184041
+Updated omega, eta: 1.9125028129084891 and omega: -0.003825072417184041
+eta optimization finished, final gain: 0.06114405
+Updated eta, eta: 1.8684445682522912 and omega: -0.003825072417184041
+optimizing dual
+dual optimized, eta: 1.8674445682522913, omega: -0.0037480442334840345
+Updated omega, eta: 1.8674445682522913 and omega: -0.0037480442334840345
+Final eta: 1.8674445682522913 and omega: -0.0037480442334840345
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.28     |
+| EpisodesSoFar   | 61       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 45.7     |
+| EpThisIter      | 2        |
+| ev_tdlam_before | -0.00772 |
+| meankl          | 0.00889  |
+| MeanRew         | 71.6     |
+| optimgain       | 0.0612   |
+| SilSamples      | 371      |
+| SimRew-MeanRew  | 4.64     |
+| surrgain        | 0.0612   |
+| Time-MeanRew    | 0.000381 |
+| TimeElapsed     | 83.4     |
+| TimestepsSoFar  | 6.1e+04  |
+------------------------------
+********** Iteration 30 ************
+Update train
+# batch per epoch 124
+Epoch 0 0.058408834
+# batch per epoch 124
+Epoch 1 0.054882515
+# batch per epoch 124
+Epoch 2 0.052205257
+# batch per epoch 124
+Epoch 3 0.049900904
+# batch per epoch 124
+Epoch 4 0.048022628
+Update without validation
+optimizing dual
+dual optimized, eta: 1.5036470559817559, omega: -0.01409846377323564
+Initial eta: 1.5036470559817559 and omega: -0.01409846377323564
+eta optimization finished, final gain: 0.059066616
+Updated eta, eta: 1.6401037834585976 and omega: -0.01409846377323564
+optimizing dual
+dual optimized, eta: 1.6391037834585978, omega: -0.014415109691264229
+Updated omega, eta: 1.6391037834585978 and omega: -0.014415109691264229
+eta optimization finished, final gain: 0.060540617
+Updated eta, eta: 1.6013438204294743 and omega: -0.014415109691264229
+optimizing dual
+dual optimized, eta: 1.6003438204294744, omega: -0.014308820756074475
+Updated omega, eta: 1.6003438204294744 and omega: -0.014308820756074475
+Final eta: 1.6003438204294744 and omega: -0.014308820756074475
+********** Iteration 31 ************
+optimizing dual
+dual optimized, eta: 1.6045264187376758, omega: -0.0023555559924792755
+Initial eta: 1.6045264187376758 and omega: -0.0023555559924792755
+eta optimization finished, final gain: 0.062346514
+Updated eta, eta: 1.7501379991814159 and omega: -0.0023555559924792755
+optimizing dual
+dual optimized, eta: 1.749137999181416, omega: -0.002517941075635183
+Updated omega, eta: 1.749137999181416 and omega: -0.002517941075635183
+eta optimization finished, final gain: 0.06398283
+Updated eta, eta: 1.7088431826795827 and omega: -0.002517941075635183
+optimizing dual
+dual optimized, eta: 1.7078431826795828, omega: -0.0024202402034017825
+Updated omega, eta: 1.7078431826795828 and omega: -0.0024202402034017825
+Final eta: 1.7078431826795828 and omega: -0.0024202402034017825
+********** Iteration 32 ************
+optimizing dual
+dual optimized, eta: 1.8149484511154808, omega: 0.005266261835906632
+Initial eta: 1.8149484511154808 and omega: 0.005266261835906632
+eta optimization finished, final gain: 0.05670231
+Updated eta, eta: 1.9796559369534246 and omega: 0.005266261835906632
+optimizing dual
+dual optimized, eta: 1.9788908213999934, omega: 0.004896782130970088
+Updated omega, eta: 1.9788908213999934 and omega: 0.004896782130970088
+eta optimization finished, final gain: 0.05807924
+Updated eta, eta: 1.9333031990609943 and omega: 0.004896782130970088
+optimizing dual
+dual optimized, eta: 1.9323031990609945, omega: 0.004817074698663233
+Updated omega, eta: 1.9323031990609945 and omega: 0.004817074698663233
+Final eta: 1.9323031990609945 and omega: 0.004817074698663233
+********** Iteration 33 ************
+optimizing dual
+dual optimized, eta: 1.8010945015775934, omega: -0.007522729435434899
+Initial eta: 1.8010945015775934 and omega: -0.007522729435434899
+eta optimization finished, final gain: 0.057552848
+Updated eta, eta: 1.9645447345189557 and omega: -0.007522729435434899
+optimizing dual
+dual optimized, eta: 1.9635447345189558, omega: -0.00793817787839754
+Updated omega, eta: 1.9635447345189558 and omega: -0.00793817787839754
+eta optimization finished, final gain: 0.058913387
+Updated eta, eta: 1.9183106393202864 and omega: -0.00793817787839754
+optimizing dual
+dual optimized, eta: 1.9173106393202866, omega: -0.007755244279682835
+Updated omega, eta: 1.9173106393202866 and omega: -0.007755244279682835
+Final eta: 1.9173106393202866 and omega: -0.007755244279682835
+********** Iteration 34 ************
+optimizing dual
+dual optimized, eta: 1.8210624007550664, omega: 0.000671390182973158
+Initial eta: 1.8210624007550664 and omega: 0.000671390182973158
+eta optimization finished, final gain: 0.053931206
+Updated eta, eta: 1.986324730601421 and omega: 0.000671390182973158
+optimizing dual
+dual optimized, eta: 1.985324730601421, omega: 0.00024815968962296287
+Updated omega, eta: 1.985324730601421 and omega: 0.00024815968962296287
+eta optimization finished, final gain: 0.055196553
+Updated eta, eta: 1.9395888905741765 and omega: 0.00024815968962296287
+optimizing dual
+dual optimized, eta: 1.9385888905741766, omega: 0.00025280127623123985
+Updated omega, eta: 1.9385888905741766 and omega: 0.00025280127623123985
+Final eta: 1.9385888905741766 and omega: 0.00025280127623123985
+********** Iteration 35 ************
+optimizing dual
+dual optimized, eta: 2.048742757367895, omega: -0.01125289157153615
+Initial eta: 2.048742757367895 and omega: -0.01125289157153615
+eta optimization finished, final gain: 0.059167333
+Updated eta, eta: 2.23466719422304 and omega: -0.01125289157153615
+optimizing dual
+dual optimized, eta: 2.23366719422304, omega: -0.01123469924876662
+Updated omega, eta: 2.23366719422304 and omega: -0.01123469924876662
+eta optimization finished, final gain: 0.060602836
+Updated eta, eta: 2.18221029959294 and omega: -0.01123469924876662
+optimizing dual
+dual optimized, eta: 2.1812102995929403, omega: -0.011454461683054865
+Updated omega, eta: 2.1812102995929403 and omega: -0.011454461683054865
+Final eta: 2.1812102995929403 and omega: -0.011454461683054865
+********** Iteration 36 ************
+optimizing dual
+dual optimized, eta: 1.7495789129972998, omega: -0.008748809545495666
+Initial eta: 1.7495789129972998 and omega: -0.008748809545495666
+eta optimization finished, final gain: 0.058938038
+Updated eta, eta: 1.9083540803348389 and omega: -0.008748809545495666
+optimizing dual
+dual optimized, eta: 1.907354080334839, omega: -0.0091941962083807
+Updated omega, eta: 1.907354080334839 and omega: -0.0091941962083807
+eta optimization finished, final gain: 0.060287282
+Updated eta, eta: 1.8634144468084486 and omega: -0.0091941962083807
+optimizing dual
+dual optimized, eta: 1.8624144468084487, omega: -0.009060399628092703
+Updated omega, eta: 1.8624144468084487 and omega: -0.009060399628092703
+Final eta: 1.8624144468084487 and omega: -0.009060399628092703
+********** Iteration 37 ************
+optimizing dual
+dual optimized, eta: 1.7326378144929284, omega: -0.004182502479894789
+Initial eta: 1.7326378144929284 and omega: -0.004182502479894789
+eta optimization finished, final gain: 0.057294592
+Updated eta, eta: 1.8898755686106745 and omega: -0.004182502479894789
+optimizing dual
+dual optimized, eta: 1.8888755686106746, omega: -0.004606624156551192
+Updated omega, eta: 1.8888755686106746 and omega: -0.004606624156551192
+eta optimization finished, final gain: 0.05866938
+Updated eta, eta: 1.845361623760364 and omega: -0.004606624156551192
+optimizing dual
+dual optimized, eta: 1.8443616237603642, omega: -0.004516957531787085
+Updated omega, eta: 1.8443616237603642 and omega: -0.004516957531787085
+Final eta: 1.8443616237603642 and omega: -0.004516957531787085
+********** Iteration 38 ************
+optimizing dual
+dual optimized, eta: 2.076214144651684, omega: -0.016428060714370914
+Initial eta: 2.076214144651684 and omega: -0.016428060714370914
+eta optimization finished, final gain: 0.07090803
+Updated eta, eta: 2.264631623735776 and omega: -0.016428060714370914
+optimizing dual
+dual optimized, eta: 2.263631623735776, omega: -0.016843963477980953
+Updated omega, eta: 2.263631623735776 and omega: -0.016843963477980953
+eta optimization finished, final gain: 0.072763376
+Updated eta, eta: 2.211484439837841 and omega: -0.016843963477980953
+optimizing dual
+dual optimized, eta: 2.210484439837841, omega: -0.01636752684984488
+Updated omega, eta: 2.210484439837841 and omega: -0.01636752684984488
+Final eta: 2.210484439837841 and omega: -0.01636752684984488
+********** Iteration 39 ************
+optimizing dual
+dual optimized, eta: 1.8359538394897073, omega: -0.008735382787492356
+Initial eta: 1.8359538394897073 and omega: -0.008735382787492356
+eta optimization finished, final gain: 0.057030044
+Updated eta, eta: 2.002567574899666 and omega: -0.008735382787492356
+optimizing dual
+dual optimized, eta: 2.001567574899666, omega: -0.009083422232376764
+Updated omega, eta: 2.001567574899666 and omega: -0.009083422232376764
+eta optimization finished, final gain: 0.058264244
+Updated eta, eta: 1.9554575491702233 and omega: -0.009083422232376764
+optimizing dual
+dual optimized, eta: 1.955136430236992, omega: -0.009037470202549575
+Updated omega, eta: 1.955136430236992 and omega: -0.009037470202549575
+Final eta: 1.955136430236992 and omega: -0.009037470202549575
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.2      |
+| EpisodesSoFar   | 81       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 75.6     |
+| EpThisIter      | 2        |
+| ev_tdlam_before | -0.00943 |
+| meankl          | 0.00858  |
+| MeanRew         | 96.9     |
+| optimgain       | 0.0583   |
+| SilSamples      | 390      |
+| SimRew-MeanRew  | 7.85     |
+| surrgain        | 0.0583   |
+| Time-MeanRew    | 0.000386 |
+| TimeElapsed     | 116      |
+| TimestepsSoFar  | 8.1e+04  |
+------------------------------
+********** Iteration 40 ************
+Update train
+# batch per epoch 164
+Epoch 0 0.047303226
+# batch per epoch 164
+Epoch 1 0.04523356
+# batch per epoch 164
+Epoch 2 0.043494765
+# batch per epoch 164
+Epoch 3 0.042060085
+# batch per epoch 164
+Epoch 4 0.040976018
+Update without validation
+optimizing dual
+dual optimized, eta: 1.901694500574108, omega: 0.008013305221800974
+Initial eta: 1.901694500574108 and omega: 0.008013305221800974
+eta optimization finished, final gain: 0.068715215
+Updated eta, eta: 2.074274234080531 and omega: 0.008013305221800974
+optimizing dual
+dual optimized, eta: 2.073274234080531, omega: 0.007568601900626874
+Updated omega, eta: 2.073274234080531 and omega: 0.007568601900626874
+eta optimization finished, final gain: 0.07045315
+Updated eta, eta: 2.02551230514219 and omega: 0.007568601900626874
+optimizing dual
+dual optimized, eta: 2.0246404904189212, omega: 0.007698911031164465
+Updated omega, eta: 2.0246404904189212 and omega: 0.007698911031164465
+Final eta: 2.0246404904189212 and omega: 0.007698911031164465
+********** Iteration 41 ************
+optimizing dual
+dual optimized, eta: 1.6646011192022039, omega: -0.014439519610721119
+Initial eta: 1.6646011192022039 and omega: -0.014439519610721119
+eta optimization finished, final gain: 0.05571782
+Updated eta, eta: 1.8156645089631163 and omega: -0.014439519610721119
+optimizing dual
+dual optimized, eta: 1.8146645089631164, omega: -0.015123158142652193
+Updated omega, eta: 1.8146645089631164 and omega: -0.015123158142652193
+eta optimization finished, final gain: 0.057049714
+Updated eta, eta: 1.7728601610870318 and omega: -0.015123158142652193
+optimizing dual
+dual optimized, eta: 1.7718859418727382, omega: -0.015231577430267517
+Updated omega, eta: 1.7718859418727382 and omega: -0.015231577430267517
+Final eta: 1.7718859418727382 and omega: -0.015231577430267517
+********** Iteration 42 ************
+optimizing dual
+dual optimized, eta: 1.7102492176246629, omega: -0.012858974446191346
+Initial eta: 1.7102492176246629 and omega: -0.012858974446191346
+eta optimization finished, final gain: 0.060881563
+Updated eta, eta: 1.865455195303059 and omega: -0.012858974446191346
+optimizing dual
+dual optimized, eta: 1.864455195303059, omega: -0.013254968128893298
+Updated omega, eta: 1.864455195303059 and omega: -0.013254968128893298
+eta optimization finished, final gain: 0.062352024
+Updated eta, eta: 1.8215038215373607 and omega: -0.013254968128893298
+optimizing dual
+dual optimized, eta: 1.8205038215373608, omega: -0.013169532392385311
+Updated omega, eta: 1.8205038215373608 and omega: -0.013169532392385311
+Final eta: 1.8205038215373608 and omega: -0.013169532392385311
+********** Iteration 43 ************
+optimizing dual
+dual optimized, eta: 2.030885564809671, omega: -0.007560352599695442
+Initial eta: 2.030885564809671 and omega: -0.007560352599695442
+eta optimization finished, final gain: 0.060430735
+Updated eta, eta: 2.2151894524483455 and omega: -0.007560352599695442
+optimizing dual
+dual optimized, eta: 2.2141894524483456, omega: -0.007969123277547657
+Updated omega, eta: 2.2141894524483456 and omega: -0.007969123277547657
+eta optimization finished, final gain: 0.061789546
+Updated eta, eta: 2.1631812657138196 and omega: -0.007969123277547657
+optimizing dual
+dual optimized, eta: 2.1621812657138197, omega: -0.007805899999682226
+Updated omega, eta: 2.1621812657138197 and omega: -0.007805899999682226
+Final eta: 2.1621812657138197 and omega: -0.007805899999682226
+********** Iteration 44 ************
+optimizing dual
+dual optimized, eta: 1.794609451046573, omega: -0.00875804871803323
+Initial eta: 1.794609451046573 and omega: -0.00875804871803323
+eta optimization finished, final gain: 0.061175846
+Updated eta, eta: 1.9574711623867627 and omega: -0.00875804871803323
+optimizing dual
+dual optimized, eta: 1.9564711623867628, omega: -0.009140420608359436
+Updated omega, eta: 1.9564711623867628 and omega: -0.009140420608359436
+eta optimization finished, final gain: 0.062685914
+Updated eta, eta: 1.911400020763633 and omega: -0.009140420608359436
+optimizing dual
+dual optimized, eta: 1.9104000207636331, omega: -0.009148675937883285
+Updated omega, eta: 1.9104000207636331 and omega: -0.009148675937883285
+Final eta: 1.9104000207636331 and omega: -0.009148675937883285
+********** Iteration 45 ************
+optimizing dual
+dual optimized, eta: 1.8325980296497777, omega: 0.001290019360215472
+Initial eta: 1.8325980296497777 and omega: 0.001290019360215472
+eta optimization finished, final gain: 0.06151764
+Updated eta, eta: 1.9989072236269783 and omega: 0.001290019360215472
+optimizing dual
+dual optimized, eta: 1.9979072236269784, omega: 0.001018573877594487
+Updated omega, eta: 1.9979072236269784 and omega: 0.001018573877594487
+eta optimization finished, final gain: 0.0629818
+Updated eta, eta: 1.9518815212516298 and omega: 0.001018573877594487
+optimizing dual
+dual optimized, eta: 1.95088152125163, omega: 0.0009094313248108943
+Updated omega, eta: 1.95088152125163 and omega: 0.0009094313248108943
+Final eta: 1.95088152125163 and omega: 0.0009094313248108943
+********** Iteration 46 ************
+optimizing dual
+dual optimized, eta: 1.8930021807492337, omega: 0.014895491165150822
+Initial eta: 1.8930021807492337 and omega: 0.014895491165150822
+eta optimization finished, final gain: 0.06276109
+Updated eta, eta: 2.064793081854619 and omega: 0.014895491165150822
+optimizing dual
+dual optimized, eta: 2.063793081854619, omega: 0.014499337005238453
+Updated omega, eta: 2.063793081854619 and omega: 0.014499337005238453
+eta optimization finished, final gain: 0.064140685
+Updated eta, eta: 2.016249569810399 and omega: 0.014499337005238453
+optimizing dual
+dual optimized, eta: 2.015249569810399, omega: 0.01458052494250946
+Updated omega, eta: 2.015249569810399 and omega: 0.01458052494250946
+Final eta: 2.015249569810399 and omega: 0.01458052494250946
+********** Iteration 47 ************
+optimizing dual
+dual optimized, eta: 1.9080127294904923, omega: -0.005881885857475006
+Initial eta: 1.9080127294904923 and omega: -0.005881885857475006
+eta optimization finished, final gain: 0.06155272
+Updated eta, eta: 2.081165845452559 and omega: -0.005881885857475006
+optimizing dual
+dual optimized, eta: 2.080165845452559, omega: -0.006324199285537803
+Updated omega, eta: 2.080165845452559 and omega: -0.006324199285537803
+eta optimization finished, final gain: 0.0629952
+Updated eta, eta: 2.0322451547608473 and omega: -0.006324199285537803
+optimizing dual
+dual optimized, eta: 2.031395968387699, omega: -0.006195225336764968
+Updated omega, eta: 2.031395968387699 and omega: -0.006195225336764968
+Final eta: 2.031395968387699 and omega: -0.006195225336764968
+********** Iteration 48 ************
+optimizing dual
+dual optimized, eta: 1.7844306662844909, omega: -0.011790622206202485
+Initial eta: 1.7844306662844909 and omega: -0.011790622206202485
+eta optimization finished, final gain: 0.06554525
+Updated eta, eta: 1.9463686477820956 and omega: -0.011790622206202485
+optimizing dual
+dual optimized, eta: 1.9453686477820957, omega: -0.012195612360660244
+Updated omega, eta: 1.9453686477820957 and omega: -0.012195612360660244
+eta optimization finished, final gain: 0.067271344
+Updated eta, eta: 1.9005532743081426 and omega: -0.012195612360660244
+optimizing dual
+dual optimized, eta: 1.8995532743081427, omega: -0.012198866755811421
+Updated omega, eta: 1.8995532743081427 and omega: -0.012198866755811421
+Final eta: 1.8995532743081427 and omega: -0.012198866755811421
+********** Iteration 49 ************
+optimizing dual
+dual optimized, eta: 1.9961196586583645, omega: -0.009970093219899525
+Initial eta: 1.9961196586583645 and omega: -0.009970093219899525
+eta optimization finished, final gain: 0.07169342
+Updated eta, eta: 2.177268522807782 and omega: -0.009970093219899525
+optimizing dual
+dual optimized, eta: 2.1762685228077823, omega: -0.010099926409782849
+Updated omega, eta: 2.1762685228077823 and omega: -0.010099926409782849
+eta optimization finished, final gain: 0.07351187
+Updated eta, eta: 2.1261339188907127 and omega: -0.010099926409782849
+optimizing dual
+dual optimized, eta: 2.125133918890713, omega: -0.010243931271965842
+Updated omega, eta: 2.125133918890713 and omega: -0.010243931271965842
+Final eta: 2.125133918890713 and omega: -0.010243931271965842
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.13     |
+| EpisodesSoFar   | 102      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 110      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.382    |
+| meankl          | 0.0088   |
+| MeanRew         | 130      |
+| optimgain       | 0.0735   |
+| SilSamples      | 327      |
+| SimRew-MeanRew  | 12.9     |
+| surrgain        | 0.0735   |
+| Time-MeanRew    | 0.000383 |
+| TimeElapsed     | 150      |
+| TimestepsSoFar  | 1.02e+05 |
+------------------------------
+********** Iteration 50 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.03997307
+# batch per epoch 196
+Epoch 1 0.03872952
+# batch per epoch 196
+Epoch 2 0.037346568
+# batch per epoch 196
+Epoch 3 0.036131576
+# batch per epoch 196
+Epoch 4 0.034987412
+Update without validation
+optimizing dual
+dual optimized, eta: 2.1090034589510376, omega: 0.0018614375686445315
+Initial eta: 2.1090034589510376 and omega: 0.0018614375686445315
+eta optimization finished, final gain: 0.06320213
+Updated eta, eta: 2.3003965848185284 and omega: 0.0018614375686445315
+optimizing dual
+dual optimized, eta: 2.2993965848185285, omega: 0.0014437748980432926
+Updated omega, eta: 2.2993965848185285 and omega: 0.0014437748980432926
+eta optimization finished, final gain: 0.06456573
+Updated eta, eta: 2.2464254850576366 and omega: 0.0014437748980432926
+optimizing dual
+dual optimized, eta: 2.2454254850576367, omega: 0.00155875495695449
+Updated omega, eta: 2.2454254850576367 and omega: 0.00155875495695449
+Final eta: 2.2454254850576367 and omega: 0.00155875495695449
+********** Iteration 51 ************
+optimizing dual
+dual optimized, eta: 1.797566417571931, omega: 0.022760817971480683
+Initial eta: 1.797566417571931 and omega: 0.022760817971480683
+eta optimization finished, final gain: 0.069837734
+Updated eta, eta: 1.9606964751132478 and omega: 0.022760817971480683
+optimizing dual
+dual optimized, eta: 1.959696475113248, omega: 0.022276269078337605
+Updated omega, eta: 1.959696475113248 and omega: 0.022276269078337605
+eta optimization finished, final gain: 0.0715843
+Updated eta, eta: 1.9145510321002133 and omega: 0.022276269078337605
+optimizing dual
+dual optimized, eta: 1.9141985190322932, omega: 0.022415202987499397
+Updated omega, eta: 1.9141985190322932 and omega: 0.022415202987499397
+Final eta: 1.9141985190322932 and omega: 0.022415202987499397
+********** Iteration 52 ************
+optimizing dual
+dual optimized, eta: 1.7971332868540462, omega: -0.020450448089382105
+Initial eta: 1.7971332868540462 and omega: -0.020450448089382105
+eta optimization finished, final gain: 0.06163399
+Updated eta, eta: 1.9602240375646163 and omega: -0.020450448089382105
+optimizing dual
+dual optimized, eta: 1.9592240375646164, omega: -0.020924055854059126
+Updated omega, eta: 1.9592240375646164 and omega: -0.020924055854059126
+eta optimization finished, final gain: 0.063016325
+Updated eta, eta: 1.9140894780749744 and omega: -0.020924055854059126
+optimizing dual
+dual optimized, eta: 1.9130894780749745, omega: -0.02086480455038583
+Updated omega, eta: 1.9130894780749745 and omega: -0.02086480455038583
+Final eta: 1.9130894780749745 and omega: -0.02086480455038583
+********** Iteration 53 ************
+optimizing dual
+dual optimized, eta: 1.920049883420481, omega: 0.0004498920400767869
+Initial eta: 1.920049883420481 and omega: 0.0004498920400767869
+eta optimization finished, final gain: 0.064781256
+Updated eta, eta: 2.0942953771628834 and omega: 0.0004498920400767869
+optimizing dual
+dual optimized, eta: 2.0932953771628835, omega: 2.042029033717496e-05
+Updated omega, eta: 2.0932953771628835 and omega: 2.042029033717496e-05
+eta optimization finished, final gain: 0.06631635
+Updated eta, eta: 2.0450722220165263 and omega: 2.042029033717496e-05
+optimizing dual
+dual optimized, eta: 2.0440722220165264, omega: 0.0001703695566084699
+Updated omega, eta: 2.0440722220165264 and omega: 0.0001703695566084699
+Final eta: 2.0440722220165264 and omega: 0.0001703695566084699
+********** Iteration 54 ************
+optimizing dual
+dual optimized, eta: 1.8278393708871084, omega: 0.012273375597296804
+Initial eta: 1.8278393708871084 and omega: 0.012273375597296804
+eta optimization finished, final gain: 0.0725929
+Updated eta, eta: 1.9937167141854215 and omega: 0.012273375597296804
+optimizing dual
+dual optimized, eta: 1.9927167141854216, omega: 0.011862553573948425
+Updated omega, eta: 1.9927167141854216 and omega: 0.011862553573948425
+eta optimization finished, final gain: 0.07446631
+Updated eta, eta: 1.9468105853517814 and omega: 0.011862553573948425
+optimizing dual
+dual optimized, eta: 1.9458105853517815, omega: 0.011770830374974794
+Updated omega, eta: 1.9458105853517815 and omega: 0.011770830374974794
+Final eta: 1.9458105853517815 and omega: 0.011770830374974794
+********** Iteration 55 ************
+optimizing dual
+dual optimized, eta: 1.9695625158833376, omega: 0.002242244009755969
+Initial eta: 1.9695625158833376 and omega: 0.002242244009755969
+eta optimization finished, final gain: 0.056485817
+Updated eta, eta: 2.1483013059533365 and omega: 0.002242244009755969
+optimizing dual
+dual optimized, eta: 2.1473013059533366, omega: 0.0018899902747007728
+Updated omega, eta: 2.1473013059533366 and omega: 0.0018899902747007728
+eta optimization finished, final gain: 0.057735894
+Updated eta, eta: 2.097834018559186 and omega: 0.0018899902747007728
+optimizing dual
+dual optimized, eta: 2.096834018559186, omega: 0.0018399481996165781
+Updated omega, eta: 2.096834018559186 and omega: 0.0018399481996165781
+Final eta: 2.096834018559186 and omega: 0.0018399481996165781
+********** Iteration 56 ************
+optimizing dual
+dual optimized, eta: 1.9391267172720865, omega: 0.01220588153794599
+Initial eta: 1.9391267172720865 and omega: 0.01220588153794599
+eta optimization finished, final gain: 0.06859727
+Updated eta, eta: 2.1151034432924716 and omega: 0.01220588153794599
+optimizing dual
+dual optimized, eta: 2.1141034432924717, omega: 0.011886811084808258
+Updated omega, eta: 2.1141034432924717 and omega: 0.011886811084808258
+eta optimization finished, final gain: 0.070246056
+Updated eta, eta: 2.0654009336258636 and omega: 0.011886811084808258
+optimizing dual
+dual optimized, eta: 2.0644009336258637, omega: 0.011991928810156031
+Updated omega, eta: 2.0644009336258637 and omega: 0.011991928810156031
+Final eta: 2.0644009336258637 and omega: 0.011991928810156031
+********** Iteration 57 ************
+optimizing dual
+dual optimized, eta: 1.8865552170658995, omega: -0.004757239402707613
+Initial eta: 1.8865552170658995 and omega: -0.004757239402707613
+eta optimization finished, final gain: 0.06413107
+Updated eta, eta: 2.0577610529707178 and omega: -0.004757239402707613
+optimizing dual
+dual optimized, eta: 2.056761052970718, omega: -0.005175818685047659
+Updated omega, eta: 2.056761052970718 and omega: -0.005175818685047659
+eta optimization finished, final gain: 0.065558136
+Updated eta, eta: 2.0093795374720216 and omega: -0.005175818685047659
+optimizing dual
+dual optimized, eta: 2.0083795374720217, omega: -0.005152098368867796
+Updated omega, eta: 2.0083795374720217 and omega: -0.005152098368867796
+Final eta: 2.0083795374720217 and omega: -0.005152098368867796
+********** Iteration 58 ************

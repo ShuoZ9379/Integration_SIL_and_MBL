@@ -56,7 +56,7 @@ def learn(*, network,
         mbl_lamb=(1.0,),
         mbl_gamma=0.99,
         #mbl_sh=1, # Number of step for stochastic sampling
-        mbl_sh=max((5,)),
+        mbl_sh=10000,
         #vf_lookahead=-1,
         #use_max_vf=False,
         reset_per_step=(0,),
@@ -248,6 +248,7 @@ def learn(*, network,
         if use_ent_adjust:
             return _mf_ent_pi(ob)
         else:
+            #return _mf_pi(ob)
             if t < mbl_sh: return _mf_pi(ob)        
             else: return _mf_det_pi(ob)
 
@@ -398,7 +399,7 @@ def learn(*, network,
             if rank==0:
                 # MBL evaluation
                 if not collect_val_data:
-                    set_global_seeds(seed)
+                    #set_global_seeds(seed)
                     default_sess = tf.get_default_session()
                     def multithread_eval_policy(env_, pi_, num_episodes_, vis_eval_,seed):
                         with default_sess.as_default():

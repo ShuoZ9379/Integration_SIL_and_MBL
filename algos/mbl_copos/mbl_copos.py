@@ -216,14 +216,14 @@ def learn(*,
         eval_freq=5,
         vis_eval=False,
         eval_targs=('mbmf',),
-        #eval_targs=('mf',),
+#        eval_targs=('mf',),
         quant=2,
 
         # For mbl.step
         mbl_lamb=(1.0,),
         mbl_gamma=0.99,
         #mbl_sh=1, # Number of step for stochastic sampling
-        mbl_sh=max((5,)),
+        mbl_sh=10000,
         #vf_lookahead=-1,
         #use_max_vf=False,
         reset_per_step=(0,),
@@ -390,6 +390,7 @@ def learn(*,
         if use_ent_adjust:
             return _mf_ent_pi(ob)
         else:
+            #return _mf_pi(ob)
             if t < mbl_sh: return _mf_pi(ob)        
             else: return _mf_det_pi(ob)
 
@@ -723,7 +724,7 @@ def learn(*,
         if rank==0:
             # MBL evaluation
             if not collect_val_data:
-                set_global_seeds(seed)
+                #set_global_seeds(seed)
                 default_sess = tf.get_default_session()
                 def multithread_eval_policy(env_, pi_, num_episodes_, vis_eval_,seed):
                     with default_sess.as_default():
@@ -772,10 +773,15 @@ def learn(*,
                         logger.record_tabular('FwdValError', fwd_dynamics_err)
 
                     logger.dump_tabular()
+                    #if iters_so_far=
                     #print(logger.get_dir())
                     #print(targs_names)
 #                    if num_eval_episodes > 0:
-#                        win = plot(viz, win, logger.get_dir(), targs_names=targs_names, quant=quant, opt='best')                
+#                        win = plot(viz, win, logger.get_dir(), targs_names=targs_names, quant=quant, opt='best')
+#                else:
+#                    logger.dump_tabular()
+#                    if iters_so_far==21:
+#                        sys.exit()
             # -----------
         #logger.dump_tabular()            
         yield pi   

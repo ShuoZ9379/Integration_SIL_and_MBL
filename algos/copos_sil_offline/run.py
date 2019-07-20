@@ -65,6 +65,7 @@ def train(args, extra_args):
     learn = get_learn_function(args.alg)
     alg_kwargs = get_learn_function_defaults(args.alg, env_type)
     alg_kwargs.update(extra_args)
+    print(alg_kwargs)
 
     env = build_env(args,normalize_ob=False)
     eval_env = build_env(args,normalize_ob=False, is_eval=True)
