@@ -17,7 +17,7 @@ azure-mgmt-nspkg==3.0.2
 azure-mgmt-resource==0.20.1
 azure-mgmt-storage==0.20.0
 azure-nspkg==3.0.2
-azure-servicebus==0.20.133333333333
+azure-servicebus==0.20.1
 azure-servicemanagement-legacy==0.20.2
 azure-storage==0.20.3
 cached-property==1.5.1
