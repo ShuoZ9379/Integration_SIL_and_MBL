@@ -5,7 +5,10 @@ import baselines.common.tf_util as U
 import tensorflow as tf, numpy as np
 import time, sys
 from baselines.common import colorize, set_global_seeds
-from mpi4py import MPI
+try:
+    from mpi4py import MPI
+except ImportError:
+    MPI = None
 from collections import deque
 from baselines.common.mpi_adam import MpiAdam
 from baselines.common.cg import cg

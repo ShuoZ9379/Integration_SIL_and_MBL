@@ -6,7 +6,6 @@ import tensorflow as tf, numpy as np
 import time, os, pickle, copy, sys, gym
 from baselines.common import colorize
 from baselines.common import colorize, set_global_seeds
-from mpi4py import MPI
 from collections import deque
 from baselines.common.mpi_adam import MpiAdam
 from baselines.common.cg import cg
