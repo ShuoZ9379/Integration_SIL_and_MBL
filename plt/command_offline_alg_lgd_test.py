@@ -54,7 +54,7 @@ def main():
 
     results = pu.load_results('~/Desktop/logs/EXP_OFF_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
 
-    pu.plot_results(results,xy_fn=pu.progress_mbl_v0_xy_fn,average_group=True,split_fn=lambda _: '')
+    pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
     #plt.title(args.env+" Online Evaluation")
     plt.xlabel('Number of Timesteps [M]')
     plt.ylabel('Average Return [-]')

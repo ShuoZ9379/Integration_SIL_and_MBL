@@ -154,7 +154,7 @@ def main(args):
     args, unknown_args = arg_parser.parse_known_args()
     extra_args = parse_cmdline_kwargs(unknown_args)
     print(args)
-
+    
     if MPI is None or MPI.COMM_WORLD.Get_rank() == 0:
         #rank = 0
         #logger.configure()

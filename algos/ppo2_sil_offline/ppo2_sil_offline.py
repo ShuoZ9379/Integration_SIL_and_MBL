@@ -17,8 +17,8 @@ from mbl.exp_util import eval_policy, Policy
 from mbl.util.util import load_extracted_val_data as load_val_data
 from mbl.util.util import to_onehot
 from mbl.model_config import get_make_mlp_model
-from plot import plot 
-from visdom import Visdom
+#from plot import plot 
+#from visdom import Visdom
 from multiprocessing.dummy import Pool
 import multiprocessing as mp
 from runner import Runner
@@ -216,7 +216,7 @@ def learn(*, network,
 
     # MBL
     # ---------------------------------------
-    viz = Visdom(env=env_id) 
+    #viz = Visdom(env=env_id) 
     win = None
     eval_targs = list(eval_targs)
     logger.log(eval_targs)

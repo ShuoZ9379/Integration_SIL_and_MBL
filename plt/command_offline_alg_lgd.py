@@ -11,13 +11,13 @@ def main():
     parser.add_argument('--alg', help='Algorithm', type=str, default='copos_offline')
     parser.add_argument('--seeds', help='number of seeds', type=int, default=1)
     parser.add_argument('--st_seed', help='start number of seeds', type=int, default=0)
-    parser.add_argument('--num_timesteps', type=str, default="5e6")
+    parser.add_argument('--num_timesteps', type=str, default="1e6")
     parser.add_argument('--filename', type=str, default='_Offline_Evaluation.png')
     args = parser.parse_args()
     if args.env=='Swimmer-v2' or args.env=='HalfCheetah-v2': 
-         mbl_args='--num_samples=1500 --num_elites=10 --horizon=10 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=10 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1'
+         mbl_args='--num_samples=1500 --num_elites=10 --horizon=10 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1'
     elif arg.env=='Reacher-v2' or args.env=='Ant-v2':
-         mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=10 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1'
+         mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1'
     
 #    algo_names=["ppo2_sil_online","copos_sil_online","ppo2_online","copos_online"]
 #    legend_names=["ppo2+sil","copos+sil","ppo2","copos"]
@@ -48,7 +48,7 @@ def main():
                       +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
             results = pu.load_results('~/Desktop/logs/EXP_OFF_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
             #   results = pu.load_results('~/Desktop/logs/EXP2/'+args.env)
-            pu.plot_results(results,xy_fn=pu.progress_mbl_v0_xy_fn,average_group=True,split_fn=lambda _: '')
+            pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
             #plt.title(args.env+" Online Evaluation")
             plt.xlabel('Number of Timesteps [M]')
             plt.ylabel('Average Return [-]')

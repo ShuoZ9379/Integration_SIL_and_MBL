@@ -52,6 +52,7 @@ for env_name in env_list:
 #SBATCH -c 64
 # activate virtual env
 conda activate cse
+module load gcc intel openmpi
 python ~/Desktop/carla_sample_efficient/plt/command_offline_alg_lgd.py --num_timesteps=""" + num_timesteps + """ --seeds=1 --st_seed=""" + str(trial) + """ --alg=""" + alg_name + """ --env=""" + env_name + """\
     """
 
