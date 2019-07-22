@@ -49,7 +49,7 @@ def main():
 #            sys.exit()
             os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
                       +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_TEST/"
-                      +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
+                      +args.env+"/"+args.filename+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
 
 
     results = pu.load_results('~/Desktop/logs/EXP_OFF_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))

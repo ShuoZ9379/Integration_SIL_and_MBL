@@ -2,9 +2,9 @@
 This script uses SLURM to run in parallel many trials of the same algorithm
 on different environments with fixed random seed (seed = trial number).
 Command
-    python3 run_slurm.py <NUM_TIMESTEPS> <ALG_NAME> <N_TRIALS> <ENV_LIST>
+    python3 run_slurm.py <NUM_TIMESTEPS> <ALG_NAME> <N_TRIALS> <ST_TIAL> <ENV_LIST>
 Example
-    python3 run_slurm.py 5e6 mbl_copos 5 Pendulum-v0 Swimmer-v2
+    python3 run_slurm.py 5e6 mbl_copos 5 0 Pendulum-v0 Swimmer-v2
 One job per run will be submitted.
 Data is still saved as usual in `path/to/logs/the_env_name/the_alg_name_the_seed/`. For example, for the above run data will be saved in
 ~/Desktop/logs/EXP_V0/Pendulum-v0/mbl+copos_0/
@@ -24,7 +24,8 @@ logdir = '/home/sz52cacy/logs-trial/' # directory to save log files (where stdou
 num_timesteps = sys.argv[1]
 alg_name = sys.argv[2]
 n_trials = int(sys.argv[3])
-env_list = sys.argv[4:]
+st_trial = int(sys.argv[4])
+env_list = sys.argv[5:]
 for env_name in env_list:
     envdir = env_name + '/'
     try:
@@ -33,7 +34,7 @@ for env_name in env_list:
         if e.errno != errno.EEXIST:
             raise
 
-    for trial in range(n_trials):
+    for trial in range(st_trial, st_trial+n_trials):
         run_name = alg_name + '_' + str(trial)
       
         text = """\
