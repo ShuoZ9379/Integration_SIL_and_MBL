@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--filename', type=str, default='_Offline Evaluation_test.png')
     args = parser.parse_args()
     if args.env=='Swimmer-v2' or args.env=='HalfCheetah-v2': 
-         mbl_args='--num_samples=2 --num_elites=2 --horizon=2 --eval_freq=5 --mbl_train_freq=4 --num_eval_episodes=5 --num_warm_start=10000 --use_mean_elites=1 --mbl_sh=10000'
+         mbl_args='--num_samples=2 --num_elites=2 --horizon=2 --eval_freq=5 --mbl_train_freq=4 --num_eval_episodes=5 --num_warm_start=10000 --use_mean_elites=1 --mbl_sh=10000 --sil_update=2 --sil_loss=0.001'
     elif arg.env=='Reacher-v2' or args.env=='Ant-v2':
          mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=10'
     
@@ -49,7 +49,7 @@ def main():
 #            sys.exit()
             os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
                       +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_TEST/"
-                      +args.env+"/"+args.filename+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
+                      +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
 
 
     results = pu.load_results('~/Desktop/logs/EXP_OFF_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))

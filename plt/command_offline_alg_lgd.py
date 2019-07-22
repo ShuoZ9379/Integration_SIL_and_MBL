@@ -15,9 +15,9 @@ def main():
     parser.add_argument('--filename', type=str, default='_Offline_Evaluation.png')
     args = parser.parse_args()
     if args.env=='Swimmer-v2' or args.env=='HalfCheetah-v2': 
-         mbl_args='--num_samples=1500 --num_elites=10 --horizon=10 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1'
+         mbl_args='--num_samples=1500 --num_elites=10 --horizon=10 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1 --sil_update=2 --sil_loss=0.001'
     elif arg.env=='Reacher-v2' or args.env=='Ant-v2':
-         mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1'
+         mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1 --sil_update=2 --sil_loss=0.001'
     
 #    algo_names=["ppo2_sil_online","copos_sil_online","ppo2_online","copos_online"]
 #    legend_names=["ppo2+sil","copos+sil","ppo2","copos"]
