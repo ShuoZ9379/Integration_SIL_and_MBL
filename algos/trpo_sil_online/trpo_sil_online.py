@@ -14,7 +14,9 @@ from contextlib import contextmanager
 #from runner import Runner
 from model_novec import Model
 from baselines.common.tf_util import get_session
-
+import logging,os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 try:
     from mpi4py import MPI
 except ImportError:

@@ -11,7 +11,9 @@ from baselines.common.cg import cg
 from baselines.common.input import observation_placeholder
 from baselines.common.policies import build_policy
 from contextlib import contextmanager
-
+import logging,os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 try:
     from mpi4py import MPI
 except ImportError:

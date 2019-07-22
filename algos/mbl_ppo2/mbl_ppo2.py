@@ -23,7 +23,9 @@ from multiprocessing.dummy import Pool
 import multiprocessing as mp
 from runner import Runner
 from model import Model
-
+import logging
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 def constfn(val):
     def f(_):
         return val

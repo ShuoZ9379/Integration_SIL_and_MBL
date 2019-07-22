@@ -27,7 +27,9 @@ def dim_reduce(ob):
         return ob.flatten()
     else:
         return ob
-
+import logging,os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 def traj_segment_generator( env, horizon, model, stochastic):
     # Initialize state variables
     t = 0

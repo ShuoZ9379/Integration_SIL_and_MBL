@@ -20,7 +20,9 @@ except ImportError:
 from baselines.copos.eta_omega_dual import EtaOmegaOptimizer
 from baselines.copos.eta_omega_dual_discrete import EtaOmegaOptimizerDiscrete
 from model_novec import Model
-
+import logging
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 # MBL
 from mbl.mbl import MBL, MBLCEM, MBLMPPI
 from mbl.exp_util import eval_policy, Policy

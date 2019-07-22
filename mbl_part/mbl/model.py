@@ -9,7 +9,7 @@ def make_placeholder(num_input, num_output):
     return inputs, targets
 
 class NN(object):
-    def __init__(self, num_input, num_output, make_model, lr=1e-3, optimizer=tf.train.AdamOptimizer, **kwargs):        
+    def __init__(self, num_input, num_output, make_model, lr=1e-3, optimizer=tf.compat.v1.train.AdamOptimizer, **kwargs):        
         logger.log('NN', locals())
         self.inputs_ph, self.targets_ph = make_placeholder(num_input, num_output)
         phi = make_model(self.inputs_ph)

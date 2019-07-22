@@ -19,7 +19,9 @@ except ImportError:
     MPI = None
 from baselines.copos.eta_omega_dual import EtaOmegaOptimizer
 from baselines.copos.eta_omega_dual_discrete import EtaOmegaOptimizerDiscrete
-
+import logging,os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 # MBL
 from mbl.mbl import MBL, MBLCEM, MBLMPPI
 from mbl.exp_util import eval_policy, Policy

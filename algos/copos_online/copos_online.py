@@ -20,6 +20,9 @@ from baselines.copos.eta_omega_dual import EtaOmegaOptimizer
 from baselines.copos.eta_omega_dual_discrete import EtaOmegaOptimizerDiscrete
 import gym
 import scipy.optimize
+import logging,os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 def dim_reduce(ob):
     if len(ob.shape)==2:

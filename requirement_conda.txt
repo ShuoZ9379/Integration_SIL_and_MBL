@@ -3,7 +3,6 @@ tensorflow==1.9.0
 mpi4py==3.0.0
 autograd==1.2
 mujoco-py==1.50.1.65
--e git+git@github.com:williamd4112/gym.git@dabf2bf548d6d87b7c1109ba3bff14bb43c52aa6#egg=gym
 absl-py==0.6.0
 astor==0.7.1
 atari-py==0.1.6
@@ -61,7 +60,6 @@ python-utils==2.3.0
 pytz==2018.6
 pyzmq==17.1.2
 requests==2.20.0
--e git+git@github.com:rll/rllab.git@ba78e4c16dc492982e648f117875b22af3965579#egg=rllab
 scipy==1.1.0
 seaborn==0.9.0
 six==1.11.0
@@ -71,7 +69,6 @@ torchfile==0.1.0
 tornado==5.1.1
 tqdm==4.28.1
 urllib3==1.24
--e git+https://github.com/facebookresearch/visdom.git@49b0e8f909a0570fae6aab125209e42e0b6c93b1#egg=visdom
 websocket-client==0.53.0
 Werkzeug==0.14.1
 zmq==0.0.0

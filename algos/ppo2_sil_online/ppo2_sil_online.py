@@ -12,7 +12,9 @@ except ImportError:
     MPI = None
 from runner import Runner
 from model_novec import Model
-
+import logging
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 def constfn(val):
     def f(_):
         return val

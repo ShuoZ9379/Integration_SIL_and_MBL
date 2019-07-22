@@ -28,7 +28,9 @@ from mbl.model_config import get_make_mlp_model
 #from visdom import Visdom
 from multiprocessing.dummy import Pool
 import multiprocessing as mp
-
+import logging,os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 class DummyPolicy(object):
     def __init__(self, fn):
         self.fn = fn
