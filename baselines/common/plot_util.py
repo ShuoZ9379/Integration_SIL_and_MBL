@@ -269,6 +269,7 @@ def progress_mbl_vbest_xy_fn(r,quant=1):
     #y=np.array(r.progress['MeanRew'])
     df=r.progress.copy(deep=True)
     df.insert(0,"Best",0.0)
+    INF=1e6
     max_reward_so_far = -INF
     for idx, row in df.iterrows():            
         max_reward_so_far = max(row['MeanRew'], max_reward_so_far)
@@ -283,6 +284,7 @@ def progress_mbl_vbest_final_xy_fn(r,quant):
     #y=np.array(r.progress['MeanRew'])
     df=r.progress.copy(deep=True)
     df.insert(0,"Best",0.0)
+    INF=1e6
     max_reward_so_far = -INF
     for idx, row in df.iterrows():            
         max_reward_so_far = max(row['MeanRew'], max_reward_so_far)
