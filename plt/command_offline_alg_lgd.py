@@ -35,9 +35,9 @@ def main():
 #                  "mbl+copos","copos"]
     #argus=['--num_samples=1 --num_elites=1 --horizon=2' for _ in range(len(algo_names))]
     algo_names=[args.alg]
-    dct = {'copos_offline': 'copos', 'mbl_copos': 'mbl+copos', 'mbl_copos_sil': 'mbl+copos+sil',
-            'trpo_offline': 'trpo', 'mbl_trpo': 'mbl+trpo', 'mbl_trpo_sil': 'mbl+trpo+sil',
-            'ppo2_offline': 'ppo', 'mbl_ppo2': 'mbl+ppo', 'mbl_ppo2_sil': 'mbl+ppo+sil'}
+    dct = {'copos_offline': 'copos', 'mbl_copos': 'mbl+copos', 'mbl_copos_sil': 'mbl+copos+sil','copos_sil_offline':'copos+sil',
+            'trpo_offline': 'trpo', 'mbl_trpo': 'mbl+trpo', 'mbl_trpo_sil': 'mbl+trpo+sil','trpo_sil_offline':'trpo+sil',
+            'ppo2_offline': 'ppo', 'mbl_ppo2': 'mbl+ppo', 'mbl_ppo2_sil': 'mbl+ppo+sil','ppo2_sil_offline':'ppo+sil'}
     legend_names=[dct[args.alg]]
     argus=[mbl_args for _ in range(len(algo_names))]
 
