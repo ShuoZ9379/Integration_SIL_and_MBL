@@ -21,7 +21,7 @@ def main():
     algo_names=["ppo2_sil_online","ppo2_sil_online","ppo2_online",
                 "copos_sil_online","copos_sil_online","copos_online",
 		"trpo_sil_online","trpo_sil_online","trpo_online"]
-    legend_names=["ppo2+sil_n10_l0.1","ppo2+sil_n2_l0.001","ppo2",
+    legend_names=["ppo+sil_n10_l0.1","ppo+sil_n2_l0.001","ppo",
                   "copos+sil_n10_l0.1","copos+sil_n2_l0.001","copos",
 		  "trpo+sil_n10_l0.1","trpo+sil_n2_l0.001","trpo"]
     argus=['','--sil_update=2 --sil_loss=0.001','',
@@ -36,7 +36,7 @@ def main():
 
     results = pu.load_results('~/Desktop/logs/EXP_ON_V0/'+args.env)
 
-    pu.plot_results(results,xy_fn=pu.progress_defalut_xy_fn,average_group=True,split_fn=lambda _: '')
+    pu.plot_results(results,xy_fn=pu.progress_default_xy_fn,average_group=True,split_fn=lambda _: '')
     #plt.title(args.env+" Online Evaluation")
     plt.xlabel('Number of Timesteps [M]')
     plt.ylabel('Average Return [-]')

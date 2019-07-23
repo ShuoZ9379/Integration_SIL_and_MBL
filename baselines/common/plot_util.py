@@ -240,6 +240,17 @@ def progress_default_xy_fn(r,quant=1):
         x=r.progress['TimestepsSoFar']/1e6
     y=np.array(r.progress['AverageReturn'])
     return x,y
+
+def progress_default_entropy_xy_fn(r,quant=1):
+    #x=pandas.DataFrame(r.progress.index)[0]
+    if 'TimestepsSoFar' not in r.progress.columns:
+        x=r.progress['misc/total_timesteps']/1e6
+        y=np.array(r.progress['loss/policy_entropy'])
+    else:
+        x=r.progress['TimestepsSoFar']/1e6
+        y=np.array(r.progress['Entropy'])
+    return x,y
+
 def progress_iter_xy_fn(r,quant=1):
     #x=pandas.DataFrame(r.progress.index)[0]
     x=r.progress.index
@@ -315,6 +326,7 @@ def plot_results(
     shaded_err=True,
     figsize=None,
     legend_outside=False,
+    legend_entropy=False,
     resample=0,
     smooth_step=1.0,
     tiling='vertical',
@@ -418,11 +430,14 @@ def plot_results(
                 l, = ax.plot(x, y, color=COLORS[groups.index(group) % len(COLORS)])
                 g2l[group] = l
         if average_group:
+            temp=0
             for group in sorted(groups):
+                #print(temp)
                 xys = gresults[group]
                 if not any(xys):
                     continue
                 color = COLORS[groups.index(group) % len(COLORS)]
+                color = COLORS[temp]
                 origxs = [xy[0] for xy in xys]
                 minxlen = min(map(len, origxs))
                 def allequal(qs):
@@ -453,16 +468,23 @@ def plot_results(
                     ax.fill_between(usex, ymean - ystderr, ymean + ystderr, color=color, alpha=.4)
                 if shaded_std:
                     ax.fill_between(usex, ymean - ystd,    ymean + ystd,    color=color, alpha=.2)
+                temp+=1
 
 
         # https://matplotlib.org/users/legend_guide.html
         plt.tight_layout()
         if any(g2l.keys()):
+            if legend_outside:
+                loc=2
+            elif legend_entropy:
+                loc='upper right'
+            else:
+                loc='upper left'
             ax.legend(
                 g2l.values(),
                 ['%s (%i)'%(g, g2c[g]) for g in g2l] if average_group else g2l.keys(),
                 #loc=2 if legend_outside else None,
-                loc=2 if legend_outside else 'upper left',
+                loc=loc,
                 bbox_to_anchor=(1,1) if legend_outside else None)
         ax.set_title(sk)
         # add xlabels, but only to the bottom row
