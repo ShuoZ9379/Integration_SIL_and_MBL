@@ -248,7 +248,10 @@ def progress_default_entropy_xy_fn(r,quant=1):
         y=np.array(r.progress['loss/policy_entropy'])
     else:
         x=r.progress['TimestepsSoFar']/1e6
-        y=np.array(r.progress['Entropy'])
+        if "Entropy" not in r.progress.columns:
+            y=np.array(r.progress['entropy'])
+        else:
+            y=np.array(r.progress['Entropy'])
     return x,y
 
 def progress_iter_xy_fn(r,quant=1):

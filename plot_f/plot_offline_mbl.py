@@ -10,6 +10,9 @@ def filt(results,name,name_2=''):
 def filt_or(results,name,name_2):
     ls=[r for r in results if name in r.dirname or name_2 in r.dirname]
     return ls
+def filt_or_or(results,name,name_2,name_3):
+    ls=[r for r in results if name in r.dirname or name_2 in r.dirname or name_3 in r.dirname]
+    return ls
 def main():  
     parser = arg_parser()
     parser.add_argument('--env', help='environment ID', type=str, default='HalfCheetah-v2')
@@ -21,8 +24,8 @@ def main():
     r_copos_nosil,r_trpo_nosil,r_ppo_nosil=filt(results,'copos-'),filt(results,'trpo-'),filt(results,'ppo-')
     r_copos_sil,r_trpo_sil,r_ppo_sil=filt(results,'copos+sil-'),filt(results,'trpo+sil-'),filt(results,'ppo+sil-')
     r_mbl_sil=filt(results,'mbl+','sil-')
-    r_mbl_nosil_tmp=[r for r in results if r not in r_mbl_sil]
-    r_mbl_nosil=filt(r_mbl_nosil_tmp,'mbl+')
+ #   r_mbl_nosil_tmp=[r for r in results if r not in r_mbl_sil]
+    r_mbl_nosil=filt_or_or(results,'mbl+copos-','mbl+trpo-','mbl+ppo-')
 
     r_copos_comp, r_trpo_comp, r_ppo_comp=filt_or(results,'mbl+copos','copos+sil'),filt_or(results,'mbl+trpo','trpo+sil'),filt_or(results,'mbl+ppo','ppo+sil')
     
@@ -38,7 +41,7 @@ def main():
         plt.tight_layout()
         fig = plt.gcf()
         fig.set_size_inches(9, 7.5)
-        fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'.png')
+        fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'.pdf',format="pdf")
         if name=='mbl_nosil' or name=='mbl_sil':
             pu.plot_results(dt[name],xy_fn=pu.progress_default_entropy_xy_fn,average_group=True,split_fn=lambda _: '',shaded_err=False,shaded_std=True,legend_entropy=1)
             plt.xlabel('Number of Timesteps [M]')
@@ -46,7 +49,7 @@ def main():
             plt.tight_layout()
             fig = plt.gcf()
             fig.set_size_inches(9, 7.5)
-            fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'_entropy.png')
+            fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'_entropy.pdf',format="pdf")
 
     
 if __name__ == '__main__':

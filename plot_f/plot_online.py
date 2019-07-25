@@ -26,7 +26,7 @@ def main():
         plt.tight_layout()
         fig = plt.gcf()
         fig.set_size_inches(9, 7.5)
-        fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/ONLINE/"+args.env+'/'+name+'.png')
+        fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/ONLINE/"+args.env+'/'+name+'.pdf', format='pdf')
         if name=='sil_n2_l0.001':
             pu.plot_results(dt[name],xy_fn=pu.progress_default_entropy_xy_fn,average_group=True,split_fn=lambda _: '',shaded_err=True,shaded_std=False,legend_entropy=1)
             plt.xlabel('Number of Timesteps [M]')
@@ -34,7 +34,7 @@ def main():
             plt.tight_layout()
             fig = plt.gcf()
             fig.set_size_inches(9, 7.5)
-            fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/ONLINE/"+args.env+'/'+name+'_entropy.png')
+            fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/ONLINE/"+args.env+'/'+name+'_entropy.pdf', format="pdf")
     
 if __name__ == '__main__':
     main()
