@@ -38,7 +38,7 @@ def main():
         plt.tight_layout()
         fig = plt.gcf()
         fig.set_size_inches(9, 7.5)
-        fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'.eps',format='eps',dpi=1000)
+        fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'.png')
         if name=='mbl_nosil' or name=='mbl_sil':
             pu.plot_results(dt[name],xy_fn=pu.progress_default_entropy_xy_fn,average_group=True,split_fn=lambda _: '',shaded_err=False,shaded_std=True,legend_entropy=1)
             plt.xlabel('Number of Timesteps [M]')
@@ -46,7 +46,7 @@ def main():
             plt.tight_layout()
             fig = plt.gcf()
             fig.set_size_inches(9, 7.5)
-            fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'_entropy.eps',format='eps',dpi=1000)
+            fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'_entropy.png')
 
     
 if __name__ == '__main__':
