@@ -1,0 +1,3479 @@
+Logging to /home/zhang/Desktop/logs/EXP_OFF_V0/HalfCheetah-v2/trpo-2
+{'network': <function mlp.<locals>.network_fn at 0x7f3a1aa29510>, 'eval_env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f3a3bc2d278>, 'env_id': 'HalfCheetah-v2', 'total_timesteps': 1000000, 'timesteps_per_batch': 2048, 'max_kl': 0.01, 'cg_iters': 10, 'gamma': 0.99, 'lam': 0.98, 'ent_coef': 0.0, 'vf_stepsize': 0.001, 'vf_iters': 5, 'max_episodes': 0, 'max_iters': 0, 'callback': None, 'load_path': None, 'mbl_train_freq': 5, 'eval_freq': 10, 'eval_targs': ('mf',), 'quant': 2, 'num_samples': (1500,), 'horizon': (10,), 'num_elites': (10,), 'mbl_lamb': (1.0,), 'reset_per_step': (0,), 'num_fc': 2, 'num_fwd_hidden': 500, 'use_layer_norm': False, 'num_warm_start': 20000, 'init_epochs': 10, 'update_epochs': 5, 'batch_size': 512, 'update_with_validation': False, 'validation_set_path': 'dataset/HalfCheetah-v2-val.pkl', 'collect_val_data': False, 'traj_collect': 'mf', 'eval_val_err': False, 'network_kwargs': {'normalize_observations': True, 'normalize_obs': True}, 'adj_std_scale': 0.5, 'cg_damping': 0.1, 'env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f3a180ed080>, 'make_eval_env': <function train.<locals>.<lambda> at 0x7f3a180e7400>, 'mbl_gamma': 0.99, 'mbl_sh': 1, 'measure_rew': True, 'measure_time': True, 'num_eval_episodes': 5, 'seed': 2, 'use_ent_adjust': 0, 'use_mean_elites': 1, 'vis_eval': False}
+MBL_SH 1
+Traj_collect mf
+['mf']
+MBL args {'self': <mbl.mbl.MBL object at 0x7f3a3bd58fd0>, 'env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f3a3bc2d278>, 'env_id': 'HalfCheetah-v2', 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f3a040ceea0>, 'num_warm_start': 20000, 'init_epochs': 10, 'update_epochs': 5, 'batch_size': 512, 'forward_dynamic': None, 'kwargs': {'normalize_observations': True, 'normalize_obs': True}}
+Forward dynamic args {'self': <mbl.dynamics.ForwardDynamic object at 0x7f3a040e0048>, 'ob_space': Box(18,), 'ac_space': Box(6,), 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f3a040ceea0>, 'normalize_obs': True, 'memory_size': 100000, 'scope': 'new_forward_dynamic', 'kwargs': {'normalize_observations': True}}
+NN {'self': <mbl.model.NN object at 0x7f39f00a5780>, 'num_input': 24, 'num_output': 18, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f3a040ceea0>, 'lr': 0.001, 'optimizer': <class 'tensorflow.python.training.adam.AdamOptimizer'>, 'kwargs': {'normalize_observations': True}}
+Forward dynamic args {'self': <mbl.dynamics.ForwardDynamic object at 0x7f3a100ca208>, 'ob_space': Box(18,), 'ac_space': Box(6,), 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f3a040ceea0>, 'normalize_obs': True, 'memory_size': 100000, 'scope': 'old_forward_dynamic', 'kwargs': {'normalize_observations': True}}
+NN {'self': <mbl.model.NN object at 0x7f3a3bc2deb8>, 'num_input': 24, 'num_output': 18, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f3a040ceea0>, 'lr': 0.001, 'optimizer': <class 'tensorflow.python.training.adam.AdamOptimizer'>, 'kwargs': {'normalize_observations': True}}
+List of evaluation targets
+MeanRew
+********** Iteration 0 ************
+Warm start progress 0.10235
+Expected: 0.037 Actual: 0.038
+Stepsize OK!
+********** Iteration 1 ************
+Warm start progress 0.2047
+Expected: 0.037 Actual: 0.037
+Stepsize OK!
+********** Iteration 2 ************
+Warm start progress 0.30705
+Expected: 0.036 Actual: 0.037
+Stepsize OK!
+********** Iteration 3 ************
+Warm start progress 0.4094
+Expected: 0.035 Actual: 0.036
+Stepsize OK!
+********** Iteration 4 ************
+Warm start progress 0.51175
+Expected: 0.041 Actual: 0.042
+Stepsize OK!
+********** Iteration 5 ************
+Warm start progress 0.6141
+Expected: 0.034 Actual: 0.034
+Stepsize OK!
+********** Iteration 6 ************
+Warm start progress 0.71645
+Expected: 0.037 Actual: 0.038
+Stepsize OK!
+********** Iteration 7 ************
+Warm start progress 0.8188
+Expected: 0.039 Actual: 0.041
+Stepsize OK!
+********** Iteration 8 ************
+Warm start progress 0.92115
+Expected: 0.037 Actual: 0.038
+Stepsize OK!
+********** Iteration 9 ************
+Warm start progress 1.0235
+Init train
+# batch per epoch 40
+Epoch 0 0.40065995
+# batch per epoch 40
+Epoch 1 0.15995912
+# batch per epoch 40
+Epoch 2 0.14171684
+# batch per epoch 40
+Epoch 3 0.13332982
+# batch per epoch 40
+Epoch 4 0.12818444
+# batch per epoch 40
+Epoch 5 0.12195961
+# batch per epoch 40
+Epoch 6 0.11544764
+# batch per epoch 40
+Epoch 7 0.10775904
+# batch per epoch 40
+Epoch 8 0.10139477
+# batch per epoch 40
+Epoch 9 0.09360691
+Update without validation
+Expected: 0.038 Actual: 0.039
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.69     |
+| EpisodesSoFar   | 20       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | -22.9    |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.284    |
+| meankl          | 0.00683  |
+| MeanRew         | 25.1     |
+| optimgain       | 0.0395   |
+| SimRew-MeanRew  | -3.24    |
+| surrgain        | 0.0395   |
+| Time-MeanRew    | 0.00111  |
+| TimeElapsed     | 53.3     |
+| TimestepsSoFar  | 2e+04    |
+------------------------------
+********** Iteration 10 ************
+Update train
+# batch per epoch 44
+Epoch 0 0.08832164
+# batch per epoch 44
+Epoch 1 0.081536956
+# batch per epoch 44
+Epoch 2 0.07585868
+# batch per epoch 44
+Epoch 3 0.07176127
+# batch per epoch 44
+Epoch 4 0.068495244
+Update without validation
+Expected: 0.041 Actual: 0.042
+Stepsize OK!
+********** Iteration 11 ************
+Expected: 0.044 Actual: 0.047
+Stepsize OK!
+********** Iteration 12 ************
+Expected: 0.038 Actual: 0.037
+Stepsize OK!
+********** Iteration 13 ************
+Expected: 0.043 Actual: 0.043
+Stepsize OK!
+********** Iteration 14 ************
+Expected: 0.040 Actual: 0.041
+Stepsize OK!
+********** Iteration 15 ************
+Update train
+# batch per epoch 64
+Epoch 0 0.06942405
+# batch per epoch 64
+Epoch 1 0.06518398
+# batch per epoch 64
+Epoch 2 0.06208709
+# batch per epoch 64
+Epoch 3 0.05956047
+# batch per epoch 64
+Epoch 4 0.05745936
+Update without validation
+Expected: 0.040 Actual: 0.040
+Stepsize OK!
+********** Iteration 16 ************
+Expected: 0.041 Actual: 0.043
+Stepsize OK!
+********** Iteration 17 ************
+Expected: 0.040 Actual: 0.042
+Stepsize OK!
+********** Iteration 18 ************
+Expected: 0.043 Actual: 0.043
+Stepsize OK!
+********** Iteration 19 ************
+Expected: 0.042 Actual: 0.042
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.68     |
+| EpisodesSoFar   | 40       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | -10.4    |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.584    |
+| meankl          | 0.00674  |
+| MeanRew         | 45.2     |
+| optimgain       | 0.0421   |
+| SimRew-MeanRew  | 1.51     |
+| surrgain        | 0.0421   |
+| Time-MeanRew    | 0.00136  |
+| TimeElapsed     | 116      |
+| TimestepsSoFar  | 4e+04    |
+------------------------------
+********** Iteration 20 ************
+Update train
+# batch per epoch 84
+Epoch 0 0.057898227
+# batch per epoch 84
+Epoch 1 0.0540726
+# batch per epoch 84
+Epoch 2 0.05228259
+# batch per epoch 84
+Epoch 3 0.05072725
+# batch per epoch 84
+Epoch 4 0.048980445
+Update without validation
+Expected: 0.043 Actual: 0.043
+Stepsize OK!
+********** Iteration 21 ************
+Expected: 0.040 Actual: 0.040
+Stepsize OK!
+********** Iteration 22 ************
+Expected: 0.043 Actual: 0.043
+Stepsize OK!
+********** Iteration 23 ************
+Expected: 0.041 Actual: 0.039
+Stepsize OK!
+********** Iteration 24 ************
+Expected: 0.041 Actual: 0.040
+Stepsize OK!
+********** Iteration 25 ************
+Update train
+# batch per epoch 104
+Epoch 0 0.049377818
+# batch per epoch 104
+Epoch 1 0.047544386
+# batch per epoch 104
+Epoch 2 0.04640674
+# batch per epoch 104
+Epoch 3 0.04495179
+# batch per epoch 104
+Epoch 4 0.04388449
+Update without validation
+Expected: 0.041 Actual: 0.041
+Stepsize OK!
+********** Iteration 26 ************
+Expected: 0.046 Actual: 0.047
+Stepsize OK!
+********** Iteration 27 ************
+Expected: 0.042 Actual: 0.042
+Stepsize OK!
+********** Iteration 28 ************
+Expected: 0.045 Actual: 0.046
+Stepsize OK!
+********** Iteration 29 ************
+Expected: 0.041 Actual: 0.041
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.58     |
+| EpisodesSoFar   | 61       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 27       |
+| EpThisIter      | 2        |
+| ev_tdlam_before | -0.0489  |
+| meankl          | 0.00494  |
+| MeanRew         | 82.1     |
+| optimgain       | 0.0408   |
+| SimRew-MeanRew  | 3.66     |
+| surrgain        | 0.0408   |
+| Time-MeanRew    | 0.00115  |
+| TimeElapsed     | 193      |
+| TimestepsSoFar  | 6.1e+04  |
+------------------------------
+********** Iteration 30 ************
+Update train
+# batch per epoch 124
+Epoch 0 0.044629075
+# batch per epoch 124
+Epoch 1 0.043092564
+# batch per epoch 124
+Epoch 2 0.042082246
+# batch per epoch 124
+Epoch 3 0.04094307
+# batch per epoch 124
+Epoch 4 0.040155027
+Update without validation
+Expected: 0.045 Actual: 0.044
+Stepsize OK!
+********** Iteration 31 ************
+Expected: 0.045 Actual: 0.046
+Stepsize OK!
+********** Iteration 32 ************
+Expected: 0.044 Actual: 0.043
+Stepsize OK!
+********** Iteration 33 ************
+Expected: 0.047 Actual: 0.047
+Stepsize OK!
+********** Iteration 34 ************
+Expected: 0.046 Actual: 0.044
+Stepsize OK!
+********** Iteration 35 ************
+Update train
+# batch per epoch 144
+Epoch 0 0.04054445
+# batch per epoch 144
+Epoch 1 0.039558105
+# batch per epoch 144
+Epoch 2 0.03848464
+# batch per epoch 144
+Epoch 3 0.037793618
+# batch per epoch 144
+Epoch 4 0.03705499
+Update without validation
+Expected: 0.047 Actual: 0.048
+Stepsize OK!
+********** Iteration 36 ************
+Expected: 0.044 Actual: 0.044
+Stepsize OK!
+********** Iteration 37 ************
+Expected: 0.047 Actual: 0.049
+Stepsize OK!
+********** Iteration 38 ************
+Expected: 0.052 Actual: 0.048
+Stepsize OK!
+********** Iteration 39 ************
+Expected: 0.048 Actual: 0.045
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.53     |
+| EpisodesSoFar   | 81       |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 59.9     |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.0725   |
+| meankl          | 0.0052   |
+| MeanRew         | 118      |
+| optimgain       | 0.0448   |
+| SimRew-MeanRew  | 6.57     |
+| surrgain        | 0.0448   |
+| Time-MeanRew    | 0.00117  |
+| TimeElapsed     | 278      |
+| TimestepsSoFar  | 8.1e+04  |
+------------------------------
+********** Iteration 40 ************
+Update train
+# batch per epoch 164
+Epoch 0 0.036879912
+# batch per epoch 164
+Epoch 1 0.03595411
+# batch per epoch 164
+Epoch 2 0.035194553
+# batch per epoch 164
+Epoch 3 0.034579393
+# batch per epoch 164
+Epoch 4 0.034074668
+Update without validation
+Expected: 0.052 Actual: 0.056
+Stepsize OK!
+********** Iteration 41 ************
+Expected: 0.050 Actual: 0.053
+Stepsize OK!
+********** Iteration 42 ************
+Expected: 0.046 Actual: 0.046
+Stepsize OK!
+********** Iteration 43 ************
+Expected: 0.047 Actual: 0.047
+Stepsize OK!
+********** Iteration 44 ************
+Expected: 0.049 Actual: 0.048
+Stepsize OK!
+********** Iteration 45 ************
+Update train
+# batch per epoch 184
+Epoch 0 0.03383002
+# batch per epoch 184
+Epoch 1 0.033102907
+# batch per epoch 184
+Epoch 2 0.03224095
+# batch per epoch 184
+Epoch 3 0.031666752
+# batch per epoch 184
+Epoch 4 0.030950634
+Update without validation
+Expected: 0.051 Actual: 0.050
+Stepsize OK!
+********** Iteration 46 ************
+Expected: 0.051 Actual: 0.049
+Stepsize OK!
+********** Iteration 47 ************
+Expected: 0.053 Actual: 0.052
+Stepsize OK!
+********** Iteration 48 ************
+Expected: 0.050 Actual: 0.050
+Stepsize OK!
+********** Iteration 49 ************
+Expected: 0.053 Actual: 0.059
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.49     |
+| EpisodesSoFar   | 102      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 102      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | -0.0455  |
+| meankl          | 0.00523  |
+| MeanRew         | 141      |
+| optimgain       | 0.0585   |
+| SimRew-MeanRew  | 10.4     |
+| surrgain        | 0.0585   |
+| Time-MeanRew    | 0.00125  |
+| TimeElapsed     | 378      |
+| TimestepsSoFar  | 1.02e+05 |
+------------------------------
+********** Iteration 50 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.030461464
+# batch per epoch 196
+Epoch 1 0.029751865
+# batch per epoch 196
+Epoch 2 0.028905971
+# batch per epoch 196
+Epoch 3 0.028309567
+# batch per epoch 196
+Epoch 4 0.027699612
+Update without validation
+Expected: 0.050 Actual: 0.052
+Stepsize OK!
+********** Iteration 51 ************
+Expected: 0.054 Actual: 0.051
+Stepsize OK!
+********** Iteration 52 ************
+Expected: 0.054 Actual: 0.057
+Stepsize OK!
+********** Iteration 53 ************
+Expected: 0.048 Actual: 0.048
+Stepsize OK!
+********** Iteration 54 ************
+Expected: 0.051 Actual: 0.050
+Stepsize OK!
+********** Iteration 55 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.027332924
+# batch per epoch 196
+Epoch 1 0.02679165
+# batch per epoch 196
+Epoch 2 0.025972325
+# batch per epoch 196
+Epoch 3 0.025239794
+# batch per epoch 196
+Epoch 4 0.02485997
+Update without validation
+Expected: 0.054 Actual: 0.053
+Stepsize OK!
+********** Iteration 56 ************
+Expected: 0.053 Actual: 0.053
+Stepsize OK!
+********** Iteration 57 ************
+Expected: 0.051 Actual: 0.051
+Stepsize OK!
+********** Iteration 58 ************
+Expected: 0.050 Actual: 0.050
+Stepsize OK!
+********** Iteration 59 ************
+Expected: 0.053 Actual: 0.055
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.39     |
+| EpisodesSoFar   | 122      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 145      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.826    |
+| meankl          | 0.00554  |
+| MeanRew         | 176      |
+| optimgain       | 0.0552   |
+| SimRew-MeanRew  | 17.5     |
+| surrgain        | 0.0552   |
+| Time-MeanRew    | 0.00109  |
+| TimeElapsed     | 480      |
+| TimestepsSoFar  | 1.22e+05 |
+------------------------------
+********** Iteration 60 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.024970792
+# batch per epoch 196
+Epoch 1 0.024061864
+# batch per epoch 196
+Epoch 2 0.02364998
+# batch per epoch 196
+Epoch 3 0.022738963
+# batch per epoch 196
+Epoch 4 0.022102784
+Update without validation
+Expected: 0.055 Actual: 0.054
+Stepsize OK!
+********** Iteration 61 ************
+Expected: 0.054 Actual: 0.056
+Stepsize OK!
+********** Iteration 62 ************
+Expected: 0.058 Actual: 0.054
+Stepsize OK!
+********** Iteration 63 ************
+Expected: 0.057 Actual: 0.061
+Stepsize OK!
+********** Iteration 64 ************
+Expected: 0.057 Actual: 0.055
+Stepsize OK!
+********** Iteration 65 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.021868756
+# batch per epoch 196
+Epoch 1 0.021207828
+# batch per epoch 196
+Epoch 2 0.020472381
+# batch per epoch 196
+Epoch 3 0.019891625
+# batch per epoch 196
+Epoch 4 0.019441295
+Update without validation
+Expected: 0.058 Actual: 0.059
+Stepsize OK!
+********** Iteration 66 ************
+Expected: 0.055 Actual: 0.055
+Stepsize OK!
+********** Iteration 67 ************
+Expected: 0.056 Actual: 0.058
+Stepsize OK!
+********** Iteration 68 ************
+Expected: 0.058 Actual: 0.059
+Stepsize OK!
+********** Iteration 69 ************
+Expected: 0.057 Actual: 0.054
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.3      |
+| EpisodesSoFar   | 143      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 192      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.505    |
+| meankl          | 0.00643  |
+| MeanRew         | 210      |
+| optimgain       | 0.0541   |
+| SimRew-MeanRew  | 20.6     |
+| surrgain        | 0.0541   |
+| Time-MeanRew    | 0.0012   |
+| TimeElapsed     | 579      |
+| TimestepsSoFar  | 1.43e+05 |
+------------------------------
+********** Iteration 70 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.024280956
+# batch per epoch 196
+Epoch 1 0.02038134
+# batch per epoch 196
+Epoch 2 0.019778784
+# batch per epoch 196
+Epoch 3 0.019154944
+# batch per epoch 196
+Epoch 4 0.018572934
+Update without validation
+Expected: 0.053 Actual: 0.051
+Stepsize OK!
+********** Iteration 71 ************
+Expected: 0.052 Actual: 0.052
+Stepsize OK!
+********** Iteration 72 ************
+Expected: 0.057 Actual: 0.057
+Stepsize OK!
+********** Iteration 73 ************
+Expected: 0.057 Actual: 0.057
+Stepsize OK!
+********** Iteration 74 ************
+Expected: 0.059 Actual: 0.055
+Stepsize OK!
+********** Iteration 75 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.018841928
+# batch per epoch 196
+Epoch 1 0.01857113
+# batch per epoch 196
+Epoch 2 0.017833633
+# batch per epoch 196
+Epoch 3 0.017472949
+# batch per epoch 196
+Epoch 4 0.017230485
+Update without validation
+Expected: 0.060 Actual: 0.062
+Stepsize OK!
+********** Iteration 76 ************
+Expected: 0.056 Actual: 0.055
+Stepsize OK!
+********** Iteration 77 ************
+Expected: 0.060 Actual: 0.055
+Stepsize OK!
+********** Iteration 78 ************
+Expected: 0.063 Actual: 0.062
+Stepsize OK!
+********** Iteration 79 ************
+Expected: 0.060 Actual: 0.059
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.21     |
+| EpisodesSoFar   | 163      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 243      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.675    |
+| meankl          | 0.00665  |
+| MeanRew         | 289      |
+| optimgain       | 0.0594   |
+| SimRew-MeanRew  | 23.2     |
+| surrgain        | 0.0594   |
+| Time-MeanRew    | 0.00111  |
+| TimeElapsed     | 685      |
+| TimestepsSoFar  | 1.63e+05 |
+------------------------------
+********** Iteration 80 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.017544417
+# batch per epoch 196
+Epoch 1 0.016807979
+# batch per epoch 196
+Epoch 2 0.016622487
+# batch per epoch 196
+Epoch 3 0.016305385
+# batch per epoch 196
+Epoch 4 0.015936812
+Update without validation
+Expected: 0.054 Actual: 0.054
+Stepsize OK!
+********** Iteration 81 ************
+Expected: 0.054 Actual: 0.052
+Stepsize OK!
+********** Iteration 82 ************
+Expected: 0.059 Actual: 0.056
+Stepsize OK!
+********** Iteration 83 ************
+Expected: 0.061 Actual: 0.062
+Stepsize OK!
+********** Iteration 84 ************
+Expected: 0.059 Actual: 0.058
+Stepsize OK!
+********** Iteration 85 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.016276589
+# batch per epoch 196
+Epoch 1 0.016007923
+# batch per epoch 196
+Epoch 2 0.015394708
+# batch per epoch 196
+Epoch 3 0.015097202
+# batch per epoch 196
+Epoch 4 0.015026656
+Update without validation
+Expected: 0.060 Actual: 0.060
+Stepsize OK!
+********** Iteration 86 ************
+Expected: 0.060 Actual: 0.060
+Stepsize OK!
+********** Iteration 87 ************
+Expected: 0.061 Actual: 0.062
+Stepsize OK!
+********** Iteration 88 ************
+Expected: 0.061 Actual: 0.059
+Stepsize OK!
+********** Iteration 89 ************
+Expected: 0.057 Actual: 0.056
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.09     |
+| EpisodesSoFar   | 184      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 299      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.57     |
+| meankl          | 0.00626  |
+| MeanRew         | 352      |
+| optimgain       | 0.0559   |
+| SimRew-MeanRew  | 28.6     |
+| surrgain        | 0.0559   |
+| Time-MeanRew    | 0.00152  |
+| TimeElapsed     | 790      |
+| TimestepsSoFar  | 1.84e+05 |
+------------------------------
+********** Iteration 90 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.015832892
+# batch per epoch 196
+Epoch 1 0.015246778
+# batch per epoch 196
+Epoch 2 0.015099763
+# batch per epoch 196
+Epoch 3 0.014710268
+# batch per epoch 196
+Epoch 4 0.014368724
+Update without validation
+Expected: 0.063 Actual: 0.063
+Stepsize OK!
+********** Iteration 91 ************
+Expected: 0.060 Actual: 0.062
+Stepsize OK!
+********** Iteration 92 ************
+Expected: 0.057 Actual: 0.057
+Stepsize OK!
+********** Iteration 93 ************
+Expected: 0.058 Actual: 0.057
+Stepsize OK!
+********** Iteration 94 ************
+Expected: 0.063 Actual: 0.061
+Stepsize OK!
+********** Iteration 95 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.014993767
+# batch per epoch 196
+Epoch 1 0.014644557
+# batch per epoch 196
+Epoch 2 0.014412269
+# batch per epoch 196
+Epoch 3 0.014174295
+# batch per epoch 196
+Epoch 4 0.013958593
+Update without validation
+Expected: 0.059 Actual: 0.058
+Stepsize OK!
+********** Iteration 96 ************
+Expected: 0.061 Actual: 0.062
+Stepsize OK!
+********** Iteration 97 ************
+Expected: 0.059 Actual: 0.058
+Stepsize OK!
+********** Iteration 98 ************
+Expected: 0.057 Actual: 0.058
+Stepsize OK!
+********** Iteration 99 ************
+Expected: 0.063 Actual: 0.060
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 8.06     |
+| EpisodesSoFar   | 204      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 344      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.661    |
+| meankl          | 0.00652  |
+| MeanRew         | 434      |
+| optimgain       | 0.0601   |
+| SimRew-MeanRew  | 30.9     |
+| surrgain        | 0.0601   |
+| Time-MeanRew    | 0.0012   |
+| TimeElapsed     | 900      |
+| TimestepsSoFar  | 2.04e+05 |
+------------------------------
+********** Iteration 100 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.014669715
+# batch per epoch 196
+Epoch 1 0.014236918
+# batch per epoch 196
+Epoch 2 0.01386415
+# batch per epoch 196
+Epoch 3 0.013703097
+# batch per epoch 196
+Epoch 4 0.013439597
+Update without validation
+Expected: 0.063 Actual: 0.065
+Stepsize OK!
+********** Iteration 101 ************
+Expected: 0.060 Actual: 0.059
+Stepsize OK!
+********** Iteration 102 ************
+Expected: 0.062 Actual: 0.064
+Stepsize OK!
+********** Iteration 103 ************
+Expected: 0.059 Actual: 0.057
+Stepsize OK!
+********** Iteration 104 ************
+Expected: 0.064 Actual: 0.063
+Stepsize OK!
+********** Iteration 105 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.014099951
+# batch per epoch 196
+Epoch 1 0.013900066
+# batch per epoch 196
+Epoch 2 0.013520808
+# batch per epoch 196
+Epoch 3 0.013233435
+# batch per epoch 196
+Epoch 4 0.013222799
+Update without validation
+Expected: 0.059 Actual: 0.061
+Stepsize OK!
+********** Iteration 106 ************
+Expected: 0.058 Actual: 0.057
+Stepsize OK!
+********** Iteration 107 ************
+Expected: 0.062 Actual: 0.062
+Stepsize OK!
+********** Iteration 108 ************
+Expected: 0.062 Actual: 0.062
+Stepsize OK!
+********** Iteration 109 ************
+Expected: 0.063 Actual: 0.060
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.96     |
+| EpisodesSoFar   | 225      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 400      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.608    |
+| meankl          | 0.00607  |
+| MeanRew         | 461      |
+| optimgain       | 0.0598   |
+| SimRew-MeanRew  | 38       |
+| surrgain        | 0.0598   |
+| Time-MeanRew    | 0.00122  |
+| TimeElapsed     | 1e+03    |
+| TimestepsSoFar  | 2.25e+05 |
+------------------------------
+********** Iteration 110 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0139887575
+# batch per epoch 196
+Epoch 1 0.013640178
+# batch per epoch 196
+Epoch 2 0.013163357
+# batch per epoch 196
+Epoch 3 0.01304562
+# batch per epoch 196
+Epoch 4 0.012829463
+Update without validation
+Expected: 0.062 Actual: 0.065
+Stepsize OK!
+********** Iteration 111 ************
+Expected: 0.063 Actual: 0.064
+Stepsize OK!
+********** Iteration 112 ************
+Expected: 0.066 Actual: 0.066
+Stepsize OK!
+********** Iteration 113 ************
+Expected: 0.066 Actual: 0.062
+Stepsize OK!
+********** Iteration 114 ************
+Expected: 0.064 Actual: 0.064
+Stepsize OK!
+********** Iteration 115 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.013300482
+# batch per epoch 196
+Epoch 1 0.013304452
+# batch per epoch 196
+Epoch 2 0.013002924
+# batch per epoch 196
+Epoch 3 0.012648935
+# batch per epoch 196
+Epoch 4 0.012461806
+Update without validation
+Expected: 0.058 Actual: 0.059
+Stepsize OK!
+********** Iteration 116 ************
+Expected: 0.063 Actual: 0.062
+Stepsize OK!
+********** Iteration 117 ************
+Expected: 0.052 Actual: 0.053
+Stepsize OK!
+********** Iteration 118 ************
+Expected: 0.060 Actual: 0.058
+Stepsize OK!
+********** Iteration 119 ************
+Expected: 0.063 Actual: 0.062
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.88     |
+| EpisodesSoFar   | 245      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 451      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.877    |
+| meankl          | 0.00664  |
+| MeanRew         | 489      |
+| optimgain       | 0.0616   |
+| SimRew-MeanRew  | 49.2     |
+| surrgain        | 0.0616   |
+| Time-MeanRew    | 0.00132  |
+| TimeElapsed     | 1.11e+03 |
+| TimestepsSoFar  | 2.45e+05 |
+------------------------------
+********** Iteration 120 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.013929333
+# batch per epoch 196
+Epoch 1 0.01304227
+# batch per epoch 196
+Epoch 2 0.0128796855
+# batch per epoch 196
+Epoch 3 0.012716392
+# batch per epoch 196
+Epoch 4 0.01252179
+Update without validation
+Expected: 0.061 Actual: 0.060
+Stepsize OK!
+********** Iteration 121 ************
+Expected: 0.063 Actual: 0.059
+Stepsize OK!
+********** Iteration 122 ************
+Expected: 0.063 Actual: 0.064
+Stepsize OK!
+********** Iteration 123 ************
+Expected: 0.062 Actual: 0.060
+Stepsize OK!
+********** Iteration 124 ************
+Expected: 0.064 Actual: 0.062
+Stepsize OK!
+********** Iteration 125 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.013224916
+# batch per epoch 196
+Epoch 1 0.012995955
+# batch per epoch 196
+Epoch 2 0.012558456
+# batch per epoch 196
+Epoch 3 0.012490905
+# batch per epoch 196
+Epoch 4 0.012092957
+Update without validation
+Expected: 0.070 Actual: 0.060
+Stepsize OK!
+********** Iteration 126 ************
+Expected: 0.059 Actual: 0.056
+Stepsize OK!
+********** Iteration 127 ************
+Expected: 0.058 Actual: 0.058
+Stepsize OK!
+********** Iteration 128 ************
+Expected: 0.061 Actual: 0.058
+Stepsize OK!
+********** Iteration 129 ************
+Expected: 0.065 Actual: 0.061
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.82     |
+| EpisodesSoFar   | 266      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 500      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.785    |
+| meankl          | 0.00742  |
+| MeanRew         | 605      |
+| optimgain       | 0.061    |
+| SimRew-MeanRew  | 45.4     |
+| surrgain        | 0.061    |
+| Time-MeanRew    | 0.0012   |
+| TimeElapsed     | 1.22e+03 |
+| TimestepsSoFar  | 2.66e+05 |
+------------------------------
+********** Iteration 130 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.013126418
+# batch per epoch 196
+Epoch 1 0.012674969
+# batch per epoch 196
+Epoch 2 0.012393202
+# batch per epoch 196
+Epoch 3 0.012423119
+# batch per epoch 196
+Epoch 4 0.012229871
+Update without validation
+Expected: 0.062 Actual: 0.061
+Stepsize OK!
+********** Iteration 131 ************
+Expected: 0.065 Actual: 0.062
+Stepsize OK!
+********** Iteration 132 ************
+Expected: 0.063 Actual: 0.061
+Stepsize OK!
+********** Iteration 133 ************
+Expected: 0.065 Actual: 0.071
+Stepsize OK!
+********** Iteration 134 ************
+Expected: 0.064 Actual: 0.064
+Stepsize OK!
+********** Iteration 135 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.013097911
+# batch per epoch 196
+Epoch 1 0.0129884565
+# batch per epoch 196
+Epoch 2 0.012249045
+# batch per epoch 196
+Epoch 3 0.012159486
+# batch per epoch 196
+Epoch 4 0.012038203
+Update without validation
+Expected: 0.068 Actual: 0.059
+Stepsize OK!
+********** Iteration 136 ************
+Expected: 0.066 Actual: 0.064
+Stepsize OK!
+********** Iteration 137 ************
+Expected: 0.066 Actual: 0.070
+Stepsize OK!
+********** Iteration 138 ************
+Expected: 0.067 Actual: 0.068
+Stepsize OK!
+********** Iteration 139 ************
+Expected: 0.061 Actual: 0.062
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.73     |
+| EpisodesSoFar   | 286      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 565      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.885    |
+| meankl          | 0.00673  |
+| MeanRew         | 632      |
+| optimgain       | 0.0625   |
+| SimRew-MeanRew  | 55       |
+| surrgain        | 0.0625   |
+| Time-MeanRew    | 0.00119  |
+| TimeElapsed     | 1.33e+03 |
+| TimestepsSoFar  | 2.86e+05 |
+------------------------------
+********** Iteration 140 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.01252803
+# batch per epoch 196
+Epoch 1 0.0123191085
+# batch per epoch 196
+Epoch 2 0.01199814
+# batch per epoch 196
+Epoch 3 0.012046628
+# batch per epoch 196
+Epoch 4 0.011893022
+Update without validation
+Expected: 0.066 Actual: 0.069
+Stepsize OK!
+********** Iteration 141 ************
+Expected: 0.064 Actual: 0.062
+Stepsize OK!
+********** Iteration 142 ************
+Expected: 0.064 Actual: 0.064
+Stepsize OK!
+********** Iteration 143 ************
+Expected: 0.069 Actual: 0.064
+Stepsize OK!
+********** Iteration 144 ************
+Expected: 0.062 Actual: 0.061
+Stepsize OK!
+********** Iteration 145 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.012948284
+# batch per epoch 196
+Epoch 1 0.012753061
+# batch per epoch 196
+Epoch 2 0.01223807
+# batch per epoch 196
+Epoch 3 0.012130478
+# batch per epoch 196
+Epoch 4 0.011994807
+Update without validation
+Expected: 0.063 Actual: 0.060
+Stepsize OK!
+********** Iteration 146 ************
+Expected: 0.067 Actual: 0.069
+Stepsize OK!
+********** Iteration 147 ************
+Expected: 0.070 Actual: 0.074
+Stepsize OK!
+********** Iteration 148 ************
+Expected: 0.064 Actual: 0.059
+Stepsize OK!
+********** Iteration 149 ************
+Expected: 0.070 Actual: 0.076
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.61     |
+| EpisodesSoFar   | 307      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 624      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.918    |
+| meankl          | 0.00783  |
+| MeanRew         | 715      |
+| optimgain       | 0.0756   |
+| SimRew-MeanRew  | 61.3     |
+| surrgain        | 0.0756   |
+| Time-MeanRew    | 0.00127  |
+| TimeElapsed     | 1.44e+03 |
+| TimestepsSoFar  | 3.07e+05 |
+------------------------------
+********** Iteration 150 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.012474024
+# batch per epoch 196
+Epoch 1 0.012356369
+# batch per epoch 196
+Epoch 2 0.012348655
+# batch per epoch 196
+Epoch 3 0.012190033
+# batch per epoch 196
+Epoch 4 0.011862424
+Update without validation
+Expected: 0.062 Actual: 0.059
+Stepsize OK!
+********** Iteration 151 ************
+Expected: 0.068 Actual: 0.069
+Stepsize OK!
+********** Iteration 152 ************
+Expected: 0.067 Actual: 0.067
+Stepsize OK!
+********** Iteration 153 ************
+Expected: 0.065 Actual: 0.065
+Stepsize OK!
+********** Iteration 154 ************
+Expected: 0.066 Actual: 0.065
+Stepsize OK!
+********** Iteration 155 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.012503867
+# batch per epoch 196
+Epoch 1 0.012214872
+# batch per epoch 196
+Epoch 2 0.011857849
+# batch per epoch 196
+Epoch 3 0.011921559
+# batch per epoch 196
+Epoch 4 0.011887086
+Update without validation
+Expected: 0.059 Actual: 0.056
+Stepsize OK!
+********** Iteration 156 ************
+Expected: 0.063 Actual: 0.063
+Stepsize OK!
+********** Iteration 157 ************
+Expected: 0.065 Actual: 0.064
+Stepsize OK!
+********** Iteration 158 ************
+Expected: 0.063 Actual: 0.062
+Stepsize OK!
+********** Iteration 159 ************
+Expected: 0.062 Actual: 0.060
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.54     |
+| EpisodesSoFar   | 327      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 678      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.955    |
+| meankl          | 0.00737  |
+| MeanRew         | 750      |
+| optimgain       | 0.06     |
+| SimRew-MeanRew  | 65.9     |
+| surrgain        | 0.06     |
+| Time-MeanRew    | 0.00114  |
+| TimeElapsed     | 1.54e+03 |
+| TimestepsSoFar  | 3.27e+05 |
+------------------------------
+********** Iteration 160 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.012294818
+# batch per epoch 196
+Epoch 1 0.01216948
+# batch per epoch 196
+Epoch 2 0.011899622
+# batch per epoch 196
+Epoch 3 0.011844046
+# batch per epoch 196
+Epoch 4 0.011679787
+Update without validation
+Expected: 0.065 Actual: 0.063
+Stepsize OK!
+********** Iteration 161 ************
+Expected: 0.062 Actual: 0.060
+Stepsize OK!
+********** Iteration 162 ************
+Expected: 0.063 Actual: 0.061
+Stepsize OK!
+********** Iteration 163 ************
+Expected: 0.069 Actual: 0.067
+Stepsize OK!
+********** Iteration 164 ************
+Expected: 0.061 Actual: 0.056
+Stepsize OK!
+********** Iteration 165 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.012089995
+# batch per epoch 196
+Epoch 1 0.011827576
+# batch per epoch 196
+Epoch 2 0.011850177
+# batch per epoch 196
+Epoch 3 0.011793228
+# batch per epoch 196
+Epoch 4 0.011575871
+Update without validation
+Expected: 0.069 Actual: 0.065
+Stepsize OK!
+********** Iteration 166 ************
+Expected: 0.064 Actual: 0.061
+Stepsize OK!
+********** Iteration 167 ************
+Expected: 0.065 Actual: 0.062
+Stepsize OK!
+********** Iteration 168 ************
+Expected: 0.073 Actual: 0.067
+Stepsize OK!
+********** Iteration 169 ************
+Expected: 0.069 Actual: 0.072
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.39     |
+| EpisodesSoFar   | 348      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 764      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.929    |
+| meankl          | 0.00823  |
+| MeanRew         | 863      |
+| optimgain       | 0.0723   |
+| SimRew-MeanRew  | 73.3     |
+| surrgain        | 0.0723   |
+| Time-MeanRew    | 0.00102  |
+| TimeElapsed     | 1.65e+03 |
+| TimestepsSoFar  | 3.48e+05 |
+------------------------------
+********** Iteration 170 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.011743517
+# batch per epoch 196
+Epoch 1 0.011832809
+# batch per epoch 196
+Epoch 2 0.01143484
+# batch per epoch 196
+Epoch 3 0.011218794
+# batch per epoch 196
+Epoch 4 0.011303879
+Update without validation
+Expected: 0.068 Actual: 0.071
+Stepsize OK!
+********** Iteration 171 ************
+Expected: 0.067 Actual: 0.065
+Stepsize OK!
+********** Iteration 172 ************
+Expected: 0.070 Actual: 0.067
+Stepsize OK!
+********** Iteration 173 ************
+Expected: 0.065 Actual: 0.062
+Stepsize OK!
+********** Iteration 174 ************
+Expected: 0.061 Actual: 0.058
+Stepsize OK!
+********** Iteration 175 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.011704768
+# batch per epoch 196
+Epoch 1 0.011424968
+# batch per epoch 196
+Epoch 2 0.011593473
+# batch per epoch 196
+Epoch 3 0.011017521
+# batch per epoch 196
+Epoch 4 0.0110982405
+Update without validation
+Expected: 0.067 Actual: 0.059
+Stepsize OK!
+********** Iteration 176 ************
+Expected: 0.068 Actual: 0.076
+Stepsize OK!
+********** Iteration 177 ************
+Expected: 0.070 Actual: 0.065
+Stepsize OK!
+********** Iteration 178 ************
+Expected: 0.059 Actual: 0.060
+Stepsize OK!
+********** Iteration 179 ************
+Expected: 0.061 Actual: 0.064
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.25     |
+| EpisodesSoFar   | 368      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 818      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.957    |
+| meankl          | 0.00781  |
+| MeanRew         | 884      |
+| optimgain       | 0.0639   |
+| SimRew-MeanRew  | 84.7     |
+| surrgain        | 0.0639   |
+| Time-MeanRew    | 0.00129  |
+| TimeElapsed     | 1.75e+03 |
+| TimestepsSoFar  | 3.68e+05 |
+------------------------------
+********** Iteration 180 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.011778216
+# batch per epoch 196
+Epoch 1 0.011653545
+# batch per epoch 196
+Epoch 2 0.011235488
+# batch per epoch 196
+Epoch 3 0.011049273
+# batch per epoch 196
+Epoch 4 0.0108623905
+Update without validation
+Expected: 0.063 Actual: 0.057
+Stepsize OK!
+********** Iteration 181 ************
+Expected: 0.069 Actual: 0.065
+Stepsize OK!
+********** Iteration 182 ************
+Expected: 0.065 Actual: 0.065
+Stepsize OK!
+********** Iteration 183 ************
+Expected: 0.065 Actual: 0.059
+Stepsize OK!
+********** Iteration 184 ************
+Expected: 0.068 Actual: 0.068
+Stepsize OK!
+********** Iteration 185 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.01206406
+# batch per epoch 196
+Epoch 1 0.01148113
+# batch per epoch 196
+Epoch 2 0.011100226
+# batch per epoch 196
+Epoch 3 0.011078112
+# batch per epoch 196
+Epoch 4 0.011081573
+Update without validation
+Expected: 0.067 Actual: 0.063
+Stepsize OK!
+********** Iteration 186 ************
+Expected: 0.067 Actual: 0.071
+Stepsize OK!
+********** Iteration 187 ************
+Expected: 0.066 Actual: 0.072
+Stepsize OK!
+********** Iteration 188 ************
+Expected: 0.065 Actual: 0.060
+Stepsize OK!
+********** Iteration 189 ************
+Expected: 0.069 Actual: 0.068
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.18     |
+| EpisodesSoFar   | 389      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 815      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.915    |
+| meankl          | 0.00798  |
+| MeanRew         | 902      |
+| optimgain       | 0.0675   |
+| SimRew-MeanRew  | 80.6     |
+| surrgain        | 0.0675   |
+| Time-MeanRew    | 0.00118  |
+| TimeElapsed     | 1.86e+03 |
+| TimestepsSoFar  | 3.89e+05 |
+------------------------------
+********** Iteration 190 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.011340521
+# batch per epoch 196
+Epoch 1 0.011206037
+# batch per epoch 196
+Epoch 2 0.011049218
+# batch per epoch 196
+Epoch 3 0.010955118
+# batch per epoch 196
+Epoch 4 0.010641089
+Update without validation
+Expected: 0.066 Actual: 0.064
+Stepsize OK!
+********** Iteration 191 ************
+Expected: 0.066 Actual: 0.060
+Stepsize OK!
+********** Iteration 192 ************
+Expected: 0.069 Actual: 0.060
+Stepsize OK!
+********** Iteration 193 ************
+Expected: 0.067 Actual: 0.072
+Stepsize OK!
+********** Iteration 194 ************
+Expected: 0.067 Actual: 0.061
+Stepsize OK!
+********** Iteration 195 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.011060309
+# batch per epoch 196
+Epoch 1 0.010912513
+# batch per epoch 196
+Epoch 2 0.010948495
+# batch per epoch 196
+Epoch 3 0.010661118
+# batch per epoch 196
+Epoch 4 0.010769897
+Update without validation
+Expected: 0.065 Actual: 0.063
+Stepsize OK!
+********** Iteration 196 ************
+Expected: 0.066 Actual: 0.063
+Stepsize OK!
+********** Iteration 197 ************
+Expected: 0.072 Actual: 0.074
+Stepsize OK!
+********** Iteration 198 ************
+Expected: 0.070 Actual: 0.085
+Stepsize OK!
+********** Iteration 199 ************
+Expected: 0.072 Actual: 0.067
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.1      |
+| EpisodesSoFar   | 409      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 869      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.95     |
+| meankl          | 0.00796  |
+| MeanRew         | 958      |
+| optimgain       | 0.0673   |
+| SimRew-MeanRew  | 82       |
+| surrgain        | 0.0673   |
+| Time-MeanRew    | 0.00103  |
+| TimeElapsed     | 1.97e+03 |
+| TimestepsSoFar  | 4.09e+05 |
+------------------------------
+********** Iteration 200 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.010983675
+# batch per epoch 196
+Epoch 1 0.010752035
+# batch per epoch 196
+Epoch 2 0.010501647
+# batch per epoch 196
+Epoch 3 0.010552465
+# batch per epoch 196
+Epoch 4 0.010326839
+Update without validation
+Expected: 0.065 Actual: 0.070
+Stepsize OK!
+********** Iteration 201 ************
+Expected: 0.063 Actual: 0.061
+Stepsize OK!
+********** Iteration 202 ************
+Expected: 0.070 Actual: 0.069
+Stepsize OK!
+********** Iteration 203 ************
+Expected: 0.068 Actual: 0.067
+Stepsize OK!
+********** Iteration 204 ************
+Expected: 0.072 Actual: 0.070
+Stepsize OK!
+********** Iteration 205 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0106883375
+# batch per epoch 196
+Epoch 1 0.010557493
+# batch per epoch 196
+Epoch 2 0.010548918
+# batch per epoch 196
+Epoch 3 0.010059685
+# batch per epoch 196
+Epoch 4 0.010131475
+Update without validation
+Expected: 0.070 Actual: 0.064
+Stepsize OK!
+********** Iteration 206 ************
+Expected: 0.059 Actual: 0.060
+Stepsize OK!
+********** Iteration 207 ************
+Expected: 0.066 Actual: 0.062
+Stepsize OK!
+********** Iteration 208 ************
+Expected: 0.066 Actual: 0.062
+Stepsize OK!
+********** Iteration 209 ************
+Expected: 0.068 Actual: 0.070
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 7.04     |
+| EpisodesSoFar   | 430      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 961      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.934    |
+| meankl          | 0.00864  |
+| MeanRew         | 1.02e+03 |
+| optimgain       | 0.0704   |
+| SimRew-MeanRew  | 90.1     |
+| surrgain        | 0.0704   |
+| Time-MeanRew    | 0.00118  |
+| TimeElapsed     | 2.07e+03 |
+| TimestepsSoFar  | 4.3e+05  |
+------------------------------
+********** Iteration 210 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.010351169
+# batch per epoch 196
+Epoch 1 0.010332757
+# batch per epoch 196
+Epoch 2 0.010182834
+# batch per epoch 196
+Epoch 3 0.009942823
+# batch per epoch 196
+Epoch 4 0.009854568
+Update without validation
+Expected: 0.065 Actual: 0.064
+Stepsize OK!
+********** Iteration 211 ************
+Expected: 0.068 Actual: 0.058
+Stepsize OK!
+********** Iteration 212 ************
+Expected: 0.071 Actual: 0.064
+Stepsize OK!
+********** Iteration 213 ************
+Expected: 0.067 Actual: 0.058
+Stepsize OK!
+********** Iteration 214 ************
+Expected: 0.068 Actual: 0.066
+Stepsize OK!
+********** Iteration 215 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.011063466
+# batch per epoch 196
+Epoch 1 0.010431252
+# batch per epoch 196
+Epoch 2 0.0102948975
+# batch per epoch 196
+Epoch 3 0.009963855
+# batch per epoch 196
+Epoch 4 0.0098926155
+Update without validation
+Expected: 0.064 Actual: 0.065
+Stepsize OK!
+********** Iteration 216 ************
+Expected: 0.070 Actual: 0.065
+Stepsize OK!
+********** Iteration 217 ************
+Expected: 0.068 Actual: 0.070
+Stepsize OK!
+********** Iteration 218 ************
+Expected: 0.072 Actual: 0.076
+Stepsize OK!
+********** Iteration 219 ************
+Expected: 0.069 Actual: 0.066
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.99     |
+| EpisodesSoFar   | 450      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 959      |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.916    |
+| meankl          | 0.00915  |
+| MeanRew         | 1.06e+03 |
+| optimgain       | 0.0664   |
+| SimRew-MeanRew  | 84.8     |
+| surrgain        | 0.0664   |
+| Time-MeanRew    | 0.00122  |
+| TimeElapsed     | 2.18e+03 |
+| TimestepsSoFar  | 4.5e+05  |
+------------------------------
+********** Iteration 220 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.010296906
+# batch per epoch 196
+Epoch 1 0.009987543
+# batch per epoch 196
+Epoch 2 0.009825416
+# batch per epoch 196
+Epoch 3 0.009652312
+# batch per epoch 196
+Epoch 4 0.009582528
+Update without validation
+Expected: 0.077 Actual: 0.065
+Stepsize OK!
+********** Iteration 221 ************
+Expected: 0.071 Actual: 0.059
+Stepsize OK!
+********** Iteration 222 ************
+Expected: 0.065 Actual: 0.067
+Stepsize OK!
+********** Iteration 223 ************
+Expected: 0.086 Actual: 0.062
+Stepsize OK!
+********** Iteration 224 ************
+Expected: 0.069 Actual: 0.074
+Stepsize OK!
+********** Iteration 225 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.010117253
+# batch per epoch 196
+Epoch 1 0.009966882
+# batch per epoch 196
+Epoch 2 0.009921449
+# batch per epoch 196
+Epoch 3 0.009731312
+# batch per epoch 196
+Epoch 4 0.009501053
+Update without validation
+Expected: 0.064 Actual: 0.061
+Stepsize OK!
+********** Iteration 226 ************
+Expected: 0.066 Actual: 0.058
+Stepsize OK!
+********** Iteration 227 ************
+Expected: 0.072 Actual: 0.071
+Stepsize OK!
+********** Iteration 228 ************
+Expected: 0.066 Actual: 0.064
+Stepsize OK!
+********** Iteration 229 ************
+Expected: 0.069 Actual: 0.065
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.91     |
+| EpisodesSoFar   | 471      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 967      |
+| EpThisIter      | 3        |
+| ev_tdlam_before | 0.935    |
+| meankl          | 0.00881  |
+| MeanRew         | 1.04e+03 |
+| optimgain       | 0.0648   |
+| SimRew-MeanRew  | 90.5     |
+| surrgain        | 0.0648   |
+| Time-MeanRew    | 0.00115  |
+| TimeElapsed     | 2.28e+03 |
+| TimestepsSoFar  | 4.71e+05 |
+------------------------------
+********** Iteration 230 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0095765535
+# batch per epoch 196
+Epoch 1 0.009353775
+# batch per epoch 196
+Epoch 2 0.009088754
+# batch per epoch 196
+Epoch 3 0.00913728
+# batch per epoch 196
+Epoch 4 0.009015707
+Update without validation
+Expected: 0.066 Actual: 0.065
+Stepsize OK!
+********** Iteration 231 ************
+Expected: 0.063 Actual: 0.061
+Stepsize OK!
+********** Iteration 232 ************
+Expected: 0.076 Actual: 0.065
+Stepsize OK!
+********** Iteration 233 ************
+Expected: 0.067 Actual: 0.061
+Stepsize OK!
+********** Iteration 234 ************
+Expected: 0.070 Actual: 0.067
+Stepsize OK!
+********** Iteration 235 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.009446739
+# batch per epoch 196
+Epoch 1 0.0091859875
+# batch per epoch 196
+Epoch 2 0.009105028
+# batch per epoch 196
+Epoch 3 0.008971666
+# batch per epoch 196
+Epoch 4 0.00874853
+Update without validation
+Expected: 0.070 Actual: 0.076
+Stepsize OK!
+********** Iteration 236 ************
+Expected: 0.063 Actual: 0.066
+Stepsize OK!
+********** Iteration 237 ************
+Expected: 0.061 Actual: 0.062
+Stepsize OK!
+********** Iteration 238 ************
+Expected: 0.067 Actual: 0.065
+Stepsize OK!
+********** Iteration 239 ************
+Expected: 0.064 Actual: 0.061
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.81     |
+| EpisodesSoFar   | 491      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.04e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.932    |
+| meankl          | 0.00848  |
+| MeanRew         | 1.06e+03 |
+| optimgain       | 0.0608   |
+| SimRew-MeanRew  | 99.9     |
+| surrgain        | 0.0608   |
+| Time-MeanRew    | 0.00107  |
+| TimeElapsed     | 2.39e+03 |
+| TimestepsSoFar  | 4.91e+05 |
+------------------------------
+********** Iteration 240 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.009294106
+# batch per epoch 196
+Epoch 1 0.008907703
+# batch per epoch 196
+Epoch 2 0.008737609
+# batch per epoch 196
+Epoch 3 0.008758751
+# batch per epoch 196
+Epoch 4 0.008722683
+Update without validation
+Expected: 0.072 Actual: 0.063
+Stepsize OK!
+********** Iteration 241 ************
+Expected: 0.065 Actual: 0.058
+Stepsize OK!
+********** Iteration 242 ************
+Expected: 0.067 Actual: 0.071
+Stepsize OK!
+********** Iteration 243 ************
+Expected: 0.067 Actual: 0.068
+Stepsize OK!
+********** Iteration 244 ************
+Expected: 0.067 Actual: 0.065
+Stepsize OK!
+********** Iteration 245 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.009299682
+# batch per epoch 196
+Epoch 1 0.008875202
+# batch per epoch 196
+Epoch 2 0.008727433
+# batch per epoch 196
+Epoch 3 0.0086516375
+# batch per epoch 196
+Epoch 4 0.008562113
+Update without validation
+Expected: 0.074 Actual: 0.087
+Stepsize OK!
+********** Iteration 246 ************
+Expected: 0.067 Actual: 0.061
+Stepsize OK!
+********** Iteration 247 ************
+Expected: 0.066 Actual: 0.063
+Stepsize OK!
+********** Iteration 248 ************
+Expected: 0.063 Actual: 0.066
+Stepsize OK!
+********** Iteration 249 ************
+Expected: 0.068 Actual: 0.060
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.75     |
+| EpisodesSoFar   | 512      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.07e+03 |
+| EpThisIter      | 3        |
+| ev_tdlam_before | 0.874    |
+| meankl          | 0.00902  |
+| MeanRew         | 1.11e+03 |
+| optimgain       | 0.0601   |
+| SimRew-MeanRew  | 96.8     |
+| surrgain        | 0.0601   |
+| Time-MeanRew    | 0.00109  |
+| TimeElapsed     | 2.49e+03 |
+| TimestepsSoFar  | 5.12e+05 |
+------------------------------
+********** Iteration 250 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.009029825
+# batch per epoch 196
+Epoch 1 0.008786642
+# batch per epoch 196
+Epoch 2 0.00865552
+# batch per epoch 196
+Epoch 3 0.008731757
+# batch per epoch 196
+Epoch 4 0.008518382
+Update without validation
+Expected: 0.069 Actual: 0.065
+Stepsize OK!
+********** Iteration 251 ************
+Expected: 0.064 Actual: 0.063
+Stepsize OK!
+********** Iteration 252 ************
+Expected: 0.065 Actual: 0.066
+Stepsize OK!
+********** Iteration 253 ************
+Expected: 0.068 Actual: 0.068
+Stepsize OK!
+********** Iteration 254 ************
+Expected: 0.075 Actual: 0.063
+Stepsize OK!
+********** Iteration 255 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.00902362
+# batch per epoch 196
+Epoch 1 0.008914072
+# batch per epoch 196
+Epoch 2 0.008638188
+# batch per epoch 196
+Epoch 3 0.008469027
+# batch per epoch 196
+Epoch 4 0.00821182
+Update without validation
+Expected: 0.071 Actual: 0.062
+Stepsize OK!
+********** Iteration 256 ************
+Expected: 0.067 Actual: 0.065
+Stepsize OK!
+********** Iteration 257 ************
+Expected: 0.065 Actual: 0.064
+Stepsize OK!
+********** Iteration 258 ************
+Expected: 0.068 Actual: 0.063
+Stepsize OK!
+********** Iteration 259 ************
+Expected: 0.068 Actual: 0.065
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.73     |
+| EpisodesSoFar   | 532      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.1e+03  |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.94     |
+| meankl          | 0.00913  |
+| MeanRew         | 1.17e+03 |
+| optimgain       | 0.065    |
+| SimRew-MeanRew  | 95       |
+| surrgain        | 0.065    |
+| Time-MeanRew    | 0.00112  |
+| TimeElapsed     | 2.6e+03  |
+| TimestepsSoFar  | 5.32e+05 |
+------------------------------
+********** Iteration 260 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008807304
+# batch per epoch 196
+Epoch 1 0.008492819
+# batch per epoch 196
+Epoch 2 0.008398093
+# batch per epoch 196
+Epoch 3 0.008333465
+# batch per epoch 196
+Epoch 4 0.00814
+Update without validation
+Expected: 0.069 Actual: 0.076
+Stepsize OK!
+********** Iteration 261 ************
+Expected: 0.066 Actual: 0.068
+Stepsize OK!
+********** Iteration 262 ************
+Expected: 0.077 Actual: 0.067
+Stepsize OK!
+********** Iteration 263 ************
+Expected: 0.071 Actual: 0.067
+Stepsize OK!
+********** Iteration 264 ************
+Expected: 0.072 Actual: 0.075
+Stepsize OK!
+********** Iteration 265 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0084643755
+# batch per epoch 196
+Epoch 1 0.008443999
+# batch per epoch 196
+Epoch 2 0.008105245
+# batch per epoch 196
+Epoch 3 0.008069921
+# batch per epoch 196
+Epoch 4 0.007887543
+Update without validation
+Expected: 0.064 Actual: 0.056
+Stepsize OK!
+********** Iteration 266 ************
+Expected: 0.065 Actual: 0.066
+Stepsize OK!
+********** Iteration 267 ************
+Expected: 0.065 Actual: 0.066
+Stepsize OK!
+********** Iteration 268 ************
+Expected: 0.072 Actual: 0.064
+Stepsize OK!
+********** Iteration 269 ************
+Expected: 0.073 Actual: 0.079
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.65     |
+| EpisodesSoFar   | 552      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.12e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.955    |
+| meankl          | 0.00879  |
+| MeanRew         | 1.14e+03 |
+| optimgain       | 0.0795   |
+| SimRew-MeanRew  | 104      |
+| surrgain        | 0.0795   |
+| Time-MeanRew    | 0.00103  |
+| TimeElapsed     | 2.71e+03 |
+| TimestepsSoFar  | 5.52e+05 |
+------------------------------
+********** Iteration 270 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008610153
+# batch per epoch 196
+Epoch 1 0.008295847
+# batch per epoch 196
+Epoch 2 0.008166435
+# batch per epoch 196
+Epoch 3 0.008178791
+# batch per epoch 196
+Epoch 4 0.007934948
+Update without validation
+Expected: 0.068 Actual: 0.060
+Stepsize OK!
+********** Iteration 271 ************
+Expected: 0.066 Actual: 0.069
+Stepsize OK!
+********** Iteration 272 ************
+Expected: 0.067 Actual: 0.070
+Stepsize OK!
+********** Iteration 273 ************
+Expected: 0.069 Actual: 0.059
+Stepsize OK!
+********** Iteration 274 ************
+Expected: 0.068 Actual: 0.078
+Stepsize OK!
+********** Iteration 275 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008353718
+# batch per epoch 196
+Epoch 1 0.008263752
+# batch per epoch 196
+Epoch 2 0.008099247
+# batch per epoch 196
+Epoch 3 0.008037294
+# batch per epoch 196
+Epoch 4 0.008037083
+Update without validation
+Expected: 0.072 Actual: 0.071
+Stepsize OK!
+********** Iteration 276 ************
+Expected: 0.067 Actual: 0.058
+Stepsize OK!
+********** Iteration 277 ************
+Expected: 0.061 Actual: 0.063
+Stepsize OK!
+********** Iteration 278 ************
+Expected: 0.065 Actual: 0.061
+Stepsize OK!
+********** Iteration 279 ************
+Expected: 0.079 Actual: 0.073
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.62     |
+| EpisodesSoFar   | 573      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.15e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.957    |
+| meankl          | 0.00972  |
+| MeanRew         | 1.07e+03 |
+| optimgain       | 0.0728   |
+| SimRew-MeanRew  | 110      |
+| surrgain        | 0.0728   |
+| Time-MeanRew    | 0.00124  |
+| TimeElapsed     | 2.81e+03 |
+| TimestepsSoFar  | 5.73e+05 |
+------------------------------
+********** Iteration 280 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008358634
+# batch per epoch 196
+Epoch 1 0.008141603
+# batch per epoch 196
+Epoch 2 0.007996285
+# batch per epoch 196
+Epoch 3 0.007822371
+# batch per epoch 196
+Epoch 4 0.007786358
+Update without validation
+Expected: 0.067 Actual: 0.066
+Stepsize OK!
+********** Iteration 281 ************
+Expected: 0.074 Actual: 0.068
+Stepsize OK!
+********** Iteration 282 ************
+Expected: 0.060 Actual: 0.062
+Stepsize OK!
+********** Iteration 283 ************
+Expected: 0.066 Actual: 0.065
+Stepsize OK!
+********** Iteration 284 ************
+Expected: 0.071 Actual: 0.075
+Stepsize OK!
+********** Iteration 285 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008410174
+# batch per epoch 196
+Epoch 1 0.008210145
+# batch per epoch 196
+Epoch 2 0.007866964
+# batch per epoch 196
+Epoch 3 0.007910417
+# batch per epoch 196
+Epoch 4 0.007955144
+Update without validation
+Expected: 0.069 Actual: 0.065
+Stepsize OK!
+********** Iteration 286 ************
+Expected: 0.064 Actual: 0.064
+Stepsize OK!
+********** Iteration 287 ************
+Expected: 0.060 Actual: 0.058
+Stepsize OK!
+********** Iteration 288 ************
+Expected: 0.072 Actual: 0.064
+Stepsize OK!
+********** Iteration 289 ************
+Expected: 0.073 Actual: 0.087
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.58     |
+| EpisodesSoFar   | 593      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.19e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.904    |
+| meankl          | 0.00846  |
+| MeanRew         | 1.18e+03 |
+| optimgain       | 0.0869   |
+| SimRew-MeanRew  | 114      |
+| surrgain        | 0.0869   |
+| Time-MeanRew    | 0.00135  |
+| TimeElapsed     | 2.91e+03 |
+| TimestepsSoFar  | 5.93e+05 |
+------------------------------
+********** Iteration 290 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008219814
+# batch per epoch 196
+Epoch 1 0.008092476
+# batch per epoch 196
+Epoch 2 0.0078499075
+# batch per epoch 196
+Epoch 3 0.007726954
+# batch per epoch 196
+Epoch 4 0.007607758
+Update without validation
+Expected: 0.067 Actual: 0.075
+Stepsize OK!
+********** Iteration 291 ************
+Expected: 0.067 Actual: 0.064
+Stepsize OK!
+********** Iteration 292 ************
+Expected: 0.058 Actual: 0.059
+Stepsize OK!
+********** Iteration 293 ************
+Expected: 0.063 Actual: 0.057
+Stepsize OK!
+********** Iteration 294 ************
+Expected: 0.064 Actual: 0.059
+Stepsize OK!
+********** Iteration 295 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008166565
+# batch per epoch 196
+Epoch 1 0.008078781
+# batch per epoch 196
+Epoch 2 0.007899401
+# batch per epoch 196
+Epoch 3 0.007875812
+# batch per epoch 196
+Epoch 4 0.007781523
+Update without validation
+Expected: 0.077 Actual: 0.069
+Stepsize OK!
+********** Iteration 296 ************
+Expected: 0.077 Actual: 0.128
+Stepsize OK!
+********** Iteration 297 ************
+Expected: 0.065 Actual: 0.064
+Stepsize OK!
+********** Iteration 298 ************
+Expected: 0.063 Actual: 0.063
+Stepsize OK!
+********** Iteration 299 ************
+Expected: 0.076 Actual: 0.066
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.58     |
+| EpisodesSoFar   | 614      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.22e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.945    |
+| meankl          | 0.00995  |
+| MeanRew         | 1.25e+03 |
+| optimgain       | 0.0659   |
+| SimRew-MeanRew  | 112      |
+| surrgain        | 0.0659   |
+| Time-MeanRew    | 0.00129  |
+| TimeElapsed     | 3.02e+03 |
+| TimestepsSoFar  | 6.14e+05 |
+------------------------------
+********** Iteration 300 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008353636
+# batch per epoch 196
+Epoch 1 0.008091335
+# batch per epoch 196
+Epoch 2 0.007921526
+# batch per epoch 196
+Epoch 3 0.0076484685
+# batch per epoch 196
+Epoch 4 0.0076770904
+Update without validation
+Expected: 0.060 Actual: 0.055
+Stepsize OK!
+********** Iteration 301 ************
+Expected: 0.087 Actual: 0.067
+Stepsize OK!
+********** Iteration 302 ************
+Expected: 0.068 Actual: 0.075
+Stepsize OK!
+********** Iteration 303 ************
+Expected: 0.073 Actual: 0.063
+Stepsize OK!
+********** Iteration 304 ************
+Expected: 0.071 Actual: 0.073
+Stepsize OK!
+********** Iteration 305 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008300539
+# batch per epoch 196
+Epoch 1 0.00800377
+# batch per epoch 196
+Epoch 2 0.007776662
+# batch per epoch 196
+Epoch 3 0.007721794
+# batch per epoch 196
+Epoch 4 0.007787376
+Update without validation
+Expected: 0.064 Actual: 0.057
+Stepsize OK!
+********** Iteration 306 ************
+Expected: 0.065 Actual: 0.071
+Stepsize OK!
+********** Iteration 307 ************
+Expected: 0.061 Actual: 0.060
+Stepsize OK!
+********** Iteration 308 ************
+Expected: 0.081 Actual: 0.070
+Stepsize OK!
+********** Iteration 309 ************
+Expected: 0.083 Actual: 0.074
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.56     |
+| EpisodesSoFar   | 634      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.23e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.891    |
+| meankl          | 0.00976  |
+| MeanRew         | 1.29e+03 |
+| optimgain       | 0.0739   |
+| SimRew-MeanRew  | 108      |
+| surrgain        | 0.0739   |
+| Time-MeanRew    | 0.00112  |
+| TimeElapsed     | 3.13e+03 |
+| TimestepsSoFar  | 6.34e+05 |
+------------------------------
+********** Iteration 310 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008263038
+# batch per epoch 196
+Epoch 1 0.007869075
+# batch per epoch 196
+Epoch 2 0.0078339195
+# batch per epoch 196
+Epoch 3 0.0076384153
+# batch per epoch 196
+Epoch 4 0.007428398
+Update without validation
+Expected: 0.068 Actual: 0.065
+Stepsize OK!
+********** Iteration 311 ************
+Expected: 0.063 Actual: 0.058
+Stepsize OK!
+********** Iteration 312 ************
+Expected: 0.069 Actual: 0.072
+Stepsize OK!
+********** Iteration 313 ************
+Expected: 0.064 Actual: 0.066
+Stepsize OK!
+********** Iteration 314 ************
+Expected: 0.070 Actual: 0.074
+Stepsize OK!
+********** Iteration 315 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008063357
+# batch per epoch 196
+Epoch 1 0.007945594
+# batch per epoch 196
+Epoch 2 0.00763282
+# batch per epoch 196
+Epoch 3 0.00764161
+# batch per epoch 196
+Epoch 4 0.0076810066
+Update without validation
+Expected: 0.068 Actual: 0.065
+Stepsize OK!
+********** Iteration 316 ************
+Expected: 0.070 Actual: 0.068
+Stepsize OK!
+********** Iteration 317 ************
+Expected: 0.071 Actual: 0.070
+Stepsize OK!
+********** Iteration 318 ************
+Expected: 0.069 Actual: 0.071
+Stepsize OK!
+********** Iteration 319 ************
+Expected: 0.073 Actual: 0.074
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.52     |
+| EpisodesSoFar   | 655      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.24e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.963    |
+| meankl          | 0.00923  |
+| MeanRew         | 1.26e+03 |
+| optimgain       | 0.0745   |
+| SimRew-MeanRew  | 115      |
+| surrgain        | 0.0745   |
+| Time-MeanRew    | 0.00134  |
+| TimeElapsed     | 3.24e+03 |
+| TimestepsSoFar  | 6.55e+05 |
+------------------------------
+********** Iteration 320 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008174715
+# batch per epoch 196
+Epoch 1 0.007617033
+# batch per epoch 196
+Epoch 2 0.007806868
+# batch per epoch 196
+Epoch 3 0.00746574
+# batch per epoch 196
+Epoch 4 0.0073483414
+Update without validation
+Expected: 0.068 Actual: 0.074
+Stepsize OK!
+********** Iteration 321 ************
+Expected: 0.077 Actual: 0.068
+Stepsize OK!
+********** Iteration 322 ************
+Expected: 0.070 Actual: 0.062
+Stepsize OK!
+********** Iteration 323 ************
+Expected: 0.086 Actual: 0.114
+Stepsize OK!
+********** Iteration 324 ************
+Expected: 0.072 Actual: 0.078
+Stepsize OK!
+********** Iteration 325 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008173806
+# batch per epoch 196
+Epoch 1 0.008050354
+# batch per epoch 196
+Epoch 2 0.007898951
+# batch per epoch 196
+Epoch 3 0.0076076924
+# batch per epoch 196
+Epoch 4 0.0076861964
+Update without validation
+Expected: 0.070 Actual: 0.069
+Stepsize OK!
+********** Iteration 326 ************
+Expected: 0.067 Actual: 0.059
+Stepsize OK!
+********** Iteration 327 ************
+Expected: 0.063 Actual: 0.064
+Stepsize OK!
+********** Iteration 328 ************
+Expected: 0.073 Actual: 0.075
+Stepsize OK!
+********** Iteration 329 ************
+Expected: 0.060 Actual: 0.055
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.46     |
+| EpisodesSoFar   | 675      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.26e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.835    |
+| meankl          | 0.00866  |
+| MeanRew         | 1.29e+03 |
+| optimgain       | 0.0554   |
+| SimRew-MeanRew  | 115      |
+| surrgain        | 0.0554   |
+| Time-MeanRew    | 0.00118  |
+| TimeElapsed     | 3.35e+03 |
+| TimestepsSoFar  | 6.75e+05 |
+------------------------------
+********** Iteration 330 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.00791416
+# batch per epoch 196
+Epoch 1 0.0076720673
+# batch per epoch 196
+Epoch 2 0.007926161
+# batch per epoch 196
+Epoch 3 0.007398413
+# batch per epoch 196
+Epoch 4 0.0073385946
+Update without validation
+Expected: 0.065 Actual: 0.059
+Stepsize OK!
+********** Iteration 331 ************
+Expected: 0.068 Actual: 0.069
+Stepsize OK!
+********** Iteration 332 ************
+Expected: 0.068 Actual: 0.067
+Stepsize OK!
+********** Iteration 333 ************
+Expected: 0.073 Actual: 0.088
+Stepsize OK!
+********** Iteration 334 ************
+Expected: 0.073 Actual: 0.074
+Stepsize OK!
+********** Iteration 335 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007941545
+# batch per epoch 196
+Epoch 1 0.0077214246
+# batch per epoch 196
+Epoch 2 0.007624612
+# batch per epoch 196
+Epoch 3 0.007507592
+# batch per epoch 196
+Epoch 4 0.0075022057
+Update without validation
+Expected: 0.067 Actual: 0.064
+Stepsize OK!
+********** Iteration 336 ************
+Expected: 0.066 Actual: 0.059
+Stepsize OK!
+********** Iteration 337 ************
+Expected: 0.068 Actual: 0.067
+Stepsize OK!
+********** Iteration 338 ************
+Expected: 0.067 Actual: 0.069
+Stepsize OK!
+********** Iteration 339 ************
+Expected: 0.078 Actual: 0.062
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.41     |
+| EpisodesSoFar   | 696      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.29e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.842    |
+| meankl          | 0.00974  |
+| MeanRew         | 1.35e+03 |
+| optimgain       | 0.0616   |
+| SimRew-MeanRew  | 119      |
+| surrgain        | 0.0616   |
+| Time-MeanRew    | 0.0014   |
+| TimeElapsed     | 3.45e+03 |
+| TimestepsSoFar  | 6.96e+05 |
+------------------------------
+********** Iteration 340 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007936365
+# batch per epoch 196
+Epoch 1 0.007879853
+# batch per epoch 196
+Epoch 2 0.007932441
+# batch per epoch 196
+Epoch 3 0.007429623
+# batch per epoch 196
+Epoch 4 0.0074305134
+Update without validation
+Expected: 0.075 Actual: 0.080
+Stepsize OK!
+********** Iteration 341 ************
+Expected: 0.086 Actual: 0.072
+Stepsize OK!
+********** Iteration 342 ************
+Expected: 0.066 Actual: 0.061
+Stepsize OK!
+********** Iteration 343 ************
+Expected: 0.078 Actual: 0.064
+Stepsize OK!
+********** Iteration 344 ************
+Expected: 0.071 Actual: 0.074
+Stepsize OK!
+********** Iteration 345 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008175282
+# batch per epoch 196
+Epoch 1 0.007962983
+# batch per epoch 196
+Epoch 2 0.007801821
+# batch per epoch 196
+Epoch 3 0.0076745506
+# batch per epoch 196
+Epoch 4 0.007329625
+Update without validation
+Expected: 0.073 Actual: 0.066
+Stepsize OK!
+********** Iteration 346 ************
+Expected: 0.073 Actual: 0.067
+Stepsize OK!
+********** Iteration 347 ************
+Expected: 0.078 Actual: 0.080
+Stepsize OK!
+********** Iteration 348 ************
+Expected: 0.067 Actual: 0.069
+Stepsize OK!
+********** Iteration 349 ************
+Expected: 0.076 Actual: 0.086
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.36     |
+| EpisodesSoFar   | 716      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.29e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.964    |
+| meankl          | 0.0092   |
+| MeanRew         | 1.26e+03 |
+| optimgain       | 0.0862   |
+| SimRew-MeanRew  | 124      |
+| surrgain        | 0.0862   |
+| Time-MeanRew    | 0.00131  |
+| TimeElapsed     | 3.56e+03 |
+| TimestepsSoFar  | 7.16e+05 |
+------------------------------
+********** Iteration 350 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008023732
+# batch per epoch 196
+Epoch 1 0.007842477
+# batch per epoch 196
+Epoch 2 0.007778447
+# batch per epoch 196
+Epoch 3 0.0074236975
+# batch per epoch 196
+Epoch 4 0.007344775
+Update without validation
+Expected: 0.083 Actual: 0.075
+Stepsize OK!
+********** Iteration 351 ************
+Expected: 0.064 Actual: 0.065
+Stepsize OK!
+********** Iteration 352 ************
+Expected: 0.076 Actual: 0.070
+Stepsize OK!
+********** Iteration 353 ************
+Expected: 0.067 Actual: 0.060
+Stepsize OK!
+********** Iteration 354 ************
+Expected: 0.071 Actual: 0.077
+Stepsize OK!
+********** Iteration 355 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.00805376
+# batch per epoch 196
+Epoch 1 0.0078087444
+# batch per epoch 196
+Epoch 2 0.0077598607
+# batch per epoch 196
+Epoch 3 0.0076067997
+# batch per epoch 196
+Epoch 4 0.0074034967
+Update without validation
+Expected: 0.066 Actual: 0.065
+Stepsize OK!
+********** Iteration 356 ************
+Expected: 0.068 Actual: 0.064
+Stepsize OK!
+********** Iteration 357 ************
+Expected: 0.079 Actual: 0.067
+Stepsize OK!
+********** Iteration 358 ************
+Expected: 0.072 Actual: 0.072
+Stepsize OK!
+********** Iteration 359 ************
+Expected: 0.067 Actual: 0.070
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.3      |
+| EpisodesSoFar   | 737      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.31e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.938    |
+| meankl          | 0.00964  |
+| MeanRew         | 1.37e+03 |
+| optimgain       | 0.0703   |
+| SimRew-MeanRew  | 125      |
+| surrgain        | 0.0703   |
+| Time-MeanRew    | 0.00124  |
+| TimeElapsed     | 3.66e+03 |
+| TimestepsSoFar  | 7.37e+05 |
+------------------------------
+********** Iteration 360 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007984261
+# batch per epoch 196
+Epoch 1 0.007883651
+# batch per epoch 196
+Epoch 2 0.007727854
+# batch per epoch 196
+Epoch 3 0.0075198608
+# batch per epoch 196
+Epoch 4 0.0074770525
+Update without validation
+Expected: 0.065 Actual: 0.071
+Stepsize OK!
+********** Iteration 361 ************
+Expected: 0.065 Actual: 0.062
+Stepsize OK!
+********** Iteration 362 ************
+Expected: 0.070 Actual: 0.058
+Stepsize OK!
+********** Iteration 363 ************
+Expected: 0.073 Actual: 0.076
+Stepsize OK!
+********** Iteration 364 ************
+Expected: 0.064 Actual: 0.072
+Stepsize OK!
+********** Iteration 365 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0079564145
+# batch per epoch 196
+Epoch 1 0.007764912
+# batch per epoch 196
+Epoch 2 0.007629422
+# batch per epoch 196
+Epoch 3 0.007555041
+# batch per epoch 196
+Epoch 4 0.0071771727
+Update without validation
+Expected: 0.073 Actual: 0.071
+Stepsize OK!
+********** Iteration 366 ************
+Expected: 0.076 Actual: 0.071
+Stepsize OK!
+********** Iteration 367 ************
+Expected: 0.069 Actual: 0.066
+Stepsize OK!
+********** Iteration 368 ************
+Expected: 0.074 Actual: 0.063
+Stepsize OK!
+********** Iteration 369 ************
+Expected: 0.079 Actual: 0.150
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.25     |
+| EpisodesSoFar   | 757      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.34e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.911    |
+| meankl          | 0.0105   |
+| MeanRew         | 1.37e+03 |
+| optimgain       | 0.15     |
+| SimRew-MeanRew  | 121      |
+| surrgain        | 0.15     |
+| Time-MeanRew    | 0.00123  |
+| TimeElapsed     | 3.77e+03 |
+| TimestepsSoFar  | 7.57e+05 |
+------------------------------
+********** Iteration 370 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007966125
+# batch per epoch 196
+Epoch 1 0.0077857915
+# batch per epoch 196
+Epoch 2 0.0075052097
+# batch per epoch 196
+Epoch 3 0.007386802
+# batch per epoch 196
+Epoch 4 0.0073474282
+Update without validation
+Expected: 0.069 Actual: 0.072
+Stepsize OK!
+********** Iteration 371 ************
+Expected: 0.069 Actual: 0.061
+Stepsize OK!
+********** Iteration 372 ************
+Expected: 0.074 Actual: 0.071
+Stepsize OK!
+********** Iteration 373 ************
+Expected: 0.069 Actual: 0.061
+Stepsize OK!
+********** Iteration 374 ************
+Expected: 0.068 Actual: 0.073
+Stepsize OK!
+********** Iteration 375 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008159744
+# batch per epoch 196
+Epoch 1 0.0077039744
+# batch per epoch 196
+Epoch 2 0.007529827
+# batch per epoch 196
+Epoch 3 0.007473868
+# batch per epoch 196
+Epoch 4 0.007202942
+Update without validation
+Expected: 0.080 Actual: 0.067
+Stepsize OK!
+********** Iteration 376 ************
+Expected: 0.066 Actual: 0.067
+Stepsize OK!
+********** Iteration 377 ************
+Expected: 0.066 Actual: 0.068
+Stepsize OK!
+********** Iteration 378 ************
+Expected: 0.064 Actual: 0.065
+Stepsize OK!
+********** Iteration 379 ************
+Expected: 0.069 Actual: 0.060
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.2      |
+| EpisodesSoFar   | 778      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.35e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.915    |
+| meankl          | 0.00905  |
+| MeanRew         | 1.38e+03 |
+| optimgain       | 0.06     |
+| SimRew-MeanRew  | 124      |
+| surrgain        | 0.06     |
+| Time-MeanRew    | 0.00114  |
+| TimeElapsed     | 3.87e+03 |
+| TimestepsSoFar  | 7.78e+05 |
+------------------------------
+********** Iteration 380 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007813708
+# batch per epoch 196
+Epoch 1 0.0076364167
+# batch per epoch 196
+Epoch 2 0.0075901356
+# batch per epoch 196
+Epoch 3 0.007274537
+# batch per epoch 196
+Epoch 4 0.007206523
+Update without validation
+Expected: 0.072 Actual: 0.066
+Stepsize OK!
+********** Iteration 381 ************
+Expected: 0.069 Actual: 0.066
+Stepsize OK!
+********** Iteration 382 ************
+Expected: 0.071 Actual: 0.073
+Stepsize OK!
+********** Iteration 383 ************
+Expected: 0.070 Actual: 0.068
+Stepsize OK!
+********** Iteration 384 ************
+Expected: 0.062 Actual: 0.065
+Stepsize OK!
+********** Iteration 385 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007926579
+# batch per epoch 196
+Epoch 1 0.0076406305
+# batch per epoch 196
+Epoch 2 0.007445069
+# batch per epoch 196
+Epoch 3 0.007279329
+# batch per epoch 196
+Epoch 4 0.007048843
+Update without validation
+Expected: 0.065 Actual: 0.062
+Stepsize OK!
+********** Iteration 386 ************
+Expected: 0.074 Actual: 0.058
+Stepsize OK!
+********** Iteration 387 ************
+Expected: 0.069 Actual: 0.065
+Stepsize OK!
+********** Iteration 388 ************
+Expected: 0.069 Actual: 0.068
+Stepsize OK!
+********** Iteration 389 ************
+Expected: 0.083 Actual: 0.060
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.14     |
+| EpisodesSoFar   | 798      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.37e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.886    |
+| meankl          | 0.011    |
+| MeanRew         | 1.45e+03 |
+| optimgain       | 0.0596   |
+| SimRew-MeanRew  | 122      |
+| surrgain        | 0.0596   |
+| Time-MeanRew    | 0.00118  |
+| TimeElapsed     | 3.97e+03 |
+| TimestepsSoFar  | 7.98e+05 |
+------------------------------
+********** Iteration 390 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007610998
+# batch per epoch 196
+Epoch 1 0.007536083
+# batch per epoch 196
+Epoch 2 0.0072600427
+# batch per epoch 196
+Epoch 3 0.0072094016
+# batch per epoch 196
+Epoch 4 0.00701293
+Update without validation
+Expected: 0.066 Actual: 0.067
+Stepsize OK!
+********** Iteration 391 ************
+Expected: 0.070 Actual: 0.066
+Stepsize OK!
+********** Iteration 392 ************
+Expected: 0.070 Actual: 0.089
+Stepsize OK!
+********** Iteration 393 ************
+Expected: 0.075 Actual: 0.071
+Stepsize OK!
+********** Iteration 394 ************
+Expected: 0.076 Actual: 0.067
+Stepsize OK!
+********** Iteration 395 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.013104078
+# batch per epoch 196
+Epoch 1 0.0078585595
+# batch per epoch 196
+Epoch 2 0.007962496
+# batch per epoch 196
+Epoch 3 0.0074617155
+# batch per epoch 196
+Epoch 4 0.007057733
+Update without validation
+Expected: 0.065 Actual: 0.060
+Stepsize OK!
+********** Iteration 396 ************
+Expected: 0.064 Actual: 0.065
+Stepsize OK!
+********** Iteration 397 ************
+Expected: 0.073 Actual: 0.092
+Stepsize OK!
+********** Iteration 398 ************
+Expected: 0.077 Actual: 0.071
+Stepsize OK!
+********** Iteration 399 ************
+Expected: 0.065 Actual: 0.070
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 6.09     |
+| EpisodesSoFar   | 819      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.4e+03  |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.959    |
+| meankl          | 0.0104   |
+| MeanRew         | 1.43e+03 |
+| optimgain       | 0.07     |
+| SimRew-MeanRew  | 133      |
+| surrgain        | 0.07     |
+| Time-MeanRew    | 0.0012   |
+| TimeElapsed     | 4.08e+03 |
+| TimestepsSoFar  | 8.19e+05 |
+------------------------------
+********** Iteration 400 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007841965
+# batch per epoch 196
+Epoch 1 0.007843607
+# batch per epoch 196
+Epoch 2 0.008058149
+# batch per epoch 196
+Epoch 3 0.00776132
+# batch per epoch 196
+Epoch 4 0.008010193
+Update without validation
+Expected: 0.075 Actual: 0.076
+Stepsize OK!
+********** Iteration 401 ************
+Expected: 0.074 Actual: 0.073
+Stepsize OK!
+********** Iteration 402 ************
+Expected: 0.070 Actual: 0.067
+Stepsize OK!
+********** Iteration 403 ************
+Expected: 0.067 Actual: 0.064
+Stepsize OK!
+********** Iteration 404 ************
+Expected: 0.058 Actual: 0.058
+Stepsize OK!
+********** Iteration 405 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.009174491
+# batch per epoch 196
+Epoch 1 0.007908261
+# batch per epoch 196
+Epoch 2 0.007656216
+# batch per epoch 196
+Epoch 3 0.0074312263
+# batch per epoch 196
+Epoch 4 0.0072026397
+Update without validation
+Expected: 0.069 Actual: 0.066
+Stepsize OK!
+********** Iteration 406 ************
+Expected: 0.063 Actual: 0.062
+Stepsize OK!
+********** Iteration 407 ************
+Expected: 0.073 Actual: 0.073
+Stepsize OK!
+********** Iteration 408 ************
+Expected: 0.069 Actual: 0.069
+Stepsize OK!
+********** Iteration 409 ************
+Expected: 0.067 Actual: 0.069
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.98     |
+| EpisodesSoFar   | 839      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.41e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.964    |
+| meankl          | 0.0108   |
+| MeanRew         | 1.46e+03 |
+| optimgain       | 0.0685   |
+| SimRew-MeanRew  | 131      |
+| surrgain        | 0.0685   |
+| Time-MeanRew    | 0.00112  |
+| TimeElapsed     | 4.18e+03 |
+| TimestepsSoFar  | 8.39e+05 |
+------------------------------
+********** Iteration 410 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008045238
+# batch per epoch 196
+Epoch 1 0.0077860574
+# batch per epoch 196
+Epoch 2 0.007646805
+# batch per epoch 196
+Epoch 3 0.0073321764
+# batch per epoch 196
+Epoch 4 0.0074719703
+Update without validation
+Expected: 0.074 Actual: 0.073
+Stepsize OK!
+********** Iteration 411 ************
+Expected: 0.066 Actual: 0.060
+Stepsize OK!
+********** Iteration 412 ************
+Expected: 0.067 Actual: 0.070
+Stepsize OK!
+********** Iteration 413 ************
+Expected: 0.067 Actual: 0.061
+Stepsize OK!
+********** Iteration 414 ************
+Expected: 0.066 Actual: 0.063
+Stepsize OK!
+********** Iteration 415 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008366102
+# batch per epoch 196
+Epoch 1 0.007919057
+# batch per epoch 196
+Epoch 2 0.007454699
+# batch per epoch 196
+Epoch 3 0.0076634847
+# batch per epoch 196
+Epoch 4 0.0071827504
+Update without validation
+Expected: 0.068 Actual: 0.072
+Stepsize OK!
+********** Iteration 416 ************
+Expected: 0.065 Actual: 0.062
+Stepsize OK!
+********** Iteration 417 ************
+Expected: 0.078 Actual: 0.067
+Stepsize OK!
+********** Iteration 418 ************
+Expected: 0.080 Actual: 0.101
+Stepsize OK!
+********** Iteration 419 ************
+Expected: 0.069 Actual: 0.062
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.88     |
+| EpisodesSoFar   | 860      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.43e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.974    |
+| meankl          | 0.00947  |
+| MeanRew         | 1.48e+03 |
+| optimgain       | 0.062    |
+| SimRew-MeanRew  | 131      |
+| surrgain        | 0.062    |
+| Time-MeanRew    | 0.00128  |
+| TimeElapsed     | 4.29e+03 |
+| TimestepsSoFar  | 8.6e+05  |
+------------------------------
+********** Iteration 420 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008038585
+# batch per epoch 196
+Epoch 1 0.007916265
+# batch per epoch 196
+Epoch 2 0.0077544097
+# batch per epoch 196
+Epoch 3 0.0075741215
+# batch per epoch 196
+Epoch 4 0.0076709706
+Update without validation
+Expected: 0.068 Actual: 0.073
+Stepsize OK!
+********** Iteration 421 ************
+Expected: 0.076 Actual: 0.072
+Stepsize OK!
+********** Iteration 422 ************
+Expected: 0.068 Actual: 0.070
+Stepsize OK!
+********** Iteration 423 ************
+Expected: 0.064 Actual: 0.064
+Stepsize OK!
+********** Iteration 424 ************
+Expected: 0.068 Actual: 0.063
+Stepsize OK!
+********** Iteration 425 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008489389
+# batch per epoch 196
+Epoch 1 0.0079308655
+# batch per epoch 196
+Epoch 2 0.007880508
+# batch per epoch 196
+Epoch 3 0.00761345
+# batch per epoch 196
+Epoch 4 0.007326497
+Update without validation
+Expected: 0.073 Actual: 0.067
+Stepsize OK!
+********** Iteration 426 ************
+Expected: 0.072 Actual: 0.065
+Stepsize OK!
+********** Iteration 427 ************
+Expected: 0.068 Actual: 0.062
+Stepsize OK!
+********** Iteration 428 ************
+Expected: 0.067 Actual: 0.066
+Stepsize OK!
+********** Iteration 429 ************
+Expected: 0.069 Actual: 0.073
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.84     |
+| EpisodesSoFar   | 880      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.47e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.939    |
+| meankl          | 0.0103   |
+| MeanRew         | 1.46e+03 |
+| optimgain       | 0.0733   |
+| SimRew-MeanRew  | 140      |
+| surrgain        | 0.0733   |
+| Time-MeanRew    | 0.00121  |
+| TimeElapsed     | 4.39e+03 |
+| TimestepsSoFar  | 8.8e+05  |
+------------------------------
+********** Iteration 430 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.008097186
+# batch per epoch 196
+Epoch 1 0.007969056
+# batch per epoch 196
+Epoch 2 0.007849806
+# batch per epoch 196
+Epoch 3 0.007830852
+# batch per epoch 196
+Epoch 4 0.007690889
+Update without validation
+Expected: 0.082 Actual: 0.071
+Stepsize OK!
+********** Iteration 431 ************
+Expected: 0.070 Actual: 0.058
+Stepsize OK!
+********** Iteration 432 ************
+Expected: 0.069 Actual: 0.078
+Stepsize OK!
+********** Iteration 433 ************
+Expected: 0.065 Actual: 0.060
+Stepsize OK!
+********** Iteration 434 ************
+Expected: 0.068 Actual: 0.058
+Stepsize OK!
+********** Iteration 435 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.00798565
+# batch per epoch 196
+Epoch 1 0.007977714
+# batch per epoch 196
+Epoch 2 0.0077690836
+# batch per epoch 196
+Epoch 3 0.007655543
+# batch per epoch 196
+Epoch 4 0.0073595964
+Update without validation
+Expected: 0.064 Actual: 0.063
+Stepsize OK!
+********** Iteration 436 ************
+Expected: 0.064 Actual: 0.064
+Stepsize OK!
+********** Iteration 437 ************
+Expected: 0.071 Actual: 0.064
+Stepsize OK!
+********** Iteration 438 ************
+Expected: 0.068 Actual: 0.074
+Stepsize OK!
+********** Iteration 439 ************
+Expected: 0.069 Actual: 0.060
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.74     |
+| EpisodesSoFar   | 901      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.5e+03  |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.923    |
+| meankl          | 0.0109   |
+| MeanRew         | 1.24e+03 |
+| optimgain       | 0.0601   |
+| SimRew-MeanRew  | 123      |
+| surrgain        | 0.0601   |
+| Time-MeanRew    | 0.00115  |
+| TimeElapsed     | 4.5e+03  |
+| TimestepsSoFar  | 9.01e+05 |
+------------------------------
+********** Iteration 440 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007945776
+# batch per epoch 196
+Epoch 1 0.007755726
+# batch per epoch 196
+Epoch 2 0.007542091
+# batch per epoch 196
+Epoch 3 0.007595426
+# batch per epoch 196
+Epoch 4 0.0072345003
+Update without validation
+Expected: 0.081 Actual: 0.069
+Stepsize OK!
+********** Iteration 441 ************
+Expected: 0.074 Actual: 0.099
+Stepsize OK!
+********** Iteration 442 ************
+Expected: 0.066 Actual: 0.066
+Stepsize OK!
+********** Iteration 443 ************
+Expected: 0.069 Actual: 0.124
+Stepsize OK!
+********** Iteration 444 ************
+Expected: 0.068 Actual: 0.066
+Stepsize OK!
+********** Iteration 445 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0075856205
+# batch per epoch 196
+Epoch 1 0.0075634285
+# batch per epoch 196
+Epoch 2 0.007264024
+# batch per epoch 196
+Epoch 3 0.00720209
+# batch per epoch 196
+Epoch 4 0.007083837
+Update without validation
+Expected: 0.069 Actual: 0.067
+Stepsize OK!
+********** Iteration 446 ************
+Expected: 0.072 Actual: 0.072
+Stepsize OK!
+********** Iteration 447 ************
+Expected: 0.069 Actual: 0.069
+Stepsize OK!
+********** Iteration 448 ************
+Expected: 0.065 Actual: 0.064
+Stepsize OK!
+********** Iteration 449 ************
+Expected: 0.068 Actual: 0.067
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.74     |
+| EpisodesSoFar   | 921      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.49e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.975    |
+| meankl          | 0.00918  |
+| MeanRew         | 1.51e+03 |
+| optimgain       | 0.0669   |
+| SimRew-MeanRew  | 137      |
+| surrgain        | 0.0669   |
+| Time-MeanRew    | 0.00135  |
+| TimeElapsed     | 4.61e+03 |
+| TimestepsSoFar  | 9.21e+05 |
+------------------------------
+********** Iteration 450 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007516985
+# batch per epoch 196
+Epoch 1 0.007506271
+# batch per epoch 196
+Epoch 2 0.0072361194
+# batch per epoch 196
+Epoch 3 0.007060608
+# batch per epoch 196
+Epoch 4 0.0070470497
+Update without validation
+Expected: 0.074 Actual: 0.070
+Stepsize OK!
+********** Iteration 451 ************
+Expected: 0.071 Actual: 0.071
+Stepsize OK!
+********** Iteration 452 ************
+Expected: 0.081 Actual: 0.068
+Stepsize OK!
+********** Iteration 453 ************
+Expected: 0.070 Actual: 0.071
+Stepsize OK!
+********** Iteration 454 ************
+Expected: 0.071 Actual: 0.079
+Stepsize OK!
+********** Iteration 455 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0073782764
+# batch per epoch 196
+Epoch 1 0.0071724653
+# batch per epoch 196
+Epoch 2 0.0069388323
+# batch per epoch 196
+Epoch 3 0.006946709
+# batch per epoch 196
+Epoch 4 0.006718665
+Update without validation
+Expected: 0.076 Actual: 0.065
+Stepsize OK!
+********** Iteration 456 ************
+Expected: 0.072 Actual: 0.069
+Stepsize OK!
+********** Iteration 457 ************
+Expected: 0.066 Actual: 0.069
+Stepsize OK!
+********** Iteration 458 ************
+Expected: 0.083 Actual: 0.069
+Stepsize OK!
+********** Iteration 459 ************
+Expected: 0.073 Actual: 0.089
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.68     |
+| EpisodesSoFar   | 942      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.5e+03  |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.94     |
+| meankl          | 0.0102   |
+| MeanRew         | 1.51e+03 |
+| optimgain       | 0.0894   |
+| SimRew-MeanRew  | 137      |
+| surrgain        | 0.0894   |
+| Time-MeanRew    | 0.00128  |
+| TimeElapsed     | 4.71e+03 |
+| TimestepsSoFar  | 9.42e+05 |
+------------------------------
+********** Iteration 460 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007678371
+# batch per epoch 196
+Epoch 1 0.007308104
+# batch per epoch 196
+Epoch 2 0.0071903747
+# batch per epoch 196
+Epoch 3 0.007183025
+# batch per epoch 196
+Epoch 4 0.0069160755
+Update without validation
+Expected: 0.073 Actual: 0.066
+Stepsize OK!
+********** Iteration 461 ************
+Expected: 0.075 Actual: 0.131
+Stepsize OK!
+********** Iteration 462 ************
+Expected: 0.067 Actual: 0.067
+Stepsize OK!
+********** Iteration 463 ************
+Expected: 0.074 Actual: 0.064
+Stepsize OK!
+********** Iteration 464 ************
+Expected: 0.066 Actual: 0.068
+Stepsize OK!
+********** Iteration 465 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.0074356575
+# batch per epoch 196
+Epoch 1 0.007372801
+# batch per epoch 196
+Epoch 2 0.0070840144
+# batch per epoch 196
+Epoch 3 0.0070456825
+# batch per epoch 196
+Epoch 4 0.0068774982
+Update without validation
+Expected: 0.064 Actual: 0.070
+Stepsize OK!
+********** Iteration 466 ************
+Expected: 0.091 Actual: 0.064
+Stepsize OK!
+********** Iteration 467 ************
+Expected: 0.066 Actual: 0.060
+Stepsize OK!
+********** Iteration 468 ************
+Expected: 0.072 Actual: 0.075
+Stepsize OK!
+********** Iteration 469 ************
+Expected: 0.073 Actual: 0.077
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.6      |
+| EpisodesSoFar   | 962      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.51e+03 |
+| EpThisIter      | 2        |
+| ev_tdlam_before | 0.966    |
+| meankl          | 0.0102   |
+| MeanRew         | 1.57e+03 |
+| optimgain       | 0.077    |
+| SimRew-MeanRew  | 138      |
+| surrgain        | 0.077    |
+| Time-MeanRew    | 0.00131  |
+| TimeElapsed     | 4.82e+03 |
+| TimestepsSoFar  | 9.62e+05 |
+------------------------------
+********** Iteration 470 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007677903
+# batch per epoch 196
+Epoch 1 0.0072955973
+# batch per epoch 196
+Epoch 2 0.007213095
+# batch per epoch 196
+Epoch 3 0.007068724
+# batch per epoch 196
+Epoch 4 0.007093054
+Update without validation
+Expected: 0.082 Actual: 0.092
+Stepsize OK!
+********** Iteration 471 ************
+Expected: 0.083 Actual: 0.068
+Stepsize OK!
+********** Iteration 472 ************
+Expected: 0.074 Actual: 0.067
+Stepsize OK!
+********** Iteration 473 ************
+Expected: 0.063 Actual: 0.064
+Stepsize OK!
+********** Iteration 474 ************
+Expected: 0.067 Actual: 0.067
+Stepsize OK!
+********** Iteration 475 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007579034
+# batch per epoch 196
+Epoch 1 0.0074645234
+# batch per epoch 196
+Epoch 2 0.007083333
+# batch per epoch 196
+Epoch 3 0.0071203774
+# batch per epoch 196
+Epoch 4 0.006970975
+Update without validation
+Expected: 0.072 Actual: 0.074
+Stepsize OK!
+********** Iteration 476 ************
+Expected: 0.065 Actual: 0.063
+Stepsize OK!
+********** Iteration 477 ************
+Expected: 0.068 Actual: 0.070
+Stepsize OK!
+********** Iteration 478 ************
+Expected: 0.068 Actual: 0.059
+Stepsize OK!
+********** Iteration 479 ************
+Expected: 0.082 Actual: 0.066
+Stepsize OK!
+------------------------------
+| entloss         | 0        |
+| entropy         | 5.55     |
+| EpisodesSoFar   | 983      |
+| EpLenMean       | 1e+03    |
+| EpRewMean       | 1.54e+03 |
+| EpThisIter      | 3        |
+| ev_tdlam_before | 0.923    |
+| meankl          | 0.0108   |
+| MeanRew         | 1.56e+03 |
+| optimgain       | 0.0659   |
+| SimRew-MeanRew  | 143      |
+| surrgain        | 0.0659   |
+| Time-MeanRew    | 0.0013   |
+| TimeElapsed     | 4.93e+03 |
+| TimestepsSoFar  | 9.83e+05 |
+------------------------------
+********** Iteration 480 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.00755181
+# batch per epoch 196
+Epoch 1 0.007369177
+# batch per epoch 196
+Epoch 2 0.0071812808
+# batch per epoch 196
+Epoch 3 0.0069405534
+# batch per epoch 196
+Epoch 4 0.006851307
+Update without validation
+Expected: 0.083 Actual: 0.073
+Stepsize OK!
+********** Iteration 481 ************
+Expected: 0.069 Actual: 0.068
+Stepsize OK!
+********** Iteration 482 ************
+Expected: 0.080 Actual: 0.069
+Stepsize OK!
+********** Iteration 483 ************
+Expected: 0.074 Actual: 0.070
+Stepsize OK!
+********** Iteration 484 ************
+Expected: 0.073 Actual: 0.083
+Stepsize OK!
+********** Iteration 485 ************
+Update train
+# batch per epoch 196
+Epoch 0 0.007398621
+# batch per epoch 196
+Epoch 1 0.0072229807
+# batch per epoch 196
+Epoch 2 0.0070731766
+# batch per epoch 196
+Epoch 3 0.0069430154
+# batch per epoch 196
+Epoch 4 0.006677182
+Update without validation
+Expected: 0.074 Actual: 0.091
+Stepsize OK!
+********** Iteration 486 ************
+Expected: 0.064 Actual: 0.070
+Stepsize OK!
+********** Iteration 487 ************
+Expected: 0.069 Actual: 0.068
+Stepsize OK!
+********** Iteration 488 ************
+Expected: 0.076 Actual: 0.071
+Stepsize OK!

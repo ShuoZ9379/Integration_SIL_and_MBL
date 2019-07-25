@@ -1,0 +1,3132 @@
+Logging to /home/zhang/Desktop/logs/EXP_OFF_V0/HalfCheetah-v2/mbl+ppo+sil-1
+{'network': <function mlp.<locals>.network_fn at 0x7f0828076510>, 'eval_env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f08492c9208>, 'env_id': 'HalfCheetah-v2', 'total_timesteps': 1000000, 'lr': 0.0003, 'gamma': 0.99, 'lam': 0.95, 'log_interval': 1, 'nminibatches': 32, 'noptepochs': 10, 'cliprange': 0.2, 'mbl_train_freq': 5, 'eval_freq': 10, 'eval_targs': ('mbmf',), 'quant': 2, 'num_samples': (1500,), 'horizon': (10,), 'num_elites': (10,), 'mbl_lamb': (1.0,), 'reset_per_step': (0,), 'num_fc': 2, 'num_fwd_hidden': 500, 'use_layer_norm': False, 'num_warm_start': 20000, 'init_epochs': 10, 'update_epochs': 5, 'batch_size': 512, 'update_with_validation': False, 'validation_set_path': 'dataset/HalfCheetah-v2-val.pkl', 'collect_val_data': False, 'traj_collect': 'mf', 'eval_val_err': False, 'save_interval': 0, 'load_path': None, 'model_fn': None, 'update_fn': None, 'init_fn': None, 'network_kwargs': {'value_network': 'copy', 'normalize_observations': True, 'normalize_obs': True}, 'adj_std_scale': 0.5, 'comm': None, 'ent_coef': 0.0, 'env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f082807fb70>, 'make_eval_env': <function train.<locals>.<lambda> at 0x7f0824049488>, 'max_grad_norm': 0.5, 'mbl_gamma': 0.99, 'mbl_sh': 1, 'measure_rew': True, 'measure_time': True, 'mpi_rank_weight': 1, 'nsteps': 2048, 'num_eval_episodes': 5, 'seed': 1, 'sil_alpha': 0.6, 'sil_beta': 0.1, 'sil_loss': 0.001, 'sil_update': 2.0, 'sil_value': 0.01, 'use_ent_adjust': 0, 'use_mean_elites': 1, 'vf_coef': 0.5, 'vis_eval': False}
+MBL_SH 1
+Traj_collect mf
+['mbmf']
+MBL args {'self': <mbl.mbl.MBL object at 0x7f07bc5d2b00>, 'env': <baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f08492c9208>, 'env_id': 'HalfCheetah-v2', 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f07cd34a400>, 'num_warm_start': 20000, 'init_epochs': 10, 'update_epochs': 5, 'batch_size': 512, 'forward_dynamic': None, 'kwargs': {'value_network': 'copy', 'normalize_observations': True, 'normalize_obs': True}}
+Forward dynamic args {'self': <mbl.dynamics.ForwardDynamic object at 0x7f07bc5d2860>, 'ob_space': Box(18,), 'ac_space': Box(6,), 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f07cd34a400>, 'normalize_obs': True, 'memory_size': 100000, 'scope': 'new_forward_dynamic', 'kwargs': {'value_network': 'copy', 'normalize_observations': True}}
+NN {'self': <mbl.model.NN object at 0x7f07bc5e2da0>, 'num_input': 24, 'num_output': 18, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f07cd34a400>, 'lr': 0.001, 'optimizer': <class 'tensorflow.python.training.adam.AdamOptimizer'>, 'kwargs': {'value_network': 'copy', 'normalize_observations': True}}
+Forward dynamic args {'self': <mbl.dynamics.ForwardDynamic object at 0x7f07bc40cd68>, 'ob_space': Box(18,), 'ac_space': Box(6,), 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f07cd34a400>, 'normalize_obs': True, 'memory_size': 100000, 'scope': 'old_forward_dynamic', 'kwargs': {'value_network': 'copy', 'normalize_observations': True}}
+NN {'self': <mbl.model.NN object at 0x7f07bc43b6a0>, 'num_input': 24, 'num_output': 18, 'make_model': <function get_make_mlp_model.<locals>._thunk at 0x7f07cd34a400>, 'lr': 0.001, 'optimizer': <class 'tensorflow.python.training.adam.AdamOptimizer'>, 'kwargs': {'value_network': 'copy', 'normalize_observations': True}}
+List of evaluation targets
+MeanRew
+Stepping environment...
+Warm start progress 0.10235
+Done.
+Stepping environment...
+Warm start progress 0.2047
+Done.
+Stepping environment...
+Warm start progress 0.30705
+Done.
+Stepping environment...
+Warm start progress 0.4094
+Done.
+Stepping environment...
+Warm start progress 0.51175
+Done.
+Stepping environment...
+Warm start progress 0.6141
+Done.
+Stepping environment...
+Warm start progress 0.71645
+Done.
+Stepping environment...
+Warm start progress 0.8188
+Done.
+Stepping environment...
+Warm start progress 0.92115
+Done.
+Stepping environment...
+Warm start progress 1.0235
+Init train
+# batch per epoch 40
+Epoch 0 0.38744527
+# batch per epoch 40
+Epoch 1 0.15583508
+# batch per epoch 40
+Epoch 2 0.13775942
+# batch per epoch 40
+Epoch 3 0.13083959
+# batch per epoch 40
+Epoch 4 0.12600505
+# batch per epoch 40
+Epoch 5 0.12125323
+# batch per epoch 40
+Epoch 6 0.11647026
+# batch per epoch 40
+Epoch 7 0.110703446
+# batch per epoch 40
+Epoch 8 0.10513459
+# batch per epoch 40
+Epoch 9 0.09887183
+Update without validation
+Done.
+--------------------------------------
+| AverageReturn           | 3.34     |
+| eplenmean               | 1e+03    |
+| eprewmean               | 3.34     |
+| fps                     | 213      |
+| loss/approxkl           | 0.0103   |
+| loss/clipfrac           | 0.156    |
+| loss/policy_entropy     | 8.32     |
+| loss/policy_loss        | -0.027   |
+| loss/value_loss         | 9.99     |
+| MeanRew                 | 38.6     |
+| misc/explained_variance | 0.22     |
+| misc/nupdates           | 10       |
+| misc/serial_timesteps   | 2.05e+04 |
+| misc/time_elapsed       | 32.6     |
+| misc/total_timesteps    | 2.05e+04 |
+| sil_samples             | 296      |
+| SimRew-MeanRew          | 12.4     |
+| Time-MeanRew            | 0.174    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 44
+Epoch 0 0.0941113
+# batch per epoch 44
+Epoch 1 0.087936684
+# batch per epoch 44
+Epoch 2 0.082880944
+# batch per epoch 44
+Epoch 3 0.077544846
+# batch per epoch 44
+Epoch 4 0.073082715
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 64
+Epoch 0 0.07273585
+# batch per epoch 64
+Epoch 1 0.06791033
+# batch per epoch 64
+Epoch 2 0.06550452
+# batch per epoch 64
+Epoch 3 0.06186551
+# batch per epoch 64
+Epoch 4 0.05884549
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 56.2     |
+| eplenmean               | 1e+03    |
+| eprewmean               | 56.2     |
+| fps                     | 893      |
+| loss/approxkl           | 0.00869  |
+| loss/clipfrac           | 0.119    |
+| loss/policy_entropy     | 7.96     |
+| loss/policy_loss        | -0.0257  |
+| loss/value_loss         | 9.06     |
+| MeanRew                 | 247      |
+| misc/explained_variance | 0.344    |
+| misc/nupdates           | 20       |
+| misc/serial_timesteps   | 4.1e+04  |
+| misc/time_elapsed       | 939      |
+| misc/total_timesteps    | 4.1e+04  |
+| sil_samples             | 347      |
+| SimRew-MeanRew          | 18.1     |
+| Time-MeanRew            | 0.174    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 84
+Epoch 0 0.05926301
+# batch per epoch 84
+Epoch 1 0.057473727
+# batch per epoch 84
+Epoch 2 0.05474065
+# batch per epoch 84
+Epoch 3 0.052722875
+# batch per epoch 84
+Epoch 4 0.05118679
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 104
+Epoch 0 0.05173495
+# batch per epoch 104
+Epoch 1 0.049581427
+# batch per epoch 104
+Epoch 2 0.048129346
+# batch per epoch 104
+Epoch 3 0.047091816
+# batch per epoch 104
+Epoch 4 0.04595907
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 148      |
+| eplenmean               | 1e+03    |
+| eprewmean               | 148      |
+| fps                     | 751      |
+| loss/approxkl           | 0.0112   |
+| loss/clipfrac           | 0.165    |
+| loss/policy_entropy     | 7.75     |
+| loss/policy_loss        | -0.0317  |
+| loss/value_loss         | 10.3     |
+| MeanRew                 | 3.35     |
+| misc/explained_variance | 0.314    |
+| misc/nupdates           | 30       |
+| misc/serial_timesteps   | 6.14e+04 |
+| misc/time_elapsed       | 1.85e+03 |
+| misc/total_timesteps    | 6.14e+04 |
+| sil_samples             | 408      |
+| SimRew-MeanRew          | 30.3     |
+| Time-MeanRew            | 0.175    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 124
+Epoch 0 0.046426717
+# batch per epoch 124
+Epoch 1 0.04482767
+# batch per epoch 124
+Epoch 2 0.04391192
+# batch per epoch 124
+Epoch 3 0.04309637
+# batch per epoch 124
+Epoch 4 0.04203615
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 144
+Epoch 0 0.04193811
+# batch per epoch 144
+Epoch 1 0.040814288
+# batch per epoch 144
+Epoch 2 0.039950524
+# batch per epoch 144
+Epoch 3 0.039043684
+# batch per epoch 144
+Epoch 4 0.038481906
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 281      |
+| eplenmean               | 1e+03    |
+| eprewmean               | 281      |
+| fps                     | 749      |
+| loss/approxkl           | 0.0118   |
+| loss/clipfrac           | 0.174    |
+| loss/policy_entropy     | 7.42     |
+| loss/policy_loss        | -0.0343  |
+| loss/value_loss         | 19.8     |
+| MeanRew                 | 372      |
+| misc/explained_variance | 0.227    |
+| misc/nupdates           | 40       |
+| misc/serial_timesteps   | 8.19e+04 |
+| misc/time_elapsed       | 2.78e+03 |
+| misc/total_timesteps    | 8.19e+04 |
+| sil_samples             | 458      |
+| SimRew-MeanRew          | 35.5     |
+| Time-MeanRew            | 0.176    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 164
+Epoch 0 0.038341876
+# batch per epoch 164
+Epoch 1 0.03734435
+# batch per epoch 164
+Epoch 2 0.036382284
+# batch per epoch 164
+Epoch 3 0.035816938
+# batch per epoch 164
+Epoch 4 0.0351721
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 184
+Epoch 0 0.035209954
+# batch per epoch 184
+Epoch 1 0.034146387
+# batch per epoch 184
+Epoch 2 0.033566236
+# batch per epoch 184
+Epoch 3 0.033004418
+# batch per epoch 184
+Epoch 4 0.032112777
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 359      |
+| eplenmean               | 1e+03    |
+| eprewmean               | 359      |
+| fps                     | 747      |
+| loss/approxkl           | 0.00923  |
+| loss/clipfrac           | 0.13     |
+| loss/policy_entropy     | 7.25     |
+| loss/policy_loss        | -0.0269  |
+| loss/value_loss         | 19.5     |
+| MeanRew                 | 608      |
+| misc/explained_variance | 0.376    |
+| misc/nupdates           | 50       |
+| misc/serial_timesteps   | 1.02e+05 |
+| misc/time_elapsed       | 3.72e+03 |
+| misc/total_timesteps    | 1.02e+05 |
+| sil_samples             | 465      |
+| SimRew-MeanRew          | -8.27    |
+| Time-MeanRew            | 0.177    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.03180679
+# batch per epoch 196
+Epoch 1 0.030890578
+# batch per epoch 196
+Epoch 2 0.030973742
+# batch per epoch 196
+Epoch 3 0.029613063
+# batch per epoch 196
+Epoch 4 0.029200243
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.028458653
+# batch per epoch 196
+Epoch 1 0.027814023
+# batch per epoch 196
+Epoch 2 0.027110878
+# batch per epoch 196
+Epoch 3 0.02643173
+# batch per epoch 196
+Epoch 4 0.02620042
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 436      |
+| eplenmean               | 1e+03    |
+| eprewmean               | 436      |
+| fps                     | 685      |
+| loss/approxkl           | 0.0121   |
+| loss/clipfrac           | 0.174    |
+| loss/policy_entropy     | 6.89     |
+| loss/policy_loss        | -0.0338  |
+| loss/value_loss         | 45.5     |
+| MeanRew                 | 998      |
+| misc/explained_variance | 0.475    |
+| misc/nupdates           | 60       |
+| misc/serial_timesteps   | 1.23e+05 |
+| misc/time_elapsed       | 4.67e+03 |
+| misc/total_timesteps    | 1.23e+05 |
+| sil_samples             | 474      |
+| SimRew-MeanRew          | 10.1     |
+| Time-MeanRew            | 0.176    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.025887992
+# batch per epoch 196
+Epoch 1 0.024789082
+# batch per epoch 196
+Epoch 2 0.024507316
+# batch per epoch 196
+Epoch 3 0.023855463
+# batch per epoch 196
+Epoch 4 0.023463955
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.023033775
+# batch per epoch 196
+Epoch 1 0.022388196
+# batch per epoch 196
+Epoch 2 0.021948732
+# batch per epoch 196
+Epoch 3 0.02136755
+# batch per epoch 196
+Epoch 4 0.021052152
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 638      |
+| eplenmean               | 1e+03    |
+| eprewmean               | 638      |
+| fps                     | 726      |
+| loss/approxkl           | 0.0129   |
+| loss/clipfrac           | 0.189    |
+| loss/policy_entropy     | 6.63     |
+| loss/policy_loss        | -0.0351  |
+| loss/value_loss         | 66.3     |
+| MeanRew                 | 1.41e+03 |
+| misc/explained_variance | 0.545    |
+| misc/nupdates           | 70       |
+| misc/serial_timesteps   | 1.43e+05 |
+| misc/time_elapsed       | 5.61e+03 |
+| misc/total_timesteps    | 1.43e+05 |
+| sil_samples             | 480      |
+| SimRew-MeanRew          | -3.09    |
+| Time-MeanRew            | 0.174    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.02105042
+# batch per epoch 196
+Epoch 1 0.02044211
+# batch per epoch 196
+Epoch 2 0.020033775
+# batch per epoch 196
+Epoch 3 0.019778758
+# batch per epoch 196
+Epoch 4 0.019414205
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.019483024
+# batch per epoch 196
+Epoch 1 0.018990198
+# batch per epoch 196
+Epoch 2 0.018820493
+# batch per epoch 196
+Epoch 3 0.01837827
+# batch per epoch 196
+Epoch 4 0.01826303
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 858      |
+| eplenmean               | 1e+03    |
+| eprewmean               | 858      |
+| fps                     | 737      |
+| loss/approxkl           | 0.0127   |
+| loss/clipfrac           | 0.181    |
+| loss/policy_entropy     | 6.16     |
+| loss/policy_loss        | -0.0361  |
+| loss/value_loss         | 108      |
+| MeanRew                 | 2.27e+03 |
+| misc/explained_variance | 0.475    |
+| misc/nupdates           | 80       |
+| misc/serial_timesteps   | 1.64e+05 |
+| misc/time_elapsed       | 6.54e+03 |
+| misc/total_timesteps    | 1.64e+05 |
+| sil_samples             | 497      |
+| SimRew-MeanRew          | -18.2    |
+| Time-MeanRew            | 0.176    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.018163577
+# batch per epoch 196
+Epoch 1 0.01795087
+# batch per epoch 196
+Epoch 2 0.017533828
+# batch per epoch 196
+Epoch 3 0.01724201
+# batch per epoch 196
+Epoch 4 0.017108371
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.017502733
+# batch per epoch 196
+Epoch 1 0.017045734
+# batch per epoch 196
+Epoch 2 0.016896632
+# batch per epoch 196
+Epoch 3 0.016551796
+# batch per epoch 196
+Epoch 4 0.016341623
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.05e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.05e+03 |
+| fps                     | 693      |
+| loss/approxkl           | 0.0151   |
+| loss/clipfrac           | 0.214    |
+| loss/policy_entropy     | 5.71     |
+| loss/policy_loss        | -0.0349  |
+| loss/value_loss         | 130      |
+| MeanRew                 | 1.64e+03 |
+| misc/explained_variance | 0.579    |
+| misc/nupdates           | 90       |
+| misc/serial_timesteps   | 1.84e+05 |
+| misc/time_elapsed       | 7.49e+03 |
+| misc/total_timesteps    | 1.84e+05 |
+| sil_samples             | 497      |
+| SimRew-MeanRew          | -4.97    |
+| Time-MeanRew            | 0.177    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.016472794
+# batch per epoch 196
+Epoch 1 0.016033003
+# batch per epoch 196
+Epoch 2 0.01566076
+# batch per epoch 196
+Epoch 3 0.015502966
+# batch per epoch 196
+Epoch 4 0.015285926
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.015473994
+# batch per epoch 196
+Epoch 1 0.015290625
+# batch per epoch 196
+Epoch 2 0.015068198
+# batch per epoch 196
+Epoch 3 0.014685553
+# batch per epoch 196
+Epoch 4 0.014604248
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.27e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.27e+03 |
+| fps                     | 462      |
+| loss/approxkl           | 0.0182   |
+| loss/clipfrac           | 0.24     |
+| loss/policy_entropy     | 5.37     |
+| loss/policy_loss        | -0.0327  |
+| loss/value_loss         | 228      |
+| MeanRew                 | 1.35e+03 |
+| misc/explained_variance | 0.71     |
+| misc/nupdates           | 100      |
+| misc/serial_timesteps   | 2.05e+05 |
+| misc/time_elapsed       | 8.45e+03 |
+| misc/total_timesteps    | 2.05e+05 |
+| sil_samples             | 493      |
+| SimRew-MeanRew          | 1.57     |
+| Time-MeanRew            | 0.355    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.015029428
+# batch per epoch 196
+Epoch 1 0.014628756
+# batch per epoch 196
+Epoch 2 0.014215923
+# batch per epoch 196
+Epoch 3 0.0141246505
+# batch per epoch 196
+Epoch 4 0.013924015
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.01423726
+# batch per epoch 196
+Epoch 1 0.01429046
+# batch per epoch 196
+Epoch 2 0.014047419
+# batch per epoch 196
+Epoch 3 0.013715943
+# batch per epoch 196
+Epoch 4 0.013683582
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.51e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.51e+03 |
+| fps                     | 361      |
+| loss/approxkl           | 0.0168   |
+| loss/clipfrac           | 0.232    |
+| loss/policy_entropy     | 5.19     |
+| loss/policy_loss        | -0.0311  |
+| loss/value_loss         | 205      |
+| MeanRew                 | 1.64e+03 |
+| misc/explained_variance | 0.629    |
+| misc/nupdates           | 110      |
+| misc/serial_timesteps   | 2.25e+05 |
+| misc/time_elapsed       | 1.04e+04 |
+| misc/total_timesteps    | 2.25e+05 |
+| sil_samples             | 495      |
+| SimRew-MeanRew          | 65.3     |
+| Time-MeanRew            | 0.355    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.014003245
+# batch per epoch 196
+Epoch 1 0.013831439
+# batch per epoch 196
+Epoch 2 0.01342399
+# batch per epoch 196
+Epoch 3 0.013411799
+# batch per epoch 196
+Epoch 4 0.0129376305
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.013198999
+# batch per epoch 196
+Epoch 1 0.012983092
+# batch per epoch 196
+Epoch 2 0.01284744
+# batch per epoch 196
+Epoch 3 0.01250286
+# batch per epoch 196
+Epoch 4 0.012573101
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.68e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.68e+03 |
+| fps                     | 342      |
+| loss/approxkl           | 0.0198   |
+| loss/clipfrac           | 0.254    |
+| loss/policy_entropy     | 5.02     |
+| loss/policy_loss        | -0.025   |
+| loss/value_loss         | 279      |
+| MeanRew                 | 2.06e+03 |
+| misc/explained_variance | 0.5      |
+| misc/nupdates           | 120      |
+| misc/serial_timesteps   | 2.46e+05 |
+| misc/time_elapsed       | 1.22e+04 |
+| misc/total_timesteps    | 2.46e+05 |
+| sil_samples             | 493      |
+| SimRew-MeanRew          | 49.5     |
+| Time-MeanRew            | 0.354    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.012810953
+# batch per epoch 196
+Epoch 1 0.012557704
+# batch per epoch 196
+Epoch 2 0.012274825
+# batch per epoch 196
+Epoch 3 0.0121681765
+# batch per epoch 196
+Epoch 4 0.012040248
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.01221703
+# batch per epoch 196
+Epoch 1 0.011992088
+# batch per epoch 196
+Epoch 2 0.011850418
+# batch per epoch 196
+Epoch 3 0.011560632
+# batch per epoch 196
+Epoch 4 0.011572863
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.88e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.88e+03 |
+| fps                     | 344      |
+| loss/approxkl           | 0.0215   |
+| loss/clipfrac           | 0.283    |
+| loss/policy_entropy     | 4.89     |
+| loss/policy_loss        | -0.0318  |
+| loss/value_loss         | 175      |
+| MeanRew                 | 1.59e+03 |
+| misc/explained_variance | 0.687    |
+| misc/nupdates           | 130      |
+| misc/serial_timesteps   | 2.66e+05 |
+| misc/time_elapsed       | 1.41e+04 |
+| misc/total_timesteps    | 2.66e+05 |
+| sil_samples             | 493      |
+| SimRew-MeanRew          | 197      |
+| Time-MeanRew            | 0.355    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.011813469
+# batch per epoch 196
+Epoch 1 0.011627633
+# batch per epoch 196
+Epoch 2 0.011356417
+# batch per epoch 196
+Epoch 3 0.011343231
+# batch per epoch 196
+Epoch 4 0.011091061
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.011200214
+# batch per epoch 196
+Epoch 1 0.010938656
+# batch per epoch 196
+Epoch 2 0.010800532
+# batch per epoch 196
+Epoch 3 0.010530452
+# batch per epoch 196
+Epoch 4 0.010544869
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.97e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.97e+03 |
+| fps                     | 355      |
+| loss/approxkl           | 0.0222   |
+| loss/clipfrac           | 0.263    |
+| loss/policy_entropy     | 4.69     |
+| loss/policy_loss        | -0.0297  |
+| loss/value_loss         | 255      |
+| MeanRew                 | 1.65e+03 |
+| misc/explained_variance | 0.75     |
+| misc/nupdates           | 140      |
+| misc/serial_timesteps   | 2.87e+05 |
+| misc/time_elapsed       | 1.6e+04  |
+| misc/total_timesteps    | 2.87e+05 |
+| sil_samples             | 490      |
+| SimRew-MeanRew          | 147      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.011217676
+# batch per epoch 196
+Epoch 1 0.011073717
+# batch per epoch 196
+Epoch 2 0.010893054
+# batch per epoch 196
+Epoch 3 0.010664415
+# batch per epoch 196
+Epoch 4 0.010520808
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.011177505
+# batch per epoch 196
+Epoch 1 0.010998018
+# batch per epoch 196
+Epoch 2 0.010687731
+# batch per epoch 196
+Epoch 3 0.010444426
+# batch per epoch 196
+Epoch 4 0.01043987
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.86e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.86e+03 |
+| fps                     | 361      |
+| loss/approxkl           | 0.0163   |
+| loss/clipfrac           | 0.227    |
+| loss/policy_entropy     | 4.49     |
+| loss/policy_loss        | -0.0276  |
+| loss/value_loss         | 120      |
+| MeanRew                 | 1.98e+03 |
+| misc/explained_variance | 0.736    |
+| misc/nupdates           | 150      |
+| misc/serial_timesteps   | 3.07e+05 |
+| misc/time_elapsed       | 1.8e+04  |
+| misc/total_timesteps    | 3.07e+05 |
+| sil_samples             | 490      |
+| SimRew-MeanRew          | 200      |
+| Time-MeanRew            | 0.357    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.010824137
+# batch per epoch 196
+Epoch 1 0.0107182395
+# batch per epoch 196
+Epoch 2 0.010477611
+# batch per epoch 196
+Epoch 3 0.010449657
+# batch per epoch 196
+Epoch 4 0.010347589
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.010376731
+# batch per epoch 196
+Epoch 1 0.010335083
+# batch per epoch 196
+Epoch 2 0.010130418
+# batch per epoch 196
+Epoch 3 0.009924401
+# batch per epoch 196
+Epoch 4 0.009879814
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 1.9e+03  |
+| eplenmean               | 1e+03    |
+| eprewmean               | 1.9e+03  |
+| fps                     | 358      |
+| loss/approxkl           | 0.0203   |
+| loss/clipfrac           | 0.266    |
+| loss/policy_entropy     | 4.26     |
+| loss/policy_loss        | -0.0123  |
+| loss/value_loss         | 208      |
+| MeanRew                 | 2.31e+03 |
+| misc/explained_variance | 0.635    |
+| misc/nupdates           | 160      |
+| misc/serial_timesteps   | 3.28e+05 |
+| misc/time_elapsed       | 1.99e+04 |
+| misc/total_timesteps    | 3.28e+05 |
+| sil_samples             | 487      |
+| SimRew-MeanRew          | 191      |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.01030566
+# batch per epoch 196
+Epoch 1 0.0100628035
+# batch per epoch 196
+Epoch 2 0.009876551
+# batch per epoch 196
+Epoch 3 0.009866151
+# batch per epoch 196
+Epoch 4 0.009768668
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.010219552
+# batch per epoch 196
+Epoch 1 0.010123458
+# batch per epoch 196
+Epoch 2 0.0098487865
+# batch per epoch 196
+Epoch 3 0.009823985
+# batch per epoch 196
+Epoch 4 0.009730192
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.09e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.09e+03 |
+| fps                     | 357      |
+| loss/approxkl           | 0.0283   |
+| loss/clipfrac           | 0.32     |
+| loss/policy_entropy     | 4.14     |
+| loss/policy_loss        | -0.0133  |
+| loss/value_loss         | 271      |
+| MeanRew                 | 1.56e+03 |
+| misc/explained_variance | 0.446    |
+| misc/nupdates           | 170      |
+| misc/serial_timesteps   | 3.48e+05 |
+| misc/time_elapsed       | 2.18e+04 |
+| misc/total_timesteps    | 3.48e+05 |
+| sil_samples             | 479      |
+| SimRew-MeanRew          | 340      |
+| Time-MeanRew            | 0.357    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0101492
+# batch per epoch 196
+Epoch 1 0.00972705
+# batch per epoch 196
+Epoch 2 0.0095722
+# batch per epoch 196
+Epoch 3 0.009458028
+# batch per epoch 196
+Epoch 4 0.0094691245
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.009808405
+# batch per epoch 196
+Epoch 1 0.009607199
+# batch per epoch 196
+Epoch 2 0.009702048
+# batch per epoch 196
+Epoch 3 0.009348386
+# batch per epoch 196
+Epoch 4 0.009404132
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.04e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.04e+03 |
+| fps                     | 355      |
+| loss/approxkl           | 0.0274   |
+| loss/clipfrac           | 0.315    |
+| loss/policy_entropy     | 4.1      |
+| loss/policy_loss        | -0.0227  |
+| loss/value_loss         | 249      |
+| MeanRew                 | 810      |
+| misc/explained_variance | 0.577    |
+| misc/nupdates           | 180      |
+| misc/serial_timesteps   | 3.69e+05 |
+| misc/time_elapsed       | 2.37e+04 |
+| misc/total_timesteps    | 3.69e+05 |
+| sil_samples             | 476      |
+| SimRew-MeanRew          | 615      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.009926344
+# batch per epoch 196
+Epoch 1 0.009636588
+# batch per epoch 196
+Epoch 2 0.009477145
+# batch per epoch 196
+Epoch 3 0.009286895
+# batch per epoch 196
+Epoch 4 0.009284252
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.009778755
+# batch per epoch 196
+Epoch 1 0.009390898
+# batch per epoch 196
+Epoch 2 0.009440332
+# batch per epoch 196
+Epoch 3 0.009096299
+# batch per epoch 196
+Epoch 4 0.0092646
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.05e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.05e+03 |
+| fps                     | 357      |
+| loss/approxkl           | 0.0345   |
+| loss/clipfrac           | 0.366    |
+| loss/policy_entropy     | 4        |
+| loss/policy_loss        | -0.00602 |
+| loss/value_loss         | 283      |
+| MeanRew                 | 2.31e+03 |
+| misc/explained_variance | 0.517    |
+| misc/nupdates           | 190      |
+| misc/serial_timesteps   | 3.89e+05 |
+| misc/time_elapsed       | 2.56e+04 |
+| misc/total_timesteps    | 3.89e+05 |
+| sil_samples             | 469      |
+| SimRew-MeanRew          | 273      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.009523836
+# batch per epoch 196
+Epoch 1 0.009110459
+# batch per epoch 196
+Epoch 2 0.009154521
+# batch per epoch 196
+Epoch 3 0.008816687
+# batch per epoch 196
+Epoch 4 0.008932903
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.009717579
+# batch per epoch 196
+Epoch 1 0.009085837
+# batch per epoch 196
+Epoch 2 0.009080199
+# batch per epoch 196
+Epoch 3 0.008800929
+# batch per epoch 196
+Epoch 4 0.008874626
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.11e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.11e+03 |
+| fps                     | 358      |
+| loss/approxkl           | 0.0235   |
+| loss/clipfrac           | 0.294    |
+| loss/policy_entropy     | 3.88     |
+| loss/policy_loss        | -0.0293  |
+| loss/value_loss         | 289      |
+| MeanRew                 | 1.28e+03 |
+| misc/explained_variance | 0.836    |
+| misc/nupdates           | 200      |
+| misc/serial_timesteps   | 4.1e+05  |
+| misc/time_elapsed       | 2.76e+04 |
+| misc/total_timesteps    | 4.1e+05  |
+| sil_samples             | 469      |
+| SimRew-MeanRew          | 281      |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.00936827
+# batch per epoch 196
+Epoch 1 0.0089562815
+# batch per epoch 196
+Epoch 2 0.009063471
+# batch per epoch 196
+Epoch 3 0.008672664
+# batch per epoch 196
+Epoch 4 0.008848347
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.009479448
+# batch per epoch 196
+Epoch 1 0.008691572
+# batch per epoch 196
+Epoch 2 0.008823967
+# batch per epoch 196
+Epoch 3 0.008464562
+# batch per epoch 196
+Epoch 4 0.008478525
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.28e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.28e+03 |
+| fps                     | 359      |
+| loss/approxkl           | 0.0268   |
+| loss/clipfrac           | 0.305    |
+| loss/policy_entropy     | 3.92     |
+| loss/policy_loss        | -0.0104  |
+| loss/value_loss         | 282      |
+| MeanRew                 | 1.86e+03 |
+| misc/explained_variance | 0.589    |
+| misc/nupdates           | 210      |
+| misc/serial_timesteps   | 4.3e+05  |
+| misc/time_elapsed       | 2.95e+04 |
+| misc/total_timesteps    | 4.3e+05  |
+| sil_samples             | 459      |
+| SimRew-MeanRew          | 287      |
+| Time-MeanRew            | 0.359    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.00905918
+# batch per epoch 196
+Epoch 1 0.0086933505
+# batch per epoch 196
+Epoch 2 0.0086376835
+# batch per epoch 196
+Epoch 3 0.008546123
+# batch per epoch 196
+Epoch 4 0.008663957
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0091819335
+# batch per epoch 196
+Epoch 1 0.008480774
+# batch per epoch 196
+Epoch 2 0.008475092
+# batch per epoch 196
+Epoch 3 0.008180061
+# batch per epoch 196
+Epoch 4 0.008249643
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.49e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.49e+03 |
+| fps                     | 360      |
+| loss/approxkl           | 0.0182   |
+| loss/clipfrac           | 0.247    |
+| loss/policy_entropy     | 3.88     |
+| loss/policy_loss        | -0.0228  |
+| loss/value_loss         | 156      |
+| MeanRew                 | 2.05e+03 |
+| misc/explained_variance | 0.795    |
+| misc/nupdates           | 220      |
+| misc/serial_timesteps   | 4.51e+05 |
+| misc/time_elapsed       | 3.14e+04 |
+| misc/total_timesteps    | 4.51e+05 |
+| sil_samples             | 483      |
+| SimRew-MeanRew          | 211      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008821534
+# batch per epoch 196
+Epoch 1 0.008531519
+# batch per epoch 196
+Epoch 2 0.00832917
+# batch per epoch 196
+Epoch 3 0.008219533
+# batch per epoch 196
+Epoch 4 0.008064018
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008529454
+# batch per epoch 196
+Epoch 1 0.008281995
+# batch per epoch 196
+Epoch 2 0.008281708
+# batch per epoch 196
+Epoch 3 0.008032253
+# batch per epoch 196
+Epoch 4 0.007983509
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.61e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.61e+03 |
+| fps                     | 361      |
+| loss/approxkl           | 0.0414   |
+| loss/clipfrac           | 0.398    |
+| loss/policy_entropy     | 3.81     |
+| loss/policy_loss        | -0.00669 |
+| loss/value_loss         | 265      |
+| MeanRew                 | 2.27e+03 |
+| misc/explained_variance | 0.705    |
+| misc/nupdates           | 230      |
+| misc/serial_timesteps   | 4.71e+05 |
+| misc/time_elapsed       | 3.33e+04 |
+| misc/total_timesteps    | 4.71e+05 |
+| sil_samples             | 467      |
+| SimRew-MeanRew          | 195      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008616351
+# batch per epoch 196
+Epoch 1 0.008141259
+# batch per epoch 196
+Epoch 2 0.007827019
+# batch per epoch 196
+Epoch 3 0.007889152
+# batch per epoch 196
+Epoch 4 0.0076920623
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008366872
+# batch per epoch 196
+Epoch 1 0.008024713
+# batch per epoch 196
+Epoch 2 0.007880069
+# batch per epoch 196
+Epoch 3 0.007735787
+# batch per epoch 196
+Epoch 4 0.0075989286
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.63e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.63e+03 |
+| fps                     | 358      |
+| loss/approxkl           | 0.0275   |
+| loss/clipfrac           | 0.316    |
+| loss/policy_entropy     | 3.75     |
+| loss/policy_loss        | -0.00838 |
+| loss/value_loss         | 222      |
+| MeanRew                 | 1.06e+03 |
+| misc/explained_variance | 0.719    |
+| misc/nupdates           | 240      |
+| misc/serial_timesteps   | 4.92e+05 |
+| misc/time_elapsed       | 3.52e+04 |
+| misc/total_timesteps    | 4.92e+05 |
+| sil_samples             | 473      |
+| SimRew-MeanRew          | 199      |
+| Time-MeanRew            | 0.359    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008401901
+# batch per epoch 196
+Epoch 1 0.008022409
+# batch per epoch 196
+Epoch 2 0.007629722
+# batch per epoch 196
+Epoch 3 0.0078025665
+# batch per epoch 196
+Epoch 4 0.007517699
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.010502087
+# batch per epoch 196
+Epoch 1 0.008207071
+# batch per epoch 196
+Epoch 2 0.008259359
+# batch per epoch 196
+Epoch 3 0.00798349
+# batch per epoch 196
+Epoch 4 0.007941563
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.46e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.46e+03 |
+| fps                     | 390      |
+| loss/approxkl           | 0.0342   |
+| loss/clipfrac           | 0.352    |
+| loss/policy_entropy     | 3.68     |
+| loss/policy_loss        | -0.0172  |
+| loss/value_loss         | 194      |
+| MeanRew                 | 397      |
+| misc/explained_variance | 0.932    |
+| misc/nupdates           | 250      |
+| misc/serial_timesteps   | 5.12e+05 |
+| misc/time_elapsed       | 3.72e+04 |
+| misc/total_timesteps    | 5.12e+05 |
+| sil_samples             | 444      |
+| SimRew-MeanRew          | 2.61e+03 |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008277656
+# batch per epoch 196
+Epoch 1 0.008012141
+# batch per epoch 196
+Epoch 2 0.0079181045
+# batch per epoch 196
+Epoch 3 0.007863788
+# batch per epoch 196
+Epoch 4 0.0077970126
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008143243
+# batch per epoch 196
+Epoch 1 0.008070471
+# batch per epoch 196
+Epoch 2 0.008106765
+# batch per epoch 196
+Epoch 3 0.00769014
+# batch per epoch 196
+Epoch 4 0.007684966
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.36e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.36e+03 |
+| fps                     | 432      |
+| loss/approxkl           | 0.0411   |
+| loss/clipfrac           | 0.403    |
+| loss/policy_entropy     | 3.62     |
+| loss/policy_loss        | -0.0287  |
+| loss/value_loss         | 249      |
+| MeanRew                 | 532      |
+| misc/explained_variance | 0.139    |
+| misc/nupdates           | 260      |
+| misc/serial_timesteps   | 5.32e+05 |
+| misc/time_elapsed       | 3.91e+04 |
+| misc/total_timesteps    | 5.32e+05 |
+| sil_samples             | 428      |
+| SimRew-MeanRew          | 579      |
+| Time-MeanRew            | 0.357    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008084619
+# batch per epoch 196
+Epoch 1 0.007842171
+# batch per epoch 196
+Epoch 2 0.0076498007
+# batch per epoch 196
+Epoch 3 0.007752291
+# batch per epoch 196
+Epoch 4 0.0077513615
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008112584
+# batch per epoch 196
+Epoch 1 0.008141947
+# batch per epoch 196
+Epoch 2 0.008041164
+# batch per epoch 196
+Epoch 3 0.007813605
+# batch per epoch 196
+Epoch 4 0.007597244
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.5e+03  |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.5e+03  |
+| fps                     | 355      |
+| loss/approxkl           | 0.0399   |
+| loss/clipfrac           | 0.381    |
+| loss/policy_entropy     | 3.5      |
+| loss/policy_loss        | -0.0196  |
+| loss/value_loss         | 234      |
+| MeanRew                 | 314      |
+| misc/explained_variance | 0.959    |
+| misc/nupdates           | 270      |
+| misc/serial_timesteps   | 5.53e+05 |
+| misc/time_elapsed       | 4.1e+04  |
+| misc/total_timesteps    | 5.53e+05 |
+| sil_samples             | 435      |
+| SimRew-MeanRew          | 3.53e+03 |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008202375
+# batch per epoch 196
+Epoch 1 0.008006125
+# batch per epoch 196
+Epoch 2 0.00785034
+# batch per epoch 196
+Epoch 3 0.0077907112
+# batch per epoch 196
+Epoch 4 0.0075130584
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008009784
+# batch per epoch 196
+Epoch 1 0.00807213
+# batch per epoch 196
+Epoch 2 0.0076673115
+# batch per epoch 196
+Epoch 3 0.0077475808
+# batch per epoch 196
+Epoch 4 0.007655044
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.44e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.44e+03 |
+| fps                     | 365      |
+| loss/approxkl           | 0.0321   |
+| loss/clipfrac           | 0.339    |
+| loss/policy_entropy     | 3.42     |
+| loss/policy_loss        | -0.0145  |
+| loss/value_loss         | 170      |
+| MeanRew                 | 321      |
+| misc/explained_variance | 0.968    |
+| misc/nupdates           | 280      |
+| misc/serial_timesteps   | 5.73e+05 |
+| misc/time_elapsed       | 4.29e+04 |
+| misc/total_timesteps    | 5.73e+05 |
+| sil_samples             | 442      |
+| SimRew-MeanRew          | 4.34e+03 |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008002884
+# batch per epoch 196
+Epoch 1 0.007923281
+# batch per epoch 196
+Epoch 2 0.007775832
+# batch per epoch 196
+Epoch 3 0.007838906
+# batch per epoch 196
+Epoch 4 0.007421136
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008061129
+# batch per epoch 196
+Epoch 1 0.007851481
+# batch per epoch 196
+Epoch 2 0.007600024
+# batch per epoch 196
+Epoch 3 0.007596882
+# batch per epoch 196
+Epoch 4 0.007844838
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.36e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.36e+03 |
+| fps                     | 370      |
+| loss/approxkl           | 0.0219   |
+| loss/clipfrac           | 0.27     |
+| loss/policy_entropy     | 3.25     |
+| loss/policy_loss        | -0.0262  |
+| loss/value_loss         | 151      |
+| MeanRew                 | 636      |
+| misc/explained_variance | 0.94     |
+| misc/nupdates           | 290      |
+| misc/serial_timesteps   | 5.94e+05 |
+| misc/time_elapsed       | 4.48e+04 |
+| misc/total_timesteps    | 5.94e+05 |
+| sil_samples             | 426      |
+| SimRew-MeanRew          | 5.73e+03 |
+| Time-MeanRew            | 0.362    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008321723
+# batch per epoch 196
+Epoch 1 0.007974751
+# batch per epoch 196
+Epoch 2 0.007729737
+# batch per epoch 196
+Epoch 3 0.008086267
+# batch per epoch 196
+Epoch 4 0.007454949
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.00797865
+# batch per epoch 196
+Epoch 1 0.00785888
+# batch per epoch 196
+Epoch 2 0.007712723
+# batch per epoch 196
+Epoch 3 0.0077394685
+# batch per epoch 196
+Epoch 4 0.007676905
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.32e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.32e+03 |
+| fps                     | 380      |
+| loss/approxkl           | 0.0118   |
+| loss/clipfrac           | 0.171    |
+| loss/policy_entropy     | 3.13     |
+| loss/policy_loss        | -0.0295  |
+| loss/value_loss         | 190      |
+| MeanRew                 | 1.66e+03 |
+| misc/explained_variance | 0.934    |
+| misc/nupdates           | 300      |
+| misc/serial_timesteps   | 6.14e+05 |
+| misc/time_elapsed       | 4.67e+04 |
+| misc/total_timesteps    | 6.14e+05 |
+| sil_samples             | 417      |
+| SimRew-MeanRew          | 223      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008630873
+# batch per epoch 196
+Epoch 1 0.008206899
+# batch per epoch 196
+Epoch 2 0.007810303
+# batch per epoch 196
+Epoch 3 0.007765011
+# batch per epoch 196
+Epoch 4 0.0075531383
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007904383
+# batch per epoch 196
+Epoch 1 0.0077608977
+# batch per epoch 196
+Epoch 2 0.007895032
+# batch per epoch 196
+Epoch 3 0.007845474
+# batch per epoch 196
+Epoch 4 0.0076615373
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.17e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.17e+03 |
+| fps                     | 358      |
+| loss/approxkl           | 0.021    |
+| loss/clipfrac           | 0.273    |
+| loss/policy_entropy     | 2.98     |
+| loss/policy_loss        | -0.0278  |
+| loss/value_loss         | 149      |
+| MeanRew                 | 2.32e+03 |
+| misc/explained_variance | 0.918    |
+| misc/nupdates           | 310      |
+| misc/serial_timesteps   | 6.35e+05 |
+| misc/time_elapsed       | 4.87e+04 |
+| misc/total_timesteps    | 6.35e+05 |
+| sil_samples             | 371      |
+| SimRew-MeanRew          | 199      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008450831
+# batch per epoch 196
+Epoch 1 0.0082801655
+# batch per epoch 196
+Epoch 2 0.007995261
+# batch per epoch 196
+Epoch 3 0.007850861
+# batch per epoch 196
+Epoch 4 0.0076365485
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007945193
+# batch per epoch 196
+Epoch 1 0.0078089633
+# batch per epoch 196
+Epoch 2 0.007989452
+# batch per epoch 196
+Epoch 3 0.0078023756
+# batch per epoch 196
+Epoch 4 0.0076628765
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.19e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.19e+03 |
+| fps                     | 356      |
+| loss/approxkl           | 0.0603   |
+| loss/clipfrac           | 0.458    |
+| loss/policy_entropy     | 2.97     |
+| loss/policy_loss        | -0.00798 |
+| loss/value_loss         | 212      |
+| MeanRew                 | 2.41e+03 |
+| misc/explained_variance | 0.952    |
+| misc/nupdates           | 320      |
+| misc/serial_timesteps   | 6.55e+05 |
+| misc/time_elapsed       | 5.06e+04 |
+| misc/total_timesteps    | 6.55e+05 |
+| sil_samples             | 390      |
+| SimRew-MeanRew          | 119      |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.008111175
+# batch per epoch 196
+Epoch 1 0.0079592895
+# batch per epoch 196
+Epoch 2 0.0076883053
+# batch per epoch 196
+Epoch 3 0.0076575573
+# batch per epoch 196
+Epoch 4 0.0074571576
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007897897
+# batch per epoch 196
+Epoch 1 0.0077679595
+# batch per epoch 196
+Epoch 2 0.0078112823
+# batch per epoch 196
+Epoch 3 0.0075453403
+# batch per epoch 196
+Epoch 4 0.0074925884
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.56e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.56e+03 |
+| fps                     | 359      |
+| loss/approxkl           | 0.0206   |
+| loss/clipfrac           | 0.267    |
+| loss/policy_entropy     | 2.95     |
+| loss/policy_loss        | -0.0236  |
+| loss/value_loss         | 56.4     |
+| MeanRew                 | 2.65e+03 |
+| misc/explained_variance | 0.9      |
+| misc/nupdates           | 330      |
+| misc/serial_timesteps   | 6.76e+05 |
+| misc/time_elapsed       | 5.25e+04 |
+| misc/total_timesteps    | 6.76e+05 |
+| sil_samples             | 433      |
+| SimRew-MeanRew          | 50.6     |
+| Time-MeanRew            | 0.357    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007957718
+# batch per epoch 196
+Epoch 1 0.00770523
+# batch per epoch 196
+Epoch 2 0.007557458
+# batch per epoch 196
+Epoch 3 0.007538966
+# batch per epoch 196
+Epoch 4 0.00736892
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007666177
+# batch per epoch 196
+Epoch 1 0.0076282825
+# batch per epoch 196
+Epoch 2 0.007710276
+# batch per epoch 196
+Epoch 3 0.007398092
+# batch per epoch 196
+Epoch 4 0.0073891296
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.68e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.68e+03 |
+| fps                     | 359      |
+| loss/approxkl           | 0.0641   |
+| loss/clipfrac           | 0.481    |
+| loss/policy_entropy     | 2.95     |
+| loss/policy_loss        | -0.0138  |
+| loss/value_loss         | 213      |
+| MeanRew                 | 2.96e+03 |
+| misc/explained_variance | 0.351    |
+| misc/nupdates           | 340      |
+| misc/serial_timesteps   | 6.96e+05 |
+| misc/time_elapsed       | 5.44e+04 |
+| misc/total_timesteps    | 6.96e+05 |
+| sil_samples             | 456      |
+| SimRew-MeanRew          | 44.5     |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007883238
+# batch per epoch 196
+Epoch 1 0.007547915
+# batch per epoch 196
+Epoch 2 0.0074913087
+# batch per epoch 196
+Epoch 3 0.00733215
+# batch per epoch 196
+Epoch 4 0.0072618052
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0074511073
+# batch per epoch 196
+Epoch 1 0.0073591922
+# batch per epoch 196
+Epoch 2 0.0073033874
+# batch per epoch 196
+Epoch 3 0.007265626
+# batch per epoch 196
+Epoch 4 0.007056241
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.73e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.73e+03 |
+| fps                     | 359      |
+| loss/approxkl           | 0.0354   |
+| loss/clipfrac           | 0.377    |
+| loss/policy_entropy     | 3.04     |
+| loss/policy_loss        | -0.0233  |
+| loss/value_loss         | 160      |
+| MeanRew                 | 2.82e+03 |
+| misc/explained_variance | 0.798    |
+| misc/nupdates           | 350      |
+| misc/serial_timesteps   | 7.17e+05 |
+| misc/time_elapsed       | 5.63e+04 |
+| misc/total_timesteps    | 7.17e+05 |
+| sil_samples             | 459      |
+| SimRew-MeanRew          | 46.9     |
+| Time-MeanRew            | 0.359    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0077497144
+# batch per epoch 196
+Epoch 1 0.007348244
+# batch per epoch 196
+Epoch 2 0.0072792047
+# batch per epoch 196
+Epoch 3 0.007213904
+# batch per epoch 196
+Epoch 4 0.0068240664
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0074080057
+# batch per epoch 196
+Epoch 1 0.0073709926
+# batch per epoch 196
+Epoch 2 0.007333308
+# batch per epoch 196
+Epoch 3 0.0070907813
+# batch per epoch 196
+Epoch 4 0.0071411696
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.71e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.71e+03 |
+| fps                     | 354      |
+| loss/approxkl           | 0.048    |
+| loss/clipfrac           | 0.422    |
+| loss/policy_entropy     | 3.05     |
+| loss/policy_loss        | -0.00999 |
+| loss/value_loss         | 167      |
+| MeanRew                 | 2.79e+03 |
+| misc/explained_variance | 0.833    |
+| misc/nupdates           | 360      |
+| misc/serial_timesteps   | 7.37e+05 |
+| misc/time_elapsed       | 5.82e+04 |
+| misc/total_timesteps    | 7.37e+05 |
+| sil_samples             | 444      |
+| SimRew-MeanRew          | 110      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007242266
+# batch per epoch 196
+Epoch 1 0.0068714097
+# batch per epoch 196
+Epoch 2 0.0070287026
+# batch per epoch 196
+Epoch 3 0.0067809736
+# batch per epoch 196
+Epoch 4 0.006608547
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007101076
+# batch per epoch 196
+Epoch 1 0.0070713656
+# batch per epoch 196
+Epoch 2 0.0069156885
+# batch per epoch 196
+Epoch 3 0.006758984
+# batch per epoch 196
+Epoch 4 0.006636847
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.64e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.64e+03 |
+| fps                     | 356      |
+| loss/approxkl           | 0.0353   |
+| loss/clipfrac           | 0.367    |
+| loss/policy_entropy     | 2.86     |
+| loss/policy_loss        | -0.0171  |
+| loss/value_loss         | 136      |
+| MeanRew                 | 2.68e+03 |
+| misc/explained_variance | 0.946    |
+| misc/nupdates           | 370      |
+| misc/serial_timesteps   | 7.58e+05 |
+| misc/time_elapsed       | 6.02e+04 |
+| misc/total_timesteps    | 7.58e+05 |
+| sil_samples             | 451      |
+| SimRew-MeanRew          | 207      |
+| Time-MeanRew            | 0.361    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0070796227
+# batch per epoch 196
+Epoch 1 0.00668927
+# batch per epoch 196
+Epoch 2 0.006628675
+# batch per epoch 196
+Epoch 3 0.0066775423
+# batch per epoch 196
+Epoch 4 0.0067917025
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0069998465
+# batch per epoch 196
+Epoch 1 0.0068309093
+# batch per epoch 196
+Epoch 2 0.0066916845
+# batch per epoch 196
+Epoch 3 0.00644896
+# batch per epoch 196
+Epoch 4 0.0064494377
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.71e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.71e+03 |
+| fps                     | 391      |
+| loss/approxkl           | 0.0471   |
+| loss/clipfrac           | 0.427    |
+| loss/policy_entropy     | 2.77     |
+| loss/policy_loss        | -0.0155  |
+| loss/value_loss         | 211      |
+| MeanRew                 | 2.56e+03 |
+| misc/explained_variance | 0.964    |
+| misc/nupdates           | 380      |
+| misc/serial_timesteps   | 7.78e+05 |
+| misc/time_elapsed       | 6.21e+04 |
+| misc/total_timesteps    | 7.78e+05 |
+| sil_samples             | 446      |
+| SimRew-MeanRew          | 209      |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0069529717
+# batch per epoch 196
+Epoch 1 0.006716603
+# batch per epoch 196
+Epoch 2 0.0066361763
+# batch per epoch 196
+Epoch 3 0.006669961
+# batch per epoch 196
+Epoch 4 0.0065303603
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007005177
+# batch per epoch 196
+Epoch 1 0.006643613
+# batch per epoch 196
+Epoch 2 0.006601953
+# batch per epoch 196
+Epoch 3 0.0065003354
+# batch per epoch 196
+Epoch 4 0.0065201884
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.82e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.82e+03 |
+| fps                     | 349      |
+| loss/approxkl           | 0.0452   |
+| loss/clipfrac           | 0.384    |
+| loss/policy_entropy     | 2.7      |
+| loss/policy_loss        | -0.00723 |
+| loss/value_loss         | 203      |
+| MeanRew                 | 1.27e+03 |
+| misc/explained_variance | 0.903    |
+| misc/nupdates           | 390      |
+| misc/serial_timesteps   | 7.99e+05 |
+| misc/time_elapsed       | 6.4e+04  |
+| misc/total_timesteps    | 7.99e+05 |
+| sil_samples             | 450      |
+| SimRew-MeanRew          | -225     |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0069483034
+# batch per epoch 196
+Epoch 1 0.006809117
+# batch per epoch 196
+Epoch 2 0.0066609224
+# batch per epoch 196
+Epoch 3 0.006636943
+# batch per epoch 196
+Epoch 4 0.0064718905
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0070585306
+# batch per epoch 196
+Epoch 1 0.006942435
+# batch per epoch 196
+Epoch 2 0.0067937057
+# batch per epoch 196
+Epoch 3 0.0066946587
+# batch per epoch 196
+Epoch 4 0.0066077355
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.88e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.88e+03 |
+| fps                     | 357      |
+| loss/approxkl           | 0.0716   |
+| loss/clipfrac           | 0.49     |
+| loss/policy_entropy     | 2.66     |
+| loss/policy_loss        | 0.0109   |
+| loss/value_loss         | 181      |
+| MeanRew                 | 1.87e+03 |
+| misc/explained_variance | 0.888    |
+| misc/nupdates           | 400      |
+| misc/serial_timesteps   | 8.19e+05 |
+| misc/time_elapsed       | 6.59e+04 |
+| misc/total_timesteps    | 8.19e+05 |
+| sil_samples             | 447      |
+| SimRew-MeanRew          | 130      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0069285687
+# batch per epoch 196
+Epoch 1 0.0068136575
+# batch per epoch 196
+Epoch 2 0.0067642867
+# batch per epoch 196
+Epoch 3 0.0068281293
+# batch per epoch 196
+Epoch 4 0.0065101776
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007054679
+# batch per epoch 196
+Epoch 1 0.006810772
+# batch per epoch 196
+Epoch 2 0.0067530153
+# batch per epoch 196
+Epoch 3 0.006595167
+# batch per epoch 196
+Epoch 4 0.0066479226
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.9e+03  |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.9e+03  |
+| fps                     | 356      |
+| loss/approxkl           | 0.0843   |
+| loss/clipfrac           | 0.523    |
+| loss/policy_entropy     | 2.65     |
+| loss/policy_loss        | -0.0133  |
+| loss/value_loss         | 163      |
+| MeanRew                 | 2.82e+03 |
+| misc/explained_variance | 0.96     |
+| misc/nupdates           | 410      |
+| misc/serial_timesteps   | 8.4e+05  |
+| misc/time_elapsed       | 6.79e+04 |
+| misc/total_timesteps    | 8.4e+05  |
+| sil_samples             | 447      |
+| SimRew-MeanRew          | 282      |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0069490974
+# batch per epoch 196
+Epoch 1 0.0070802206
+# batch per epoch 196
+Epoch 2 0.006662466
+# batch per epoch 196
+Epoch 3 0.0067221825
+# batch per epoch 196
+Epoch 4 0.006546871
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0070928554
+# batch per epoch 196
+Epoch 1 0.0069069546
+# batch per epoch 196
+Epoch 2 0.006763305
+# batch per epoch 196
+Epoch 3 0.0066146
+# batch per epoch 196
+Epoch 4 0.00663315
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.89e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.89e+03 |
+| fps                     | 358      |
+| loss/approxkl           | 0.0213   |
+| loss/clipfrac           | 0.262    |
+| loss/policy_entropy     | 2.65     |
+| loss/policy_loss        | -0.0237  |
+| loss/value_loss         | 131      |
+| MeanRew                 | 2.69e+03 |
+| misc/explained_variance | 0.953    |
+| misc/nupdates           | 420      |
+| misc/serial_timesteps   | 8.6e+05  |
+| misc/time_elapsed       | 6.98e+04 |
+| misc/total_timesteps    | 8.6e+05  |
+| sil_samples             | 444      |
+| SimRew-MeanRew          | 371      |
+| Time-MeanRew            | 0.358    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0068910625
+# batch per epoch 196
+Epoch 1 0.007055584
+# batch per epoch 196
+Epoch 2 0.006694081
+# batch per epoch 196
+Epoch 3 0.006630333
+# batch per epoch 196
+Epoch 4 0.0064729876
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.007008982
+# batch per epoch 196
+Epoch 1 0.006859765
+# batch per epoch 196
+Epoch 2 0.0066605196
+# batch per epoch 196
+Epoch 3 0.0064462186
+# batch per epoch 196
+Epoch 4 0.006566274
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.87e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.87e+03 |
+| fps                     | 391      |
+| loss/approxkl           | 0.0641   |
+| loss/clipfrac           | 0.475    |
+| loss/policy_entropy     | 2.61     |
+| loss/policy_loss        | -0.0173  |
+| loss/value_loss         | 159      |
+| MeanRew                 | 1.87e+03 |
+| misc/explained_variance | 0.977    |
+| misc/nupdates           | 430      |
+| misc/serial_timesteps   | 8.81e+05 |
+| misc/time_elapsed       | 7.17e+04 |
+| misc/total_timesteps    | 8.81e+05 |
+| sil_samples             | 413      |
+| SimRew-MeanRew          | 399      |
+| Time-MeanRew            | 0.359    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.006795101
+# batch per epoch 196
+Epoch 1 0.006614644
+# batch per epoch 196
+Epoch 2 0.0066310544
+# batch per epoch 196
+Epoch 3 0.006446049
+# batch per epoch 196
+Epoch 4 0.0063556796
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0067316964
+# batch per epoch 196
+Epoch 1 0.0066873054
+# batch per epoch 196
+Epoch 2 0.006488513
+# batch per epoch 196
+Epoch 3 0.0062928214
+# batch per epoch 196
+Epoch 4 0.0063961153
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.91e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.91e+03 |
+| fps                     | 365      |
+| loss/approxkl           | 0.0288   |
+| loss/clipfrac           | 0.314    |
+| loss/policy_entropy     | 2.58     |
+| loss/policy_loss        | -0.0153  |
+| loss/value_loss         | 173      |
+| MeanRew                 | 1.78e+03 |
+| misc/explained_variance | 0.97     |
+| misc/nupdates           | 440      |
+| misc/serial_timesteps   | 9.01e+05 |
+| misc/time_elapsed       | 7.36e+04 |
+| misc/total_timesteps    | 9.01e+05 |
+| sil_samples             | 436      |
+| SimRew-MeanRew          | 386      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0070091723
+# batch per epoch 196
+Epoch 1 0.0065622316
+# batch per epoch 196
+Epoch 2 0.0065765087
+# batch per epoch 196
+Epoch 3 0.0064444905
+# batch per epoch 196
+Epoch 4 0.0063509895
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0068581835
+# batch per epoch 196
+Epoch 1 0.0065715318
+# batch per epoch 196
+Epoch 2 0.006517476
+# batch per epoch 196
+Epoch 3 0.006346438
+# batch per epoch 196
+Epoch 4 0.00631911
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.9e+03  |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.9e+03  |
+| fps                     | 367      |
+| loss/approxkl           | 0.0308   |
+| loss/clipfrac           | 0.337    |
+| loss/policy_entropy     | 2.56     |
+| loss/policy_loss        | -0.0234  |
+| loss/value_loss         | 138      |
+| MeanRew                 | 2.42e+03 |
+| misc/explained_variance | 0.969    |
+| misc/nupdates           | 450      |
+| misc/serial_timesteps   | 9.22e+05 |
+| misc/time_elapsed       | 7.55e+04 |
+| misc/total_timesteps    | 9.22e+05 |
+| sil_samples             | 437      |
+| SimRew-MeanRew          | 432      |
+| Time-MeanRew            | 0.359    |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.006594158
+# batch per epoch 196
+Epoch 1 0.006281934
+# batch per epoch 196
+Epoch 2 0.0063360333
+# batch per epoch 196
+Epoch 3 0.0063064513
+# batch per epoch 196
+Epoch 4 0.00616914
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.006714565
+# batch per epoch 196
+Epoch 1 0.0065931254
+# batch per epoch 196
+Epoch 2 0.006302124
+# batch per epoch 196
+Epoch 3 0.006235874
+# batch per epoch 196
+Epoch 4 0.0062317555
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.87e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.87e+03 |
+| fps                     | 354      |
+| loss/approxkl           | 0.0213   |
+| loss/clipfrac           | 0.272    |
+| loss/policy_entropy     | 2.47     |
+| loss/policy_loss        | -0.028   |
+| loss/value_loss         | 130      |
+| MeanRew                 | 2.78e+03 |
+| misc/explained_variance | 0.953    |
+| misc/nupdates           | 460      |
+| misc/serial_timesteps   | 9.42e+05 |
+| misc/time_elapsed       | 7.74e+04 |
+| misc/total_timesteps    | 9.42e+05 |
+| sil_samples             | 424      |
+| SimRew-MeanRew          | 380      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.006621215
+# batch per epoch 196
+Epoch 1 0.0065340297
+# batch per epoch 196
+Epoch 2 0.0065099094
+# batch per epoch 196
+Epoch 3 0.006172522
+# batch per epoch 196
+Epoch 4 0.006136612
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.006721864
+# batch per epoch 196
+Epoch 1 0.006554332
+# batch per epoch 196
+Epoch 2 0.0064069945
+# batch per epoch 196
+Epoch 3 0.0062826495
+# batch per epoch 196
+Epoch 4 0.006189727
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.77e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.77e+03 |
+| fps                     | 354      |
+| loss/approxkl           | 0.0218   |
+| loss/clipfrac           | 0.28     |
+| loss/policy_entropy     | 2.41     |
+| loss/policy_loss        | -0.0297  |
+| loss/value_loss         | 109      |
+| MeanRew                 | 3.37e+03 |
+| misc/explained_variance | 0.97     |
+| misc/nupdates           | 470      |
+| misc/serial_timesteps   | 9.63e+05 |
+| misc/time_elapsed       | 7.94e+04 |
+| misc/total_timesteps    | 9.63e+05 |
+| sil_samples             | 405      |
+| SimRew-MeanRew          | 264      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.006549746
+# batch per epoch 196
+Epoch 1 0.0064069275
+# batch per epoch 196
+Epoch 2 0.006338252
+# batch per epoch 196
+Epoch 3 0.006168234
+# batch per epoch 196
+Epoch 4 0.0061339894
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0064860424
+# batch per epoch 196
+Epoch 1 0.006436398
+# batch per epoch 196
+Epoch 2 0.00621493
+# batch per epoch 196
+Epoch 3 0.0061261402
+# batch per epoch 196
+Epoch 4 0.0060015135
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+--------------------------------------
+| AverageReturn           | 2.77e+03 |
+| eplenmean               | 1e+03    |
+| eprewmean               | 2.77e+03 |
+| fps                     | 388      |
+| loss/approxkl           | 0.0479   |
+| loss/clipfrac           | 0.41     |
+| loss/policy_entropy     | 2.35     |
+| loss/policy_loss        | -0.0116  |
+| loss/value_loss         | 155      |
+| MeanRew                 | 3.22e+03 |
+| misc/explained_variance | 0.964    |
+| misc/nupdates           | 480      |
+| misc/serial_timesteps   | 9.83e+05 |
+| misc/time_elapsed       | 8.13e+04 |
+| misc/total_timesteps    | 9.83e+05 |
+| sil_samples             | 380      |
+| SimRew-MeanRew          | 270      |
+| Time-MeanRew            | 0.36     |
+--------------------------------------
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.00660635
+# batch per epoch 196
+Epoch 1 0.006335732
+# batch per epoch 196
+Epoch 2 0.0062753074
+# batch per epoch 196
+Epoch 3 0.0061577954
+# batch per epoch 196
+Epoch 4 0.006184351
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Update train
+# batch per epoch 196
+Epoch 0 0.0065738074
+# batch per epoch 196
+Epoch 1 0.0065783295
+# batch per epoch 196
+Epoch 2 0.006288508
+# batch per epoch 196
+Epoch 3 0.006142997
+# batch per epoch 196
+Epoch 4 0.006022187
+Update without validation
+Done.
+Stepping environment...
+Done.
+Stepping environment...
+Done.
