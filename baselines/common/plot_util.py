@@ -325,6 +325,7 @@ def plot_results(
     split_fn=default_split_fn,
     group_fn=default_split_fn,
     average_group=False,
+    name=None,
     shaded_std=True,
     shaded_err=True,
     figsize=None,
@@ -378,6 +379,11 @@ def plot_results(
                                               See docstrings for decay_steps in symmetric_ema or one_sided_ema functions.
 
     '''
+    if name in ["trpo_nosil","trpo_sil","ppo_nosil","ppo_sil"]:
+        ls=[1,0]
+    elif name in ['trpo_comp','ppo_comp']:
+        ls=[1,2,0]
+    
     if split_fn is None: split_fn = lambda _ : ''
     if group_fn is None: group_fn = lambda _ : ''
     sk2r = defaultdict(list) # splitkey2results
@@ -439,8 +445,13 @@ def plot_results(
                 xys = gresults[group]
                 if not any(xys):
                     continue
-                color = COLORS[groups.index(group) % len(COLORS)]
-                color = COLORS[temp]
+                
+                #color = COLORS[groups.index(group) % len(COLORS)]
+                if name in ["trpo_nosil","trpo_sil","ppo_nosil","ppo_sil","trpo_comp","ppo_comp"]:
+                    color = COLORS[ls[temp]]
+                else:
+                    color = COLORS[temp]
+                
                 origxs = [xy[0] for xy in xys]
                 minxlen = min(map(len, origxs))
                 def allequal(qs):
