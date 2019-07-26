@@ -35,7 +35,7 @@ def main():
         'copos_comp':r_copos_comp, 'trpo_comp':r_trpo_comp, 'ppo_comp':r_ppo_comp}
 
     for name in dt:
-        pu.plot_results(dt[name],xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,name=name,split_fn=lambda _: '',shaded_err=False,shaded_std=True)
+        pu.plot_results(dt[name],xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,name=name,split_fn=lambda _: '',shaded_err=True,shaded_std=False)
         plt.xlabel('Number of Timesteps [M]')
         plt.ylabel('Best Average Return [-]')
         plt.tight_layout()
@@ -43,7 +43,7 @@ def main():
         fig.set_size_inches(9, 7.5)
         fig.savefig("/Users/zsbjltwjj/Desktop/carla_sample_efficient/plot_f/OFFLINE/"+args.env+'/'+name+'.pdf',format="pdf")
         if name=='mbl_nosil' or name=='mbl_sil':
-            pu.plot_results(dt[name],xy_fn=pu.progress_default_entropy_xy_fn,average_group=True,name=name,split_fn=lambda _: '',shaded_err=False,shaded_std=True,legend_entropy=1)
+            pu.plot_results(dt[name],xy_fn=pu.progress_default_entropy_xy_fn,average_group=True,name=name,split_fn=lambda _: '',shaded_err=True,shaded_std=False,legend_entropy=1)
             plt.xlabel('Number of Timesteps [M]')
             plt.ylabel('Entropy [-]')
             plt.tight_layout()

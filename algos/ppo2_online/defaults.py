@@ -1,7 +1,7 @@
 from baselines.common.models import mlp, cnn_small
 def mujoco():
     return dict(
-        network = mlp(num_hidden=64, num_layers=2),
+        network = mlp(num_hidden=32, num_layers=2),
         nsteps=2048,
         nminibatches=32,
         lam=0.95,
