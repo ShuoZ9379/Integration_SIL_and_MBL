@@ -13,11 +13,12 @@ def main():
     parser.add_argument('--st_seed', help='start number of seeds', type=int, default=0)
     parser.add_argument('--num_timesteps', type=str, default="5e4")
     parser.add_argument('--filename', type=str, default='_Offline Evaluation_test.png')
+    parser.add_argument('--time',type=str,default="24:00:00")
     args = parser.parse_args()
     if args.env=='Swimmer-v2' or args.env=='HalfCheetah-v2': 
          mbl_args='--num_samples=2 --num_elites=2 --horizon=2 --eval_freq=5 --mbl_train_freq=4 --num_eval_episodes=5 --num_warm_start=10000 --use_mean_elites=1 --mbl_sh=10000 --sil_update=2 --sil_loss=0.001'
-    elif arg.env=='Reacher-v2' or args.env=='Ant-v2':
-         mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=10'
+    elif args.env=='Reacher-v2' or args.env=='Ant-v2':
+         mbl_args='--num_samples=2 --num_elites=2 --horizon=2 --eval_freq=5 --mbl_train_freq=4 --num_eval_episodes=5 --num_warm_start=10000 --use_mean_elites=1 --mbl_sh=10000 --sil_update=2 --sil_loss=0.001'
     
 #    algo_names=["ppo2_sil_online","copos_sil_online","ppo2_online","copos_online"]
 #    legend_names=["ppo2+sil","copos+sil","ppo2","copos"]
@@ -37,7 +38,8 @@ def main():
     algo_names=[args.alg]
     dct = {'copos_offline': 'copos', 'mbl_copos': 'mbl+copos', 'mbl_copos_sil': 'mbl+copos+sil','copos_sil_offline':'copos+sil',
             'trpo_offline': 'trpo', 'mbl_trpo': 'mbl+trpo', 'mbl_trpo_sil': 'mbl+trpo+sil','trpo_sil_offline':'trpo+sil',
-            'ppo2_offline': 'ppo', 'mbl_ppo2': 'mbl+ppo', 'mbl_ppo2_sil': 'mbl+ppo+sil','ppo2_sil_offline':'ppo+sil'}
+            'ppo2_offline': 'ppo', 'mbl_ppo2': 'mbl+ppo', 'mbl_ppo2_sil': 'mbl+ppo+sil','ppo2_sil_offline':'ppo+sil',
+           'copos(const)_offline': 'copos(const)', 'mbl_copos(const)': 'mbl+copos(const)', 'mbl_copos(const)_sil': 'mbl+copos(const)+sil','copos(const)_sil_offline':'copos(const)+sil'}
     legend_names=[dct[args.alg]]
     argus=[mbl_args for _ in range(len(algo_names))]
 
@@ -47,12 +49,19 @@ def main():
  #                     +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP2_TEST/"
 #                      +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
 #            sys.exit()
-            os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
-                      +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_TEST/"
-                      +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
+            if args.time=='24:00:00':
+                os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
+                          +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_24_TEST/"
+                          +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
+            else:
+                os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
+                          +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_120_TEST/"
+                          +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
 
-
-    results = pu.load_results('~/Desktop/logs/EXP_OFF_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
+    if args.time=='24:00:00':
+        results = pu.load_results('~/Desktop/logs/EXP_OFF_24_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
+    else:
+       results = pu.load_results('~/Desktop/logs/EXP_OFF_120_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
 
     pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
     #plt.title(args.env+" Online Evaluation")
