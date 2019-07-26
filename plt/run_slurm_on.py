@@ -2,9 +2,9 @@
 This script uses SLURM to run in parallel many trials of the same algorithm
 on different environments with fixed random seed (seed = trial number).
 Command
-    python3 run_slurm_off.py <TIME_LIMIT> <NUM_TIMESTEPS> <N_TRIALS> <ST_TIAL> <ENV_LIST>
+    python3 run_slurm_on.py <NUM_TIMESTEPS> <N_TRIALS> <ST_TIAL> <ENV_LIST>
 Example
-    python3 run_slurm_off.py 24:00:00 5e6 10 0 HalfCheetah-v2 Ant-v2 Reacher-v2 Swimmer-v2
+    python3 run_slurm_on.py 1e7 10 0 HalfCheetah-v2 Ant-v2 Reacher-v2 Swimmer-v2
 One job per run will be submitted.
 Data is still saved as usual in `path/to/logs/the_env_name/the_alg_name_the_seed/`. For example, for the above run data will be saved in
 ~/Desktop/logs/EXP_V0/Pendulum-v0/mbl+copos_0/
@@ -19,26 +19,21 @@ request more memory, more computation time, ...).
 '''
 
 import os, errno, sys
-alg_ls=["copos1_offline","copos1_sil_offline","mbl_copos1","mbl_copos1_sil",
-        "trpo_offline","trpo_sil_offline","mbl_trpo","mbl_trpo_sil",
-        "ppo2_offline","ppo2_sil_offline","mbl_ppo2","mbl_ppo2_sil",
-        "copos2_offline","copos2_sil_offline","mbl_copos2","mbl_copos2_sil"]
-#alg_ls=["copos(const)_offline","copos(const)_sil_offline","mbl_copos(const)","mbl_copos(const)_sil"]
-logdir = '/home/sz52cacy/logs-trial-off' # directory to save log files (where stdout is flushed)
-time_limit = sys.argv[1]
-num_timesteps = sys.argv[2]
-n_trials = int(sys.argv[3])
-st_trial = int(sys.argv[4])
-env_list = sys.argv[5:]
-if time_limit == "24:00:00":
-    logdir = logdir+'-24'
-    if num_timesteps=='5e6':
-        logdir = logdir+'-5M/'
-    elif num_timesteps='1e6':
-        logdir = logdir+'-1M/'
-    else logdir = logdir+'-do-not-use/'
-else:
-    logdir = logdir+'-120/'
+algo_names=["ppo2_sil_online","ppo2_sil_online","ppo2_online",
+            "copos1_sil_online","copos1_sil_online","copos1_online",
+            "copos2_sil_online","copos2_sil_online","copos2_online",
+            "trpo_sil_online","trpo_sil_online","trpo_online"]
+
+argus=['+sil_n10_l0.1','+sil_n2_l0.001','',
+       '+sil_n10_l0.1','+sil_n2_l0.001','',
+       '+sil_n10_l0.1','+sil_n2_l0.001','',
+       '+sil_n10_l0.1','+sil_n2_l0.001','']
+
+logdir = '/home/sz52cacy/logs-trial-on/' # directory to save log files (where stdout is flushed)
+num_timesteps = sys.argv[1]
+n_trials = int(sys.argv[2])
+st_trial = int(sys.argv[3])
+env_list = sys.argv[4:]
 
 for env_name in env_list:
     envdir = env_name + '/'
@@ -47,7 +42,7 @@ for env_name in env_list:
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
-    for alg_name in alg_ls:
+    for k in range(len(algo_names)):
         
         for trial in range(st_trial, st_trial+n_trials):
             run_name = alg_name + '_' + str(trial)
@@ -60,7 +55,7 @@ for env_name in env_list:
 #SBATCH -o """ + logdir + """""" + envdir + """stdout_""" + run_name + """
 #SBATCH -e """ + logdir + """""" + envdir + """stderr_""" + run_name + """
 # request computation time hh:mm:ss
-#SBATCH -t """ + time_limit + """
+#SBATCH -t 24:00:00
 # request virtual memory in MB per core
 #SBATCH --mem-per-cpu=1750
 # nodes for a single job
@@ -70,7 +65,7 @@ for env_name in env_list:
 # activate virtual env
 module load intel openmpi/3
 conda activate cse
-python ~/Desktop/carla_sample_efficient/plt/command_offline_alg_lgd.py --num_timesteps=""" + num_timesteps + """ --seeds=1 --st_seed=""" + str(trial) + """ --alg=""" + alg_name + """ --env=""" + env_name + """ --time=""" + time_limit + """\
+python ~/Desktop/carla_sample_efficient/plt/command_online.py --num_timesteps=""" + num_timesteps + """ --seeds=1 --st_seed=""" + str(trial) + """ --alg=""" + algo_names[k] + """ --env=""" + env_name + """ --argu=""" + argus[k] + """\
     """
 
             text_file = open('r.sh', "w")
