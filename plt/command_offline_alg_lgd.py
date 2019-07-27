@@ -62,27 +62,27 @@ def main():
                     os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
                               +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_24_1M_V0/"
                               +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
-                    results = pu.load_results('~/Desktop/logs/EXP_OFF_24_1M_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
+                    #results = pu.load_results('~/Desktop/logs/EXP_OFF_24_1M_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
                 else:
                     os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
                               +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_24_5M_V0/"
                               +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
-                    results = pu.load_results('~/Desktop/logs/EXP_OFF_24_5M_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
+                    #results = pu.load_results('~/Desktop/logs/EXP_OFF_24_5M_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
                             
             else:
                 os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
                           +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_120_V0/"
                           +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
-                results = pu.load_results('~/Desktop/logs/EXP_OFF_120_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
+                #results = pu.load_results('~/Desktop/logs/EXP_OFF_120_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
 
             #   results = pu.load_results('~/Desktop/logs/EXP2/'+args.env)
-            pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
+            #pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
             #plt.title(args.env+" Online Evaluation")
-            plt.xlabel('Number of Timesteps [M]')
-            plt.ylabel('Average Return [-]')
-            fig = plt.gcf()
-            fig.set_size_inches(9.5, 7.5)
-            fig.savefig(args.env+"_"+dct[algo_names[j]]+'_'+str(i)+args.filename)
+            #plt.xlabel('Number of Timesteps [M]')
+            #plt.ylabel('Average Return [-]')
+            #fig = plt.gcf()
+            #fig.set_size_inches(9.5, 7.5)
+            #fig.savefig(args.env+"_"+dct[algo_names[j]]+'_'+str(i)+args.filename)
     
 if __name__ == '__main__':
     main()

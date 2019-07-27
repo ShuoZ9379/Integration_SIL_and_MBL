@@ -59,18 +59,18 @@ def main():
                           +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_OFF_120_TEST/"
                           +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
 
-    if args.time=='24:00:00':
-        results = pu.load_results('~/Desktop/logs/EXP_OFF_24_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
-    else:
-        results = pu.load_results('~/Desktop/logs/EXP_OFF_120_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
+            #if args.time=='24:00:00':
+                #results = pu.load_results('~/Desktop/logs/EXP_OFF_24_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
+            #else:
+                #results = pu.load_results('~/Desktop/logs/EXP_OFF_120_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
 
-    pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
-    #plt.title(args.env+" Online Evaluation")
-    plt.xlabel('Number of Timesteps [M]')
-    plt.ylabel('Average Return [-]')
-    fig = plt.gcf()
-    fig.set_size_inches(9.5, 7.5)
-    fig.savefig(args.env+"_"+dct[args.alg]+args.filename)
+            #pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
+            #plt.title(args.env+" Online Evaluation")
+            #plt.xlabel('Number of Timesteps [M]')
+            #plt.ylabel('Average Return [-]')
+            #fig = plt.gcf()
+            #fig.set_size_inches(9.5, 7.5)
+            #fig.savefig(args.env+"_"+dct[args.alg]+args.filename)
     
 if __name__ == '__main__':
     main()

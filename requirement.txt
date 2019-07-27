@@ -1,3 +1,4 @@
+-e .
 tensorboard==1.9.0
 tensorflow==1.9.0
 mpi4py==3.0.0
