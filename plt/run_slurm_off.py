@@ -34,7 +34,7 @@ if time_limit == "24:00:00":
     logdir = logdir+'-24'
     if num_timesteps=='5e6':
         logdir = logdir+'-5M/'
-    elif num_timesteps='1e6':
+    elif num_timesteps=='1e6':
         logdir = logdir+'-1M/'
     else logdir = logdir+'-do-not-use/'
 else:
