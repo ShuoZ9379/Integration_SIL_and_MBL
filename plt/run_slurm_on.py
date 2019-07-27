@@ -45,7 +45,7 @@ for env_name in env_list:
     for k in range(len(algo_names)):
         
         for trial in range(st_trial, st_trial+n_trials):
-            run_name = algo_names[k] + '_' + str(trial)
+            run_name = algo_names[k] + argus[k] +'_' + str(trial)
       
             text = """\
 #!/bin/bash
