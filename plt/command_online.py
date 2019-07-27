@@ -50,15 +50,15 @@ def main():
                       +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_ON_V0/"
                       +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
 
-    results = pu.load_results('~/Desktop/logs/EXP_ON_V0/'+args.env)
+#    results = pu.load_results('~/Desktop/logs/EXP_ON_V0/'+args.env)
 
-    pu.plot_results(results,xy_fn=pu.progress_default_xy_fn,average_group=True,split_fn=lambda _: '')
-    #plt.title(args.env+" Online Evaluation")
-    plt.xlabel('Number of Timesteps [M]')
-    plt.ylabel('Average Return [-]')
-    fig = plt.gcf()
-    fig.set_size_inches(9.5, 7.5)
-    fig.savefig(args.env+"_SUM"+args.filename)
+#    pu.plot_results(results,xy_fn=pu.progress_default_xy_fn,average_group=True,split_fn=lambda _: '')
+#    plt.title(args.env+" Online Evaluation")
+#    plt.xlabel('Number of Timesteps [M]')
+#    plt.ylabel('Average Return [-]')
+#    fig = plt.gcf()
+#    fig.set_size_inches(9.5, 7.5)
+#    fig.savefig(args.env+"_SUM"+args.filename)
     
 if __name__ == '__main__':
     main()
