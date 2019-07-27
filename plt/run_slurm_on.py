@@ -64,7 +64,6 @@ for env_name in env_list:
 #SBATCH -C avx
 # activate virtual env
 module load intel openmpi/3
-conda activate cse
 python ~/Desktop/carla_sample_efficient/plt/command_online.py --num_timesteps=""" + num_timesteps + """ --seeds=1 --st_seed=""" + str(trial) + """ --alg=""" + algo_names[k] + """ --env=""" + env_name + """ --argu=""" + argus[k] + """\
     """
 
