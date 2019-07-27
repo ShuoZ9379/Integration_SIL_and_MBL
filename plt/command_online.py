@@ -44,7 +44,7 @@ def main():
     legend_names=[dct[args.alg]+args.argu]
     argus=[argu_dct[args.argu]]
     
-    for i in range(args.st_seed, args.st_seed+seeds):
+    for i in range(args.st_seed, args.st_seed+args.seeds):
         for j in range(1):
             os.system("python ~/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timestep="
                       +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=~/Desktop/logs/EXP_ON_V0/"
