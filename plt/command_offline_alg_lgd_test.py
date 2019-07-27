@@ -62,7 +62,7 @@ def main():
     if args.time=='24:00:00':
         results = pu.load_results('~/Desktop/logs/EXP_OFF_24_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
     else:
-       results = pu.load_results('~/Desktop/logs/EXP_OFF_120_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
+        results = pu.load_results('~/Desktop/logs/EXP_OFF_120_TEST/'+args.env+"/"+dct[args.alg]+"-"+str(args.st_seed))
 
     pu.plot_results(results,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '')
     #plt.title(args.env+" Online Evaluation")
