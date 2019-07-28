@@ -62,7 +62,7 @@ for env_name in env_list:
 # request computation time hh:mm:ss
 #SBATCH -t """ + time_limit + """
 # request virtual memory in MB per core
-#SBATCH --mem-per-cpu=1750
+#SBATCH --mem-per-cpu=6000
 # nodes for a single job
 #SBATCH -n 1
 #SBATCH -c 1
