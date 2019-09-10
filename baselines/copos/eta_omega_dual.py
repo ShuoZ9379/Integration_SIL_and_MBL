@@ -43,7 +43,7 @@ class EtaOmegaOptimizer(object):
         else:
             param_eta = self.param_eta
 
-        if self.beta == 0:
+        if self.beta == 1000000:
             beta = 0
         else:
             beta = old_entropy - self.beta
@@ -88,7 +88,7 @@ class EtaOmegaOptimizer(object):
             sigma = np.linalg.inv(prec)
 
             term1 = -0.5 * param_eta * np.linalg.slogdet(2 * np.pi * sigma)[1]
-            if self.beta == 0:
+            if self.beta == 10000000:
                 term2 = 0.5 * param_eta * np.linalg.slogdet(
                     2 * np.pi * param_eta * HaaInv)[1]
             else:
@@ -134,18 +134,18 @@ class EtaOmegaOptimizer(object):
         if eta is None:
             omega_lower = -100
             res = scipy.optimize.minimize(fx, x0, method='SLSQP', jac=True,
-                                          bounds=((1e-12, None), (omega_lower, None)), options={'ftol': 1e-12})
+                                          bounds=((1e-12, 1e6), (omega_lower, 1e6)), options={'ftol': 1e-12})
         else:
             omega_lower = -100
             eta_lower = np.max([eta - 1e-3, 1e-12])
             res = scipy.optimize.minimize(fx, x0, method='SLSQP', jac=True,
-                                          bounds=((eta_lower, eta + 1e-3), (omega_lower, None)), options={'ftol': 1e-16})
+                                          bounds=((eta_lower, eta + 1e-3), (omega_lower, 1e6)), options={'ftol': 1e-16})
 
         # Make sure that eta + omega > 0
         if res.x[0] + res.x[1] <= 0:
             res.x[1] = 1e-6 - res.x[0]
 
-        if self.beta == 0:
+        if self.beta == 1000000:
             res.x[1] = 0
 
         logger.log("dual optimized, eta: " + str(res.x[0]) + ", omega: " + str(res.x[1]))
@@ -205,7 +205,7 @@ class EtaOmegaOptimizer(object):
         Wsa = tf.placeholder(dtype=tf.float32, shape=[None, None], name="Wsa")
         wa = tf.placeholder(dtype=tf.float32, shape=[None, None], name="wa")
 
-        if self.beta == 0:
+        if self.beta == 100000000:
             beta = 0
         else:
             beta = old_entropy - self.beta
@@ -220,7 +220,7 @@ class EtaOmegaOptimizer(object):
 
         sigma = tf.matrix_inverse(prec)
         term1 = -0.5 * param_eta * tf.log(tf.matrix_determinant(2 * np.pi * sigma))
-        if self.beta == 0:
+        if self.beta == 1000000:
             term2 = 0.5 * param_eta * tf.log(tf.matrix_determinant(2 * np.pi * param_eta * HaaInv))
         else:
             term2 = 0.5 * (param_eta + param_omega) * tf.log(tf.matrix_determinant(2 * np.pi * (param_eta + param_omega) * HaaInv))

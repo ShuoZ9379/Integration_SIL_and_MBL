@@ -21,13 +21,15 @@ request more memory, more computation time, ...).
 
 import os, errno, sys
 alg_ls=["ppo2_offline","ppo2_sil_offline","mbl_ppo2","mbl_ppo2_sil"]
-#alg_ls=["copos1_offline","copos1_sil_offline","mbl_copos1","mbl_copos1_sil",
-#        "trpo_offline","trpo_sil_offline","mbl_trpo","mbl_trpo_sil",
-#        "ppo2_offline","ppo2_sil_offline","mbl_ppo2","mbl_ppo2_sil",
-#        "copos2_offline","copos2_sil_offline","mbl_copos2","mbl_copos2_sil"]
+alg_ls=["copos1_offline","copos1_sil_offline","mbl_copos1","mbl_copos1_sil",
+        "trpo_offline","trpo_sil_offline","mbl_trpo","mbl_trpo_sil",
+        "ppo2_offline","ppo2_sil_offline","mbl_ppo2","mbl_ppo2_sil",
+        "copos2_offline","copos2_sil_offline","mbl_copos2","mbl_copos2_sil"]
 
 logdir = '/work/scratch/sz52cacy/logs-trial-off-PPOMBLTEST' # directory to save log files (where stdout is flushed)
-#logdir = '/work/scratch/sz52cacy/logs-trial-off-V2' # directory to save log files (where stdout is flushed)
+logdir = '/work/scratch/sz52cacy/logs-trial-off-V2' # directory to save log files (where stdout is flushed)
+logdir = '/work/scratch/sz52cacy/logs-trial-off-VF1'
+
 time_limit = sys.argv[1]
 num_timesteps = sys.argv[2]
 n_trials = int(sys.argv[3])

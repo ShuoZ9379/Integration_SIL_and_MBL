@@ -67,7 +67,7 @@ def train(args, extra_args):
     alg_kwargs.update(extra_args)
     print(alg_kwargs)
 
-    env = build_env(args,normalize_ob=True)
+    env = build_env(args,normalize_ob=False)
     eval_env = build_env(args,normalize_ob=False, is_eval=True)
     if args.save_video_interval != 0:
         env = VecVideoRecorder(env, osp.join(logger.get_dir(), "videos"), record_video_trigger=lambda x: x % args.save_video_interval == 0, video_length=args.save_video_length)
@@ -94,7 +94,7 @@ def train(args, extra_args):
         tmp_ob = np.zeros((1,) + env.observation_space.shape)
         entropy = sess.run(tmp_pi.pd.entropy(), feed_dict={tmp_pi.X: tmp_ob})
         #beta = 2 * entropy / nr_episodes
-        beta = 1e-6
+        beta = 0
         print("Initial entropy: " + str(entropy) + ", episodes: " + str(nr_episodes))
         print("Constantly set beta: " + str(beta))
     

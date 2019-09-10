@@ -71,10 +71,6 @@ def traj_segment_generator(pi, env, horizon, stochastic):
 
         ob, rew, new, _ = env.step(ac)
         #print(ob)
-        #print(ac)
-        #if t==1:
-        #   sys.exit()
-        #print(ob)
         #sys.exit()
         rews[i] = rew
 

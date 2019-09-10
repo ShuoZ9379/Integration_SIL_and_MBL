@@ -18,9 +18,9 @@ def main():
     if args.time=='24:00:00':
         if args.num_timesteps=='1e6' or args.num_timesteps=='4.2e5':
             if args.env=='Swimmer-v2' or args.env=='HalfCheetah-v2':
-                mbl_args='--num_samples=1500 --num_elites=10 --horizon=10 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1 --sil_update=10 --sil_loss=0.1'
+                mbl_args='--num_samples=1500 --num_elites=10 --horizon=10 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1 --sil_update=2 --sil_loss=0.001'
             if args.env=='Reacher-v2' or args.env=='Ant-v2':
-                mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1 --sil_update=10 --sil_loss=0.1'
+                mbl_args='--num_samples=1500 --num_elites=10 --horizon=5 --eval_freq=10 --mbl_train_freq=5 --num_eval_episodes=5 --num_warm_start=20000 --use_mean_elites=1 --mbl_sh=1 --sil_update=2 --sil_loss=0.001'
         else:
             if args.env=='Swimmer-v2' or args.env=='HalfCheetah-v2':
                 mbl_args='--num_samples=1500 --num_elites=10 --horizon=10 --eval_freq=50 --mbl_train_freq=25 --num_eval_episodes=5 --num_warm_start=100000 --use_mean_elites=1 --mbl_sh=1 --sil_update=2 --sil_loss=0.001'
@@ -61,23 +61,23 @@ def main():
                 if args.num_timesteps=='1e6' or args.num_timesteps=='4.2e5':
                     if args.num_timesteps=='1e6':
                         os.system("python /work/scratch/sz52cacy/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
-                                  +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_24_1M_V1/"
+                                  +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_24_1M_VF1/"
                                   +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
                         #results = pu.load_results('~/Desktop/logs/EXP_OFF_24_1M_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
                     else:
                         os.system("python /work/scratch/sz52cacy/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
-                                  +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_24_420K_V1/"
+                                  +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_24_420K_VF1/"
                                   +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
   
                 else:
                     os.system("python /work/scratch/sz52cacy/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
-                              +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_24_5M_V1/"
+                              +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_24_5M_VF1/"
                               +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
                     #results = pu.load_results('~/Desktop/logs/EXP_OFF_24_5M_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
                             
             else:
                 os.system("python /work/scratch/sz52cacy/Desktop/carla_sample_efficient/algos/"+algo_names[j]+"/run.py --alg="+algo_names[j]+" --num_timesteps="
-                          +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_120_V1/"
+                          +args.num_timesteps+" --seed="+str(i)+" --env="+args.env+" --log_path=/work/scratch/sz52cacy/Desktop/logs/EXP_OFF_120_VF1/"
                           +args.env+"/"+legend_names[j]+"-"+str(i)+' '+argus[j])
                 #results = pu.load_results('~/Desktop/logs/EXP_OFF_120_V0/'+args.env+"/"+dct[algo_names[j]]+"-"+str(i))
 

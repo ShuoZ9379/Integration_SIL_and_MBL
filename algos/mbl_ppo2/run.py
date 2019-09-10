@@ -65,7 +65,7 @@ def train(args, extra_args):
     alg_kwargs = get_learn_function_defaults(args.alg, env_type)
     alg_kwargs.update(extra_args)
 
-    env = build_env(args,normalize_ob=True)
+    env = build_env(args,normalize_ob=False)
     eval_env = build_env(args,normalize_ob=False, is_eval=True)
     
     if args.save_video_interval != 0:

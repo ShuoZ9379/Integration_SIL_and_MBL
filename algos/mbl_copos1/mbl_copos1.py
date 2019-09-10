@@ -256,7 +256,7 @@ def learn(*,
         measure_time=True,
         eval_val_err=False,
         measure_rew=True,
-        lr=3e-4,
+               
         **network_kwargs
         ):
     '''

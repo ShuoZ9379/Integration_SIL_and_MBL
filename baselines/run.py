@@ -64,7 +64,7 @@ def train(args, extra_args):
     alg_kwargs = get_learn_function_defaults(args.alg, env_type)
     alg_kwargs.update(extra_args)
 
-    env = build_env(args,normalize_ob=True)
+    env = build_env(args,normalize_ob=False)
     if args.save_video_interval != 0:
         env = VecVideoRecorder(env, osp.join(logger.get_dir(), "videos"), record_video_trigger=lambda x: x % args.save_video_interval == 0, video_length=args.save_video_length)
 
@@ -117,7 +117,6 @@ def build_env(args,normalize_ob=True,normalize_ret=False, is_eval=False):
 
         if env_type == 'mujoco':
             env = VecNormalize(env, ob=normalize_ob, ret=normalize_ret, is_training=not is_eval, use_tf=True)
-#            env = VecNormalize(env, ob=normalize_ob, ret=normalize_ret, use_tf=True)
 
     return env
 

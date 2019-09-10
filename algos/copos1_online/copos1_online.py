@@ -296,7 +296,7 @@ def learn(*,
     set_from_flat(th_init)
     vfadam.sync()
     print("Init param sum", th_init.sum(), flush=True)
-    
+
     # Initialize eta, omega optimizer
     if discrete_ac_space:
         init_eta = 1
@@ -472,7 +472,7 @@ def learn(*,
                 assert all(np.allclose(ps, paramsums[0]) for ps in paramsums[1:])
 #cg over
         for (lossname, lossval) in zip(loss_names, meanlosses):
-            logger.record_tabular(lossname, lossval)      
+            logger.record_tabular(lossname, lossval)
 #policy update over
         with timed("vf"):
             for _ in range(vf_iters):

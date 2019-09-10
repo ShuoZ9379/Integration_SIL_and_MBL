@@ -22,19 +22,27 @@ request more memory, more computation time, ...).
 import os, errno, sys
 algo_names=["ppo2_sil_online"]
 algo_names=["ppo2_online"]
-#algo_names=["ppo2_sil_online","ppo2_sil_online","ppo2_online"]
-#            "copos1_sil_online","copos1_sil_online","copos1_online",
-#            "copos2_sil_online","copos2_sil_online","copos2_online",
-#            "trpo_sil_online","trpo_sil_online","trpo_online"]
+algo_names=["ppo2_sil_online","ppo2_sil_online","ppo2_online",
+            "copos1_sil_online","copos1_sil_online","copos1_online",
+            "copos2_sil_online","copos2_sil_online","copos2_online",
+            "trpo_sil_online","trpo_sil_online","trpo_online"]
+#algo_names=["copos2_sil_online","copos2_sil_online","copos2_online"]
+
 argus=['+sil_n10_l0.1']
 argus=['']
+argus=['+sil_n10_l0.1','+sil_n2_l0.001','',
+       '+sil_n10_l0.1','+sil_n2_l0.001','',
+       '+sil_n10_l0.1','+sil_n2_l0.001','',
+       '+sil_n10_l0.1','+sil_n2_l0.001','']
 #argus=['+sil_n10_l0.1','+sil_n2_l0.001','']
-#       '+sil_n10_l0.1','+sil_n2_l0.001','',
-#       '+sil_n10_l0.1','+sil_n2_l0.001','',
-#       '+sil_n10_l0.1','+sil_n2_l0.001','']
+
 expname='EXP_ON_2_lr1'
-#logdir = '/work/scratch/sz52cacy/logs-trial-on-V2/' # directory to save log files (where stdout is flushed)
+expname='EXP_ON_V3'
+expname='EXP_ON_CP2_2_exact_all'
+expname="EXP_ON_VF1"
+
 logdir = '/work/scratch/sz52cacy/logs-trial-on-'+expname+'/' # directory to save log files (where stdout is flushed)
+#logdir = '/work/scratch/sz52cacy/logs-trial-on-V3/'
 num_timesteps = sys.argv[1]
 n_trials = int(sys.argv[2])
 st_trial = int(sys.argv[3])

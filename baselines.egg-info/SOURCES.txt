@@ -1,6 +1,5 @@
 README.md
 setup.cfg
-setup.py
 baselines/__init__.py
 baselines/logger.py
 baselines/results_plotter.py

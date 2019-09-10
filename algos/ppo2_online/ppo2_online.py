@@ -13,7 +13,6 @@ except ImportError:
 from runner import Runner
 from model import Model
 
-
 def constfn(val):
     def f(_):
         return val
@@ -22,7 +21,8 @@ def constfn(val):
 def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2048, ent_coef=0.0, lr=3e-4,
             vf_coef=0.5,  max_grad_norm=0.5, gamma=0.99, lam=0.95,
             log_interval=10, nminibatches=4, noptepochs=4, cliprange=0.2,
-            save_interval=0, load_path=None, model_fn=None, update_fn=None, init_fn=None, mpi_rank_weight=1, comm=None, **network_kwargs):
+            save_interval=0, load_path=None,
+            model_fn=None, update_fn=None, init_fn=None, mpi_rank_weight=1, comm=None, **network_kwargs):
     '''
     Learn policy using PPO algorithm (https://arxiv.org/abs/1707.06347)
 
@@ -118,11 +118,13 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
 
     epinfobuf = deque(maxlen=40)
     if eval_env is not None:
-        eval_epinfobuf = deque(maxlen=40)
+        eval_epinfobuf = deque(maxlen=100)
 
     if init_fn is not None:
         init_fn()
+
     obs= runner.run()[0]
+    
     # Start total timer
     tfirststart = time.perf_counter()
 
@@ -131,7 +133,6 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
         assert nbatch % nminibatches == 0
         # Start timer
         if hasattr(model.train_model, "ret_rms"):
-            sys.exit()
             model.train_model.ret_rms.update(returns)
         if hasattr(model.train_model, "rms"):
             model.train_model.rms.update(obs)

@@ -27,7 +27,7 @@ def t_test(a,b):
 def main():  
     parser = arg_parser()
     parser.add_argument('--dir', type=str, default='logs')
-    parser.add_argument('--thesis', type=str, default='Online_VF1')
+    parser.add_argument('--thesis', type=str, default='Online_V0')
     args = parser.parse_args()
    
     location=args.dir
@@ -40,15 +40,15 @@ def main():
                       "trpo", "trpo+sil_n2_l0.001", "trpo+sil_n10_l0.1"]
     #legend_name_list=["copos1", "copos1+sil_n2_l0.001", "copos1+sil_n10_l0.1"]
     for env_name in env_name_list:
-        dirname = '~/Desktop/logs/'+location+'/EXP_ON_VF1/'+env_name
+        dirname = '~/Desktop/logs/'+location+'/EXP_ON_V0/'+env_name
         results = pu.load_results(dirname)
         mn_ls, sd_ls,last_ls_ls=[],[],[]
         final_txt_name="/Users/zsbjltwjj/Desktop/thesis/img/"+thesis_dir+"/"+env_name+"-final-output.txt"
         for legend in legend_name_list:
             result=filt(results,legend+"-")
             mn, sd, last_ls = pu.table_results(result,xy_fn=pu.progress_default_xy_fn,average_group=True,split_fn=lambda _: '', 
-                                               name=result[0].dirname,tp='online',freq=50)
-            txt_name="/Users/zsbjltwjj/Desktop/logs/"+location+"/EXP_ON_VF1/"+env_name+"/"+legend+"-output.txt"
+                                               name=result[0].dirname,tp='online',freq=10)
+            txt_name="/Users/zsbjltwjj/Desktop/logs/"+location+"/EXP_ON_V0/"+env_name+"/"+legend+"-output.txt"
             with open(txt_name, "w") as text_file:
                 text_file.write(str(mn)+'\n')
                 text_file.write(str(sd)+'\n')

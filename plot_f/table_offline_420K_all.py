@@ -30,7 +30,7 @@ def t_test(a,b):
 def main():  
     parser = arg_parser()
     parser.add_argument('--dir', type=str, default='logs')
-    parser.add_argument('--thesis', type=str, default='Offline_VF1_T2')
+    parser.add_argument('--thesis', type=str, default='Offline_VF1_T3')
     args = parser.parse_args()
    
     location=args.dir
@@ -47,14 +47,14 @@ def main():
                       "ppo",  "mbl+ppo",
                       "trpo", "mbl+trpo"]
     
-#    legend_name_list=["copos1+sil", "mbl+copos1","mbl+copos1+sil", 
-#                      "copos2+sil", "mbl+copos2","mbl+copos2+sil",
-#                      "ppo+sil", "mbl+ppo","mbl+ppo+sil",
-#                      "trpo+sil", "mbl+trpo","mbl+trpo+sil"]
+    legend_name_list=["copos1+sil", "mbl+copos1","mbl+copos1+sil", 
+                      "copos2+sil", "mbl+copos2","mbl+copos2+sil",
+                      "ppo+sil", "mbl+ppo","mbl+ppo+sil",
+                      "trpo+sil", "mbl+trpo","mbl+trpo+sil"]
     
     #legend_name_list=["copos1", "copos1+sil_n2_l0.001", "copos1+sil_n10_l0.1"]
     for env_name in env_name_list:
-        dirname = '~/Desktop/logs/'+location+'/EXP_OFF_24_420K_VF1_T2/'+env_name
+        dirname = '~/Desktop/logs/'+location+'/EXP_OFF_24_420K_VF1_T3/'+env_name
         results = pu.load_results(dirname)
         mn_ls, sd_ls,last_ls_ls=[],[],[]
         final_txt_name="/Users/zsbjltwjj/Desktop/thesis/img/"+thesis_dir+"/"+env_name+"-final-output.txt"
@@ -64,8 +64,8 @@ def main():
             else:
                 result=filtout(results,legend+"-","mbl+")
             mn, sd, last_ls = pu.table_results(result,xy_fn=pu.progress_mbl_v0_xy_fn,average_group=True,split_fn=lambda _: '', 
-                                               name=result[0].dirname,tp='offline',freq=1)
-            txt_name="/Users/zsbjltwjj/Desktop/logs/"+location+"/EXP_OFF_24_420K_VF1_T2/"+env_name+"/"+legend+"-output.txt"
+                                               name=result[0].dirname,tp='offline',freq=2)
+            txt_name="/Users/zsbjltwjj/Desktop/logs/"+location+"/EXP_OFF_24_420K_VF1_T3/"+env_name+"/"+legend+"-output.txt"
             with open(txt_name, "w") as text_file:
                 text_file.write(str(mn)+'\n')
                 text_file.write(str(sd)+'\n')

@@ -1,10 +1,6 @@
--e .
-tensorboard==1.9.0
-tensorflow==1.9.0
 mpi4py==3.0.0
 autograd==1.2
-mujoco-py==1.50.1.65
--e git+git@github.com:williamd4112/gym.git@dabf2bf548d6d87b7c1109ba3bff14bb43c52aa6#egg=gym
+mujoco-py==1.50.1.68
 absl-py==0.6.0
 astor==0.7.1
 atari-py==0.1.6
@@ -76,4 +72,3 @@ urllib3==1.24
 websocket-client==0.53.0
 Werkzeug==0.14.1
 zmq==0.0.0
--e mbl_part/

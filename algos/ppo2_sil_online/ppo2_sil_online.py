@@ -145,7 +145,6 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
             model.train_model.ret_rms.update(returns)          
         if hasattr(model.train_model, "rms"):
             model.train_model.rms.update(obs)
-            model.sil_model.rms.update(obs)
         
         frac = 1.0 - (update - 1.0) / nupdates
         # Calculate the learning rate

@@ -17,10 +17,10 @@ def main():
     parser = arg_parser()
     parser.add_argument('--env', help='environment ID', type=str, default='HalfCheetah-v2')
     parser.add_argument('--dir', type=str, default='logs')
-    parser.add_argument('--thesis', type=str, default='Offline_VF1')
+    parser.add_argument('--thesis', type=str, default='Offline_1M_V0')
     args = parser.parse_args()
 #    dirname = '~/Desktop/carla_sample_efficient/data/bk/bkup_EXP2_FINAL/'+args.extra_dir+args.env
-    dirname = '~/Desktop/logs/'+args.dir+'/EXP_OFF_24_420K_VF1/'+args.env
+    dirname = '~/Desktop/logs/'+args.dir+'/EXP_OFF_24_1M_V0/'+args.env
 
     results = pu.load_results(dirname)
     r_copos1_nosil,r_copos2_nosil,r_trpo_nosil,r_ppo_nosil=filt(results,'copos1-'),filt(results,'copos2-'),filt(results,'trpo-'),filt(results,'ppo-')
