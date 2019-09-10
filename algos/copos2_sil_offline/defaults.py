@@ -43,7 +43,8 @@ def mujoco():
         vf_stepsize=1e-3,
         normalize_observations=True,
         normalize_obs=True,
-        lr=3e-4,
+ #       lr=3e-4,
+        lr=lambda f: 3e-4 * f,
         ent_coef=0.0,
     )
 

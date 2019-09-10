@@ -56,8 +56,6 @@ class Model(object):
         self.CLIPRANGE = CLIPRANGE = tf.placeholder(tf.float32, [])
         
         neglogpac = train_model.pd.neglogp(A)
-#        self.abc=neglogpac
- #       self.i=0
 
         # Calculate the entropy
         # Entropy is used to improve exploration by limiting the premature convergence to suboptimal policy.

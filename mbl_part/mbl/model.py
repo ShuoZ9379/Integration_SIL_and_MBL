@@ -11,6 +11,7 @@ def make_placeholder(num_input, num_output):
 class NN(object):
     def __init__(self, num_input, num_output, make_model, lr=1e-3, optimizer=tf.train.AdamOptimizer, **kwargs):        
         logger.log('NN', locals())
+        print(lr)
         self.inputs_ph, self.targets_ph = make_placeholder(num_input, num_output)
         phi = make_model(self.inputs_ph)
         self.pred = self._make_pred(phi, num_output)

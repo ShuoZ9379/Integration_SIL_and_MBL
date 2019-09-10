@@ -28,7 +28,8 @@ def mujoco():
         vf_stepsize=1e-3,
         normalize_observations=True,
         ent_coef=0.00,
-        lr=3e-4,
+ #      lr=3e-4,
+        lr=lambda f: 3e-4 * f,
     )
 def classic_control():
     return dict(

@@ -27,14 +27,18 @@ def train(env_id, num_timesteps, timesteps_per_actor_batch, seed, entropy_coeff,
 
     # Save policy etc.
     saver = tf.train.Saver()
-    saver.save(sess, filepath + "_final")
+    #saver.save(sess, filepath + "_final")
 
-
+def configure_logger(log_path, **kwargs):
+    if log_path is not None:
+        logger.configure(log_path)
+    else:
+        logger.configure(**kwargs)
 def main():
     args = mujoco_arg_parser().parse_args()
-    logger.configure(dir=args.filepath)
-    train(args.env, num_timesteps=args.num_timesteps, timesteps_per_actor_batch=args.timesteps_per_episode,
-          seed=args.seed, entropy_coeff=args.entropy_coeff, filepath=args.filepath)
+    configure_logger(args.log_path)
+    train(args.env, num_timesteps=args.num_timesteps, timesteps_per_actor_batch=2048,
+          seed=args.seed, entropy_coeff=0, filepath=args.log_path)
 
 if __name__ == '__main__':
     main()

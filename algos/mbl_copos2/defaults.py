@@ -44,6 +44,7 @@ def mujoco():
         normalize_observations=True,
         normalize_obs=True,
         ent_coef=0.0,
+        lr=lambda f: 3e-4 * f,
     )
 
 

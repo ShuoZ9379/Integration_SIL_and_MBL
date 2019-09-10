@@ -5,6 +5,7 @@ Command
     python3 run_slurm_on.py <NUM_TIMESTEPS> <N_TRIALS> <ST_TIAL> <ENV_LIST>
 Example
     python3 run_slurm_on.py 1e7 10 0 HalfCheetah-v2 Ant-v2 Reacher-v2 Swimmer-v2
+    python3 run_slurm_on.py 1e6 10 0 Swimmer-v2
 One job per run will be submitted.
 Data is still saved as usual in `path/to/logs/the_env_name/the_alg_name_the_seed/`. For example, for the above run data will be saved in
 ~/Desktop/logs/EXP_V0/Pendulum-v0/mbl+copos_0/
@@ -19,17 +20,21 @@ request more memory, more computation time, ...).
 '''
 
 import os, errno, sys
-algo_names=["ppo2_sil_online","ppo2_sil_online","ppo2_online",
-            "copos1_sil_online","copos1_sil_online","copos1_online",
-            "copos2_sil_online","copos2_sil_online","copos2_online",
-            "trpo_sil_online","trpo_sil_online","trpo_online"]
-
-argus=['+sil_n10_l0.1','+sil_n2_l0.001','',
-       '+sil_n10_l0.1','+sil_n2_l0.001','',
-       '+sil_n10_l0.1','+sil_n2_l0.001','',
-       '+sil_n10_l0.1','+sil_n2_l0.001','']
-
-logdir = '/home/sz52cacy/logs-trial-on/' # directory to save log files (where stdout is flushed)
+algo_names=["ppo2_sil_online"]
+algo_names=["ppo2_online"]
+#algo_names=["ppo2_sil_online","ppo2_sil_online","ppo2_online"]
+#            "copos1_sil_online","copos1_sil_online","copos1_online",
+#            "copos2_sil_online","copos2_sil_online","copos2_online",
+#            "trpo_sil_online","trpo_sil_online","trpo_online"]
+argus=['+sil_n10_l0.1']
+argus=['']
+#argus=['+sil_n10_l0.1','+sil_n2_l0.001','']
+#       '+sil_n10_l0.1','+sil_n2_l0.001','',
+#       '+sil_n10_l0.1','+sil_n2_l0.001','',
+#       '+sil_n10_l0.1','+sil_n2_l0.001','']
+expname='EXP_ON_2_lr1'
+#logdir = '/work/scratch/sz52cacy/logs-trial-on-V2/' # directory to save log files (where stdout is flushed)
+logdir = '/work/scratch/sz52cacy/logs-trial-on-'+expname+'/' # directory to save log files (where stdout is flushed)
 num_timesteps = sys.argv[1]
 n_trials = int(sys.argv[2])
 st_trial = int(sys.argv[3])
@@ -64,7 +69,7 @@ for env_name in env_list:
 #SBATCH -C avx
 # activate virtual env
 module load intel openmpi/3
-python ~/Desktop/carla_sample_efficient/plt/command_online.py --num_timesteps=""" + num_timesteps + """ --seeds=1 --st_seed=""" + str(trial) + """ --alg=""" + algo_names[k] + """ --env=""" + env_name + """ --argu=""" + argus[k] + """\
+python /work/scratch/sz52cacy/Desktop/carla_sample_efficient/plt/command_online_work.py --expname=""" + expname + """ --num_timesteps=""" + num_timesteps + """ --seeds=1 --st_seed=""" + str(trial) + """ --alg=""" + algo_names[k] + """ --env=""" + env_name + """ --argu=""" + argus[k] + """\
     """
 
             text_file = open('r.sh', "w")

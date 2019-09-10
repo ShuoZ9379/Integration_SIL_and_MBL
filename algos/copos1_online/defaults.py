@@ -43,6 +43,7 @@ def mujoco():
         vf_stepsize=1e-3,
         normalize_observations=True,
         entcoeff=0.0,
+#        lr=lambda f: 3e-4 * f,
     )
 
 
@@ -59,6 +60,7 @@ def gym_locomotion_envs():
         vf_stepsize=1e-3,
         normalize_observations=True,
         entcoeff=0.0,
+        lr=lambda f: 3e-4 * f,
     )
 
 def robotics():

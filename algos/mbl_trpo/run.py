@@ -68,7 +68,7 @@ def train(args, extra_args):
 #in default one more normalization_observations=True!!!!
 ################################################################
 ########!!!arguments for build_env need to be adjusted according to train+eval details later
-    env = build_env(args,normalize_ob=False)
+    env = build_env(args,normalize_ob=True)
     eval_env = build_env(args,normalize_ob=False, is_eval=True)
 ########################################################
     if args.save_video_interval != 0:

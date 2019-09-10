@@ -90,7 +90,7 @@ def train(args,extra_args):
         tmp_ob = np.zeros((1,) + env.observation_space.shape)
         entropy = sess.run(tmp_pi.pd.entropy(), feed_dict={tmp_pi.X: tmp_ob})
         #beta = 2 * entropy / nr_episodes
-        beta = 0
+        beta = 1e-6
         print("Initial entropy: " + str(entropy) + ", episodes: " + str(nr_episodes))
         print("Constantly set beta: " + str(beta))
     

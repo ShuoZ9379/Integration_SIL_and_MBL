@@ -336,7 +336,8 @@ def plot_results(
     tiling='vertical',
     xlabel=None,
     ylabel=None,
-    quant=1
+    quant=1,
+    online=False
 ):
     '''
     Plot multiple Results objects
@@ -440,6 +441,10 @@ def plot_results(
                 g2l[group] = l
         if average_group:
             temp=0
+            if online==True and len(groups)==2:
+                COLORSS=['green', 'red', 'cyan', 'magenta', 'yellow', 'black', 'purple', 'pink',
+        'brown', 'orange', 'teal',  'lightblue', 'lime', 'lavender', 'turquoise',
+        'darkgreen', 'tan', 'salmon', 'gold',  'darkred', 'darkblue']
             for group in sorted(groups):
                 #print(temp)
                 xys = gresults[group]
@@ -450,7 +455,10 @@ def plot_results(
                 if name in ["trpo_nosil","trpo_sil","ppo_nosil","ppo_sil","trpo_comp","ppo_comp"]:
                     color = COLORS[ls[temp]]
                 else:
-                    color = COLORS[temp]
+                    if online==True and len(groups)==2:
+                        color = COLORSS[temp]
+                    else:
+                        color = COLORS[temp]
                 
                 origxs = [xy[0] for xy in xys]
                 minxlen = min(map(len, origxs))
@@ -513,6 +521,114 @@ def plot_results(
                 plt.ylabel(ylabel)
 
     return f, axarr
+def table_results(
+    allresults, *,
+    xy_fn=default_xy_fn,
+    split_fn=default_split_fn,
+    group_fn=default_split_fn,
+    average_group=False,
+    name=None,
+    shaded_std=True,
+    shaded_err=True,
+    figsize=None,
+    legend_outside=False,
+    legend_entropy=False,
+    resample=0,
+    smooth_step=1.0,
+    tiling='vertical',
+    xlabel=None,
+    ylabel=None,
+    quant=1,
+    tp='online',
+    freq=50
+):
+
+    if split_fn is None: split_fn = lambda _ : ''
+    if group_fn is None: group_fn = lambda _ : ''
+    sk2r = defaultdict(list) # splitkey2results
+    for result in allresults:
+        splitkey = split_fn(result)
+        sk2r[splitkey].append(result)
+    assert len(sk2r) > 0
+    assert isinstance(resample, int), "0: don't resample. <integer>: that many samples"
+    if tiling == 'vertical' or tiling is None:
+        nrows = len(sk2r)
+        ncols = 1
+    elif tiling == 'horizontal':
+        ncols = len(sk2r)
+        nrows = 1
+    elif tiling == 'symmetric':
+        import math
+        N = len(sk2r)
+        largest_divisor = 1
+        for i in range(1, int(math.sqrt(N))+1):
+            if N % i == 0:
+                largest_divisor = i
+        ncols = largest_divisor
+        nrows = N // ncols
+    figsize = figsize or (6 * ncols, 6 * nrows)
+    #f, axarr = plt.subplots(nrows, ncols, sharex=False, squeeze=False, figsize=figsize)
+    groups = list(set(group_fn(result) for result in allresults))
+    default_samples = 512
+    if average_group:
+        resample = resample or default_samples
+    for (isplit, sk) in enumerate(sorted(sk2r.keys())):
+        g2l = {}
+        g2c = defaultdict(int)
+        sresults = sk2r[sk]
+        gresults = defaultdict(list)
+        idx_row = isplit // ncols
+        idx_col = isplit % ncols
+        #ax = axarr[idx_row][idx_col]
+        for result in sresults:
+            group = group_fn(result)
+            g2c[group] += 1
+            x, y = xy_fn(result,quant=quant)
+            if x is None: x = np.arange(len(y))
+            x, y = map(np.asarray, (x, y))
+            if average_group:
+                gresults[group].append((x,y))
+            else:
+                if resample:
+                    x, y, counts = symmetric_ema(x, y, x[0], x[-1], resample, decay_steps=smooth_step)
+                #l, = ax.plot(x, y, color=COLORS[groups.index(group) % len(COLORS)])
+                #g2l[group] = l
+        if average_group:
+            temp=0
+            for group in sorted(groups):
+                #print(temp)
+                xys = gresults[group]
+                if not any(xys):
+                    continue
+                origxs = [xy[0] for xy in xys]
+                minxlen = min               (map(len, origxs))
+                def allequal(qs):
+                    return all((q==qs[0]).all() for q in qs[1:])
+                if resample:
+                    low  = max(x[0] for x in origxs)
+                    high = min(x[-1] for x in origxs)
+                    usex = np.linspace(low, high, resample)
+                    ys = []
+                    for (x, y) in xys:
+                        ys.append(symmetric_ema(x, y, low, high, resample, decay_steps=smooth_step)[1])
+                else:
+                    assert allequal([x[:minxlen] for x in origxs]),\
+                        'If you want to average unevenly sampled data, set resample=<number of samples you want>'
+                    usex = origxs[0]
+                    ys = [xy[1][:minxlen] for xy in xys]
+
+                for i in range (len(ys)):
+                    if i==0: last_iter_ls=[]
+                    if tp=="online" and "PPO" not in name:
+                        #last_iter_ls.append(np.mean(ys[i][-freq-1:-1]))
+                        last_iter_ls.append(np.mean(ys[i][-freq:]))
+                    else:
+                        last_iter_ls.append(np.mean(ys[i][-freq:]))
+                    
+                mn=np.mean(last_iter_ls)
+                sd=np.std(last_iter_ls)
+                temp+=1
+    return mn, sd, last_iter_ls
 
 def regression_analysis(df):
     xcols = list(df.columns.copy())

@@ -42,7 +42,7 @@ class PolicyWithValue(object):
         self.X = observations
         self.state = tf.constant([])
         self.initial_state = None
-        self.cao=tensors['rms']    
+        #self.cao=tensors['rms']    
         self.__dict__.update(tensors)
 
         vf_latent = vf_latent if vf_latent is not None else latent
@@ -352,7 +352,7 @@ def build_policy(env, policy_network, value_network=None, normalize_observations
 
         extra_tensors = {}
 
-        if normalize_observations and X.dtype == tf.float32:
+        if normalize_observations and X.dtype == tf.float32 :
             encoded_x, rms = _normalize_clip_observation(X)
             extra_tensors['rms'] = rms
         else:
