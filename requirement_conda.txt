@@ -2,7 +2,7 @@ tensorboard==1.9.0
 tensorflow==1.9.0
 mpi4py==3.0.0
 autograd==1.2
-mujoco-py==1.50.1.65
+mujoco-py==1.50.1.68
 absl-py==0.6.0
 astor==0.7.1
 atari-py==0.1.6
