@@ -63,7 +63,7 @@ def main():
                 result=filt(results,legend+"-")
             else:
                 result=filtout(results,legend+"-","mbl+")
-            mn, sd, last_ls = pu.table_results(result,xy_fn=pu.progress_mbl_v0_xy_fn,average_group=True,split_fn=lambda _: '', 
+            mn, sd, last_ls = pu.table_results(result,xy_fn=pu.progress_mbl_vbest_xy_fn,average_group=True,split_fn=lambda _: '', 
                                                name=result[0].dirname,tp='offline',freq=1)
             txt_name="/Users/zsbjltwjj/Desktop/logs/"+location+"/EXP_OFF_24_420K_VF1_T2/"+env_name+"/"+legend+"-output.txt"
             with open(txt_name, "w") as text_file:
